@@ -29,24 +29,6 @@ if ("&arg_ptn"=="")
 
 if ("&arg_extra"!="again")
 (
-  RESET
-  SYStem.RESet
-  WINCLEAR
-  SYSTEM.CPU CortexA5
-  SYStem.CONFIG MEMORYACCESSPORT   0
-  SYStem.CONFIG DEBUGACCESSPORT    0
-  SYStem.CONFIG COREBASE           0xC0510000
-  SYStem.CONFIG ETMBASE            0xC0520000
-  SYStem.CONFIG TPIUBASE           0xC0530000
-  System.Option EnReset    OFF
-  System.Option TRST       OFF
-  SYStem.Option DIAG       ON
-  ETM.DIAG                 ON
-  ETM.OFF
-  PRINT VERSION.BUILD()
-  SYSTEM.JtagClock 5Mhz
-  SYSTEM.UP
-
   if state.run()
   (
     break
