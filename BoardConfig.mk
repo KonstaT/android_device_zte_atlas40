@@ -37,10 +37,9 @@ TARGET_NO_BOOTLOADER := false
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
 
-TARGET_GLOBAL_CFLAGS += -mfpu=vfp -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=vfp -mfloat-abi=softfp
-TARGET_CPU_ABI := armeabi
-TARGET_ARCH_VARIANT := armv5te-vfp
+TARGET_CPU_ABI  := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_BOARD_PLATFORM := msm7k
 TARGET_BOOTLOADER_BOARD_NAME := 7x27
 QCOM_TARGET_PRODUCT := msm7627a
