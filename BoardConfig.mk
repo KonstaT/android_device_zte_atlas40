@@ -31,6 +31,10 @@ else
 
 endif # QC_PROP
 
+#Enable Generic Audio and Camera stub for the bringup
+BOARD_USES_GENERIC_AUDIO := true
+USE_CAMERA_STUB := true
+
 TARGET_HAVE_TSLIB := true
 
 TARGET_NO_BOOTLOADER := false
@@ -52,8 +56,7 @@ BOARD_KERNEL_SPARESIZE := 128
 TARGET_USERIMAGES_USE_EXT2 := false
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
-BOARD_KERNEL_CMDLINE := mem=212M console=ttyDCC0 androidboot.hardware=qcom
-BOARD_KERNEL_CMDLINE := console=ttyDCC0 androidboot.hardware=qcom
+BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=qcom
 BOARD_EGL_CFG := device/qcom/$(TARGET_PRODUCT)/egl.cfg
 
 BOARD_NO_SPEAKER := true # msm7627a doesn't have speaker
