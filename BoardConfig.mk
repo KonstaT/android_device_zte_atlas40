@@ -57,6 +57,7 @@ TARGET_USERIMAGES_USE_EXT2 := false
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200,n8 androidboot.hardware=qcom
+ARCH_ARM_HAVE_TLS_REGISTER := true
 BOARD_EGL_CFG := device/qcom/$(TARGET_PRODUCT)/egl.cfg
 
 BOARD_NO_SPEAKER := true # msm7627a doesn't have speaker
