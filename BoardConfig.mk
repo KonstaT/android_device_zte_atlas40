@@ -31,8 +31,7 @@ else
 
 endif # QC_PROP
 
-#Enable Generic Audio and Camera stub for the bringup
-BOARD_USES_GENERIC_AUDIO := true
+#Enable Camera stub for the bringup
 USE_CAMERA_STUB := true
 
 TARGET_HAVE_TSLIB := true
