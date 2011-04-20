@@ -41,6 +41,11 @@ LOCAL_SRC_FILES := surf_keypad.kcm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_KEY_CHAR_MAP)
 
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := 7x27a_kp.kcm
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_KEY_CHAR_MAP)
+
 file := $(TARGET_OUT_KEYLAYOUT)/surf_keypad.kl
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/surf_keypad.kl | $(ACP)
@@ -49,6 +54,11 @@ $(file) : $(LOCAL_PATH)/surf_keypad.kl | $(ACP)
 file := $(TARGET_OUT_KEYLAYOUT)/7k_handset.kl
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/7k_handset.kl | $(ACP)
+	$(transform-prebuilt-to-target)
+
+file := $(TARGET_OUT_KEYLAYOUT)/7x27a_kp.kl
+ALL_PREBUILT += $(file)
+$(file) : $(LOCAL_PATH)/7x27a_kp.kl | $(ACP)
 	$(transform-prebuilt-to-target)
 
 file := $(TARGET_OUT)/etc/vold.fstab
