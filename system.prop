@@ -85,6 +85,3 @@ debug.bt.discoverable_time=0
 # System prop to enable/disable OMH. Enabled by default
 #
 persist.omh.enabled=1
-
-#System prop to keep the screen always on
-ro.alwayson=true
