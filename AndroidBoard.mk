@@ -26,7 +26,7 @@ endif
 # Compile Linux Kernel
 #----------------------------------------------------------------------
 ifeq ($(KERNEL_DEFCONFIG),)
-    KERNEL_DEFCONFIG := msm7627a_defconfig
+    KERNEL_DEFCONFIG := msm7627a-perf_defconfig
 endif
 
 include kernel/AndroidKernel.mk
