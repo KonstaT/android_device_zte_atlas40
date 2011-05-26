@@ -109,28 +109,28 @@ b.s \\vmlinux\panic\panic
 ;; The following addresses are based on prelink library map defined in
 ;; build/core/prelink-linux-arm.map.  Addresses may need to be customized
 ;; based on target
-&libopencore_commonAddr=0xa6000000
-&libopencore_playerAddr=0xa7000000
-&libopencore_authorAddr=0xa7800000
-&libhardware_legacyAddr=0xa9c00000
-&libhardwareAddr=0xa9c70000
-&libaudioflingerAddr=0xab000000
-&libmediaAddr=0xab200000
-&libmediaplayerserviceAddr=0xab280000
-&libvorbisidecAddr=0xab400000
-&libsonivoxAddr=0xab500000
-&libaudioAddr=0xab700000
-&libaudiopolicygenericAddr=0xab800000
-&libaudiopolicyAddr=0xab880000
-&libskiaAddr=0xac000000
-&libuiAddr=0xac400000
-&libEGLAddr=0xac700000
-&libGLESv1_CMAddr=0xacb00000
-&libpixelflingerAddr=0xacf00000
-&libdvmAddr=0xad000000
-&libandroid_runtimeAddr=0xad300000
-&liblogAddr=0xafbc0000
-&libcAddr=0xafe00000
+
+&libopencore_commonAddr=0xA3900000
+&libopencore_playerAddr=0xA4800000
+&libopencore_authorAddr=0xA5D00000
+&libhardware_legacyAddr=0xA7E00000
+&libhardwareAddr=0xA7F00000
+&libaudioflingerAddr= 0xA8D00000
+&libmediaAddr=0xA9000000
+&libmediaplayerserviceAddr=0xA9200000
+&libvorbisidecAddr=0xA9400000
+&libsonivoxAddr=0xA9500000
+&libaudioAddr=0xA9700000
+&libaudiopolicyAddr=0xA9A00000
+&libskiaAddr=0xAB100000
+&libuiAddr=0xAB900000
+&libEGLAddr=0xABE00000
+&libGLESv1_CMAddr=0xAC200000
+&libpixelflingerAddr=0xAC900000
+&libdvmAddr=0xACA00000
+&libandroid_runtimeAddr=0xAD300000
+&liblogAddr=0xAFA00000
+&libcAddr=0xAFD00000
 
 ;; Get the application ID
 ;&appsID=task.proc.spaceid("mediaserver");
@@ -154,7 +154,6 @@ data.load.elf &symbolPath\libmediaplayerservice.so &libmediaplayerserviceAddr /g
 data.load.elf &symbolPath\libvorbisidec.so &libvorbisidecAddr /gnu /nocode /noclear 
 data.load.elf &symbolPath\libsonivox.so &libsonivoxAddr /gnu /nocode /noclear 
 data.load.elf &symbolPath\libaudio.so &libaudioAddr /gnu /nocode /noclear 
-data.load.elf &symbolPath\libaudiopolicygeneric.so &libaudiopolicygenericAddr /gnu /nocode /noclear 
 data.load.elf &symbolPath\libaudiopolicy.so &libaudiopolicyAddr /gnu /nocode /noclear 
 data.load.elf &symbolPath\libskia.so &libskiaAddr /gnu /nocode /noclear 
 data.load.elf &symbolPath\libui.so &libuiAddr /gnu /nocode /noclear 
