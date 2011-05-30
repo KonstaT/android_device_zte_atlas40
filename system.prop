@@ -88,3 +88,6 @@ persist.omh.enabled=1
 
 #System prop to enable ehrpd capability
 ro.config.ehrpd=true
+
+# System property for cabl
+ro.qualcomm.cabl=1
