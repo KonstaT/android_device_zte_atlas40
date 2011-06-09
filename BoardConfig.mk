@@ -41,6 +41,8 @@ TARGET_HAVE_TSLIB := true
 TARGET_NO_BOOTLOADER := false
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
+# Try to use ASHMEM if possible (when non-MDP composition is used)
+TARGET_GRALLOC_USES_ASHMEM := true
 
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
