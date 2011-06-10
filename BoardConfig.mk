@@ -30,8 +30,11 @@ ifeq ($(QC_PROP),true)
 else
 #    BOARD_USES_GENERIC_AUDIO := true
     USE_CAMERA_STUB := true
-
 endif # QC_PROP
+
+# Enabling USE_DEFAULT_JS_ENGINE flag for v8 default engine,
+
+USE_DEFAULT_JS_ENGINE := true
 
 TARGET_HAVE_TSLIB := true
 
