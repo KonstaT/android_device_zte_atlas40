@@ -82,3 +82,12 @@ ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/wpa_supplicant.conf | $(ACP)
 	$(transform-prebuilt-to-target)
 endif
+#----------------------------------------------------------------------
+# Radio image
+#----------------------------------------------------------------------
+ifeq ($(ADD_RADIO_FILES), true)
+radio_dir := $(LOCAL_PATH)/radio
+RADIO_FILES := $(shell cd $(radio_dir) ; find . -iname '*.ENC')
+$(foreach f, $(RADIO_FILES), \
+    $(call add-radio-file,radio/$(f)))
+endif
