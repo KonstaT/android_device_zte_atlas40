@@ -28,16 +28,18 @@
 
 soc_id=`cat /sys/devices/system/soc/soc0/id`
 
-# set MDP composition for MSM7627A
+# set default composition for MSM7627A
 case $soc_id in
      90 | 91 | 92)
-        setprop debug.composition.type mdp
+        comp_7x27A=`getprop debug.composition.7x27A.type`
+        setprop debug.composition.type $comp_7x27A
     ;;
 esac
 
-# set GPU composition for MSM7625A
+# set default composition for MSM7625A
 case $soc_id in
      88 | 89)
-        setprop debug.composition.type gpu
+        comp_7x25A=`getprop debug.composition.7x25A.type`
+        setprop debug.composition.type $comp_7x25A
     ;;
 esac
