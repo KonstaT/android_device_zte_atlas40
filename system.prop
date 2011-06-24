@@ -46,6 +46,8 @@ media.stagefright.enable-meta=false
 media.stagefright.enable-scan=false
 media.stagefright.enable-http=true
 media.stagefright.enable-fma2dp=true
+media.stagefright.enable-aac=false
+media.stagefright.enable-qcp=false
 
 #
 # system prop for opengles version
