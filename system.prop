@@ -43,7 +43,7 @@ persist.cne.fmc.retry=false
 #
 media.stagefright.enable-player=true
 media.stagefright.enable-meta=false
-media.stagefright.enable-scan=false
+media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-aac=true
