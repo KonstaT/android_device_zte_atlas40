@@ -32,10 +32,6 @@ else
     USE_CAMERA_STUB := true
 endif # QC_PROP
 
-# Enabling USE_DEFAULT_JS_ENGINE flag for v8 default engine,
-
-USE_DEFAULT_JS_ENGINE := true
-
 TARGET_HAVE_TSLIB := true
 
 TARGET_NO_BOOTLOADER := false
