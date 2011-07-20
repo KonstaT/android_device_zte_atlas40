@@ -18,10 +18,15 @@ ifeq ($(QC_PROP),true)
     BOARD_CAMERA_LIBRARIES := libcamera
     BOARD_HAVE_BLUETOOTH := true
     BOARD_HAVE_QCOM_FM := true
-    BOARD_HAS_QCOM_WLAN := true
     #BOARD_USES_GENERIC_AUDIO := true
-    BOARD_WPA_SUPPLICANT_DRIVER := WEXT
-    WPA_SUPPLICANT_VERSION := VER_0_6_X
+
+        ifndef BOARD_WLAN_ATHEROS_SDK
+        HOSTAPD_VERSION := VER_0_6_X
+        BOARD_HAS_QCOM_WLAN := true
+        BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+        WPA_SUPPLICANT_VERSION := VER_0_6_X
+        endif
+
     WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
     WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
     WIFI_SDIO_IF_DRIVER_MODULE_ARG  := ""
