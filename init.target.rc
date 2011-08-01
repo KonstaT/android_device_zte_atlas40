@@ -34,3 +34,8 @@ service comp-set /system/bin/sh /system/etc/init.qcom.composition_type.sh
     critical
     disabled
     oneshot
+
+service wlan_tool /system/bin/wlan_tool
+    user root
+    group wifi system net_admin inet shell
+    oneshot
