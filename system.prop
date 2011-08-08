@@ -116,3 +116,7 @@ ro.fm.transmitter=false
 #System property for single instance recording
 #
 ro.fm.multiinstance.recording.supported=false
+#
+#System property for msm 
+#
+ro.hw_plat=7x27a
