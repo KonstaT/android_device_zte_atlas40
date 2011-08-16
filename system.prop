@@ -111,3 +111,8 @@ ro.fm.analogpath.supported=false
 #System property for FM transmitter
 #
 ro.fm.transmitter=false
+
+#
+#System property for single instance recording
+#
+ro.fm.multiinstance.recording.supported=false
