@@ -115,7 +115,7 @@ ro.fm.transmitter=false
 #
 #System property for single instance recording
 #
-ro.fm.multiinstance.recording.supported=false
+ro.fm.mulinst.recording.support=false
 #
 #System property for msm 
 #
