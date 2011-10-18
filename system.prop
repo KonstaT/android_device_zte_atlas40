@@ -88,7 +88,7 @@ ro.bluetooth.remote.autoconnect=true
 #
 #system property for Bluetooth discoverability timeout in seconds
 #0: Always discoverable
-debug.bt.discoverable_time=0
+#debug.bt.discoverable_time=0
 
 #
 # System prop to enable/disable OMH. Enabled by default
