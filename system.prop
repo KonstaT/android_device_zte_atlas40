@@ -124,5 +124,5 @@ ro.hw_plat=7x27a
 #
 # system props for SD card emulation of emmc partition
 #
-ro.emmc.sdcard.partition=0
+ro.emmc.sdcard.partition=18
 #
