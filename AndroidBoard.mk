@@ -36,6 +36,9 @@ ALL_PREBUILT += $(file)
 $(file) : $(TARGET_PREBUILT_KERNEL) | $(ACP)
 	$(transform-prebuilt-to-target)
 
+#----------------------------------------------------------------------
+# Key mappings
+#----------------------------------------------------------------------
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := surf_keypad.kcm
 LOCAL_MODULE_TAGS := optional
@@ -46,41 +49,60 @@ LOCAL_SRC_FILES := 7x27a_kp.kcm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_KEY_CHAR_MAP)
 
-file := $(TARGET_OUT_KEYLAYOUT)/surf_keypad.kl
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/surf_keypad.kl | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := surf_keypad.kl
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_KEYLAYOUT)
+include $(BUILD_PREBUILT)
 
-file := $(TARGET_OUT_KEYLAYOUT)/7k_handset.kl
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/7k_handset.kl | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := 7k_handset.kl
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_KEYLAYOUT)
+include $(BUILD_PREBUILT)
 
-file := $(TARGET_OUT_KEYLAYOUT)/7x27a_kp.kl
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/7x27a_kp.kl | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := 7x27a_kp.kl
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_KEYLAYOUT)
+include $(BUILD_PREBUILT)
 
-file := $(TARGET_OUT)/etc/vold.fstab
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/vold.fstab | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := vold.fstab
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
 
-file := $(TARGET_ROOT_OUT)/init.target.rc
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.target.rc | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.target.rc
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
 
-file := $(TARGET_OUT)/etc/init.qcom.composition_type.sh
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/init.qcom.composition_type.sh | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.qcom.composition_type.sh
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+include $(BUILD_PREBUILT)
 
 ifeq ($(strip $(BOARD_HAS_QCOM_WLAN)),true)
-file := $(TARGET_OUT)/etc/wifi/wpa_supplicant.conf
-ALL_PREBUILT += $(file)
-$(file) : $(LOCAL_PATH)/wpa_supplicant.conf | $(ACP)
-	$(transform-prebuilt-to-target)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := wpa_supplicant.conf
+LOCAL_MODULE_TAGS  := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_ETC)/wifi
+include $(BUILD_PREBUILT)
 endif
 #----------------------------------------------------------------------
 # Radio image
