@@ -37,6 +37,8 @@ else
     USE_CAMERA_STUB := true
 endif # QC_PROP
 
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_QCOM_FM := true
 TARGET_HAVE_TSLIB := true
 
 TARGET_NO_BOOTLOADER := false
