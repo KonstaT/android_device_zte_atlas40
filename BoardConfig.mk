@@ -28,6 +28,9 @@ ifeq ($(QC_PROP),true)
     WIFI_SDIO_IF_DRIVER_MODULE_PATH := "/system/lib/modules/librasdioif.ko"
     WIFI_SDIO_IF_DRIVER_MODULE_NAME := "librasdioif"
     WIFI_SDIO_IF_DRIVER_MODULE_ARG  := ""
+    WIFI_DRIVER_FW_PATH_STA := "sta"
+    WIFI_DRIVER_FW_PATH_AP  := "ap"
+    WIFI_DRIVER_FW_PATH_P2P := "p2p"
     endif   # !BUILD_TINY_ANDROID
 
 else
