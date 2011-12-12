@@ -126,3 +126,6 @@ ro.hw_plat=7x27a
 #
 ro.emmc.sdcard.partition=18
 #
+# Turn off tiled rendering
+#
+debug.enabletr=false
