@@ -91,6 +91,11 @@ ro.bluetooth.remote.autoconnect=true
 #debug.bt.discoverable_time=0
 
 #
+# System prop to disable strict mode flash on display
+#
+persist.sys.strictmode.visual=false
+
+#
 # System prop to enable/disable OMH. Enabled by default
 #
 persist.omh.enabled=1
