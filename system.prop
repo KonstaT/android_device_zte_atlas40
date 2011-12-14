@@ -129,3 +129,8 @@ ro.emmc.sdcard.partition=18
 # Turn off tiled rendering
 #
 debug.enabletr=false
+#
+#System prop for setting the pixel format
+#
+ro.staticwallpaper.pixelformat=RGB_565
+
