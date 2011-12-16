@@ -142,5 +142,5 @@ ro.staticwallpaper.pixelformat=RGB_565
 #
 #System prop for disabling the meta data mode for encoder
 #
-debug.camcorder.disablemeta=true
+debug.camcorder.disablemeta=1
 
