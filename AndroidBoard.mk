@@ -45,9 +45,12 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_KEY_CHAR_MAP)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := 7x27a_kp.kcm
+LOCAL_MODULE := 7x27a_kp.kcm
 LOCAL_MODULE_TAGS := optional
-include $(BUILD_KEY_CHAR_MAP)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := $(LOCAL_MODULE)
+LOCAL_MODULE_PATH  := $(TARGET_OUT_KEYCHARS)
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE       := surf_keypad.kl
