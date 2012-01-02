@@ -149,3 +149,7 @@ ro.staticwallpaper.pixelformat=RGB_565
 #
 debug.camcorder.disablemeta=1
 
+#
+# Simulate sdcard on /data/media
+#
+persist.fuse_sdcard=false
