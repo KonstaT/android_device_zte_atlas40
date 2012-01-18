@@ -158,3 +158,8 @@ persist.fuse_sdcard=false
 # System prop for using landscape preview layout in camera
 #
 debug.camera.landscape=true
+
+#
+# System prop for capping scroll velocity
+#
+ro.max.fling_velocity=4000
