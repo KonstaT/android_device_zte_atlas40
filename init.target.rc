@@ -29,6 +29,9 @@
 on early-boot
     start comp-set
 
+on emmc-fs:
+    mount ext4 /dev/block/mmcblk0p12 /system ro remount barrier=1
+
 service comp-set /system/bin/sh /system/etc/init.qcom.composition_type.sh
     user root
     critical
