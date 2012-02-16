@@ -39,3 +39,7 @@ service wlan_tool /system/bin/wlan_tool
     user root
     group wifi system net_admin inet shell
     oneshot
+
+on property:sys.radio.shutdown=true
+    write  /sys/devices/platform/rs300000a7.65536/force_sync 1
+
