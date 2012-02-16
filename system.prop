@@ -163,3 +163,8 @@ debug.camera.landscape=true
 # System prop for capping scroll velocity
 #
 ro.max.fling_velocity=4000
+
+#
+# System prop for disabling the rendering dirty regions
+#
+hwui.render_dirty_regions=false
