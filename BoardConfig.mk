@@ -6,6 +6,7 @@
 
 ifeq ($(QC_PROP),true)
     BOARD_USES_QCOM_HARDWARE := true
+    DYNAMIC_SHARED_LIBV8SO := true
     BOARD_USES_ADRENO_200 := true
     HAVE_ADRENO200_SOURCE := true
     HAVE_ADRENO200_SC_SOURCE := true
