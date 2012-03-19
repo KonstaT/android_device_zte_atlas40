@@ -168,3 +168,8 @@ ro.max.fling_velocity=4000
 # System prop for disabling the rendering dirty regions
 #
 hwui.render_dirty_regions=false
+
+#
+# System prop for enabling discontinuity for HLS Variant Playlist
+#
+httplive.enable.discontinuity=true
