@@ -1,0 +1,21 @@
+# mount point	fstype		device			[device2]
+
+/boot		emmc		/dev/block/mmcblk0p16
+/recovery	emmc		/dev/block/mmcblk0p17
+/splash		emmc		/dev/block/mmcblk0p18
+/system		ext4		/dev/block/mmcblk0p19
+
+/misc		emmc		/dev/block/mmcblk0p20
+/cache		ext4		/dev/block/mmcblk0p21
+/data		ext4		/dev/block/mmcblk0p22
+
+/sdcard		vfat		/dev/block/mmcblk1p1	/dev/block/mmcblk1
+/sd-ext		auto		/dev/block/mmcblk1p2
+
+/qcsblhd_cfg	emmc		/dev/block/mmcblk0p1
+/qcsbl		emmc 		/dev/block/mmcblk0p2
+/oemsbl 	emmc		/dev/block/mmcblk0p3
+/cefs 	 	emmc		/dev/block/mmcblk0p11
+/amss 		emmc		/dev/block/mmcblk0p13
+/emmcboot 	emmc		/dev/block/mmcblk0p15
+
