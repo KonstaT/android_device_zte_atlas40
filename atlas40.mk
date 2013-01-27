@@ -20,9 +20,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     copybit.msm7x27a \
     gralloc.msm7x27a \
-    hwcomposer.msm7x27a \
-    libtilerenderer \
-    libQcomUI
+    hwcomposer.msm7x27a
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -55,6 +53,10 @@ PRODUCT_PACKAGES += \
     dexpreopt \
     make_ext4fs \
     setup_fs
+
+# Enable repeatable keys in CWM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true
 
 PRODUCT_COPY_FILES += \
     device/zte/atlas40/ramdisk/fstab.atlas40:root/fstab.atlas40 \

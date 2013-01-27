@@ -4,11 +4,7 @@
 
 # USB
 persist.sys.usb.config=mtp,adb
-sys.usb.config=mass_storage,adb
 persist.service.adb.enable=1
-
-# ClockWorkMod
-ro.cwm.enable_key_repeat=true
 
 # Display
 debug.fb.rgb565=0
