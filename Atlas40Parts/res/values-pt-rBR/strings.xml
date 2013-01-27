@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Configurações ZTE Atlas40</string>
+  <string name="prox_calibration_title_head">Calibração do sensor de proximidade</string>
+  <string name="prox_calibration_summary_head">Não ponha nada perto do topo da tela enquanto esteja rodando</string>
+  <string name="prox_display_title_head">Exibir os dados do sensor de proximidade</string>
+  <string name="prox_display_summary_head">Mostrar dados atuais de calibração do sensor de proximidade</string>
+  <string name="toast_error">Erro:</string>
+  <string name="back_button">Voltar</string>
+  <string name="prox_restore_title_head">Restaurar padrão de proximidade</string>
+  <string name="prox_restore_summary_head">Remove os dados de calibração (Requer reinicialização).</string>
+  <string name="delete_success">Padrão foi restaurado com sucesso. Por favor, reinicie o aparelho.</string>
+  <string name="delete_error">Falhou ao restaurar os padrões.</string>
+  <string name="delete_no_file">Já está usando os padrões</string>
+  <string name="usb_charging_title_head">Carregando via USB</string>
+  <string name="usb_charging_summary_head">Ativar/Desativar o carregamento</string>
+</resources>
