@@ -7,13 +7,12 @@ persist.sys.usb.config=mtp,adb
 persist.service.adb.enable=1
 
 # Display
-debug.fb.rgb565=0
 debug.sf.hw=1
-debug.composition.type=mdp
 ro.max.fling_velocity=4000
 ro.opengles.version=131072
 ro.sf.lcd_density=240
-persist.sys.use_dithering=1
+persist.sys.use_dithering=2
+debug.gr.numframebuffers=3
 
 # Qualcomm
 com.qc.hardware=true
