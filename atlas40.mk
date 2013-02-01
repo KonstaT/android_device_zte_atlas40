@@ -94,10 +94,14 @@ PRODUCT_COPY_FILES += \
     device/zte/atlas40/prebuilt/system/etc/vold.fstab:system/etc/vold.fstab
 
 PRODUCT_COPY_FILES += \
+    device/zte/atlas40/prebuilt/system/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
+    device/zte/atlas40/prebuilt/system/usr/idc/Fts-touchscreen.idc:system/usr/idc/Fts-touchscreen.idc \
     device/zte/atlas40/prebuilt/system/usr/idc/syna-touchscreen.idc:system/usr/idc/syna-touchscreen.idc \
     device/zte/atlas40/prebuilt/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/7x27a_kp.kl:system/usr/keylayout/7x27a_kp.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/atlas40_keypad.kl:system/usr/keylayout/atlas40_keypad.kl \
+    device/zte/atlas40/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
+    device/zte/atlas40/prebuilt/system/usr/keylayout/Fts-touchscreen.kl:system/usr/keylayout/Fts-touchscreen.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/syna-touchscreen.kl:system/usr/keylayout/syna-touchscreen.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 
