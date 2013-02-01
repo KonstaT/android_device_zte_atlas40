@@ -94,9 +94,11 @@ lib/libchromatix_s5k4e1_preview.so
 lib/liboemcamera.so
 lib/libmmipl.so
 lib/libmmjpeg.so
-lib/hw/camera.msm7627a.so
+lib/hw/camera.msm7x27a.so
 
 # Qualcomm
+lib/libmm-abl-oem.so
+lib/libmm-abl.so
 lib/libmmosal.so
 lib/libmmparser.so
 lib/libqc-opt.so
@@ -121,18 +123,13 @@ lib/libgemini.so
 lib/libgsdi_exp.so
 lib/libgstk_exp.so
 lib/libidl.so
-lib/libmm-abl-oem.so
-lib/libmm-abl.so
 lib/libmmgsdilib.so
 lib/libmvs.so
 lib/libnv.so
 lib/libnetmgr.so
-lib/libnetmonitor.so
 lib/liboem_rapi.so
 lib/liboncrpc.so
 lib/libpbmlib.so
-lib/libpdapi.so
-lib/libpdsm_atl.so
 lib/libqdi.so
 lib/libqdp.so
 lib/libqmiservices.so
