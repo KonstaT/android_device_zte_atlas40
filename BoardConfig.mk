@@ -69,6 +69,9 @@ WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 
+# Audio
+TARGET_PROVIDES_LIBAUDIO := true
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 
