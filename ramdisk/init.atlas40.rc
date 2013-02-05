@@ -132,7 +132,7 @@ on boot
     write /sys/kernel/mm/ksm/sleep_millisecs 3000
     write /sys/kernel/mm/ksm/run 1
 
-on emmc-fs
+on fs
     # mount mmc partitions
     mount_all /fstab.atlas40
 
@@ -243,7 +243,7 @@ service rmt_storage /system/bin/rmt_storage
     user root
     disabled
 
-on property:ro.emmc=1
+on property:ro.boot.emmc=true
     start rmt_storage
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
