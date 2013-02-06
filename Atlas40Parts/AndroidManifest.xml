@@ -14,26 +14,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProxCalibration"
-            android:label="@string/prox_calibration_title_head"
-            android:launchMode="singleInstance" android:theme="@android:style/Theme.NoDisplay">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ProxCalRestore"
-            android:label="@string/prox_restore_title_head"
-            android:launchMode="singleInstance" android:theme="@android:style/Theme.NoDisplay">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ProxDisplay"
-            android:label="@string/prox_display_title_head" android:launchMode="standard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
         <receiver android:name=".Atlas40PartsStartup">
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

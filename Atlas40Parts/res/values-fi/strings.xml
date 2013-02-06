@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
         <string name="app_name">ZTE Atlas40 Asetukset</string>
-        <string name="prox_calibration_title_head">Kalibroi etäisyyden tunnistin</string>
-        <string name="prox_calibration_summary_head">Älä peitä ruudun yläosaa</string>
-        <string name="prox_display_title_head">Näytä etäisyyden tunnistimen data</string>
-        <string name="prox_display_summary_head">Näyttää etäisyyden tunnistimen nykyiset arvot</string>
-        <string name="toast_error">Virhe:</string>
-        <string name="back_button">Takaisin</string>
-        <string name="prox_restore_title_head">Palauta etäisyyden tunnistimen oletusarvot</string>
-        <string name="prox_restore_summary_head">Poistaa kalibrointi datan (Vaatii uudelleenkäynnistämisen).</string>
-        <string name="delete_success">Oletusarvojen palauttamienen onnistui. Käynnistä uudelleen.</string>
-        <string name="delete_error">Oletusarvojen palauttaminen epäonnistui.</string>
-        <string name="delete_no_file">Oletusarvot jo käytössä.</string>
-
         <string name="usb_charging_title_head">USB lataus</string>
         <string name="usb_charging_summary_head">USB lataus päällä/pois</string>
 </resources>

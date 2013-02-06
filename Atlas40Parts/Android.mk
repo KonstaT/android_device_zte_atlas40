@@ -10,8 +10,6 @@ LOCAL_SRC_FILES := $(call all-java-files-under, src)
 LOCAL_PACKAGE_NAME := Atlas40Parts
 LOCAL_CERTIFICATE := platform
 
-LOCAL_REQUIRED_MODULES := prox_cal
-
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
