@@ -81,8 +81,8 @@ PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_COPY_FILES += \
-    device/zte/atlas40/prebuilt/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/zte/atlas40/prebuilt/system/etc/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
+    device/zte/atlas40/prebuilt/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/zte/atlas40/prebuilt/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 

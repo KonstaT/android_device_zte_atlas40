@@ -9,6 +9,7 @@ bin/akmd8962_new
 lib/hw/sensors.default.so
 
 # Wifi
+bin/hostapd
 etc/firmware/ath6k/AR6003/hw2.1.1/athtcmd_ram.bin
 etc/firmware/ath6k/AR6003/hw2.1.1/bdata.bin
 etc/firmware/ath6k/AR6003/hw2.1.1/fw-3.bin
