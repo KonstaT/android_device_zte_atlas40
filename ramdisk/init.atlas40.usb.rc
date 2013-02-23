@@ -44,7 +44,7 @@ on property:sys.usb.config=mass_storage,adb
     write /sys/class/android_usb/android0/functions mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=adb
     write /sys/class/android_usb/android0/enable 0
@@ -53,7 +53,7 @@ on property:sys.usb.config=adb
     write /sys/class/android_usb/android0/functions adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -61,7 +61,7 @@ on property:sys.usb.config=mass_storage
     write /sys/class/android_usb/android0/idProduct 1353
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mass_storage,cdrom
     write /sys/class/android_usb/android0/enable 0
@@ -69,7 +69,7 @@ on property:sys.usb.config=mass_storage,cdrom
     write /sys/class/android_usb/android0/idProduct 83
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mass_storage,cdrom,adb
     write /sys/class/android_usb/android0/enable 0
@@ -77,7 +77,7 @@ on property:sys.usb.config=mass_storage,cdrom,adb
     write /sys/class/android_usb/android0/idProduct 83
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=modem,mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -87,7 +87,7 @@ on property:sys.usb.config=modem,mass_storage,adb
     write /sys/class/android_usb/android0/functions serial,mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=modem,mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -96,7 +96,7 @@ on property:sys.usb.config=modem,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports smd
     write /sys/class/android_usb/android0/functions serial,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,modem,nmea,at,mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -107,7 +107,7 @@ on property:sys.usb.config=diag,modem,nmea,at,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,serial,mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,modem,nmea,at,mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -117,7 +117,7 @@ on property:sys.usb.config=diag,modem,nmea,at,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports smd,tty,smd
     write /sys/class/android_usb/android0/functions diag,serial,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=rndis
     write /sys/class/android_usb/android0/enable 0
@@ -125,7 +125,7 @@ on property:sys.usb.config=rndis
     write /sys/class/android_usb/android0/idProduct 1365
     write /sys/class/android_usb/android0/functions rndis
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=rndis,adb
     write /sys/class/android_usb/android0/enable 0
@@ -134,7 +134,7 @@ on property:sys.usb.config=rndis,adb
     write /sys/class/android_usb/android0/functions rndis,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mtp,adb
     write /sys/class/android_usb/android0/enable 0
@@ -143,7 +143,7 @@ on property:sys.usb.config=mtp,adb
     write /sys/class/android_usb/android0/functions mtp,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=mtp
     write /sys/class/android_usb/android0/enable 0
@@ -151,7 +151,7 @@ on property:sys.usb.config=mtp
     write /sys/class/android_usb/android0/idProduct 307
     write /sys/class/android_usb/android0/functions mtp
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=ptp,adb
     write /sys/class/android_usb/android0/enable 0
@@ -160,7 +160,7 @@ on property:sys.usb.config=ptp,adb
     write /sys/class/android_usb/android0/functions ptp,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=ptp
     write /sys/class/android_usb/android0/enable 0
@@ -168,7 +168,7 @@ on property:sys.usb.config=ptp
     write /sys/class/android_usb/android0/idProduct 311
     write /sys/class/android_usb/android0/functions ptp
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=rndis,diag,modem,nmea,mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -179,7 +179,7 @@ on property:sys.usb.config=rndis,diag,modem,nmea,mass_storage,adb
     write /sys/class/android_usb/android0/functions rndis,diag,serial,mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=rndis,diag,modem,nmea,mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -189,7 +189,7 @@ on property:sys.usb.config=rndis,diag,modem,nmea,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports smd,tty
     write /sys/class/android_usb/android0/functions rndis,diag,serial,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 #no ZTE tag
 on property:sys.usb.config=noZTEtag_diag,modem,nmea,mass_storage,adb
@@ -201,7 +201,7 @@ on property:sys.usb.config=noZTEtag_diag,modem,nmea,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,serial,mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=noZTEtag_diag,modem,nmea,mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -211,7 +211,7 @@ on property:sys.usb.config=noZTEtag_diag,modem,nmea,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports smd,tty
     write /sys/class/android_usb/android0/functions diag,serial,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=noZTEtag_mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -220,7 +220,7 @@ on property:sys.usb.config=noZTEtag_mass_storage,adb
     write /sys/class/android_usb/android0/functions mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=noZTEtag_mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -228,7 +228,7 @@ on property:sys.usb.config=noZTEtag_mass_storage
     write /sys/class/android_usb/android0/idProduct 226
     write /sys/class/android_usb/android0/functions mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=noZTEtag_modem,mass_storage,adb
     write /sys/class/android_usb/android0/enable 0
@@ -238,7 +238,7 @@ on property:sys.usb.config=noZTEtag_modem,mass_storage,adb
     write /sys/class/android_usb/android0/functions serial,mass_storage,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=noZTEtag_modem,mass_storage
     write /sys/class/android_usb/android0/enable 0
@@ -247,4 +247,4 @@ on property:sys.usb.config=noZTEtag_modem,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports smd
     write /sys/class/android_usb/android0/functions serial,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    setprop sys.usb.state $sys.usb.config
+    setprop sys.usb.state ${sys.usb.config}
