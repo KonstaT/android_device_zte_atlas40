@@ -259,13 +259,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-service hciattach-bcm /system/bin/brcm_patchram_plus --enable_hci --enable_4330 --baudrate 3000000 --patchram /etc/BCM4330B1_002.001.032.0518.0520.hcd --enable_lpm /dev/ttyHS0
-    class late_start
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin
-    disabled
-    oneshot
-
 service bridgemgrd /system/bin/bridgemgrd
     class late_start
     user radio

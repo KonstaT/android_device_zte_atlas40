@@ -46,7 +46,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/zte/atlas40/include
 BOARD_EGL_CFG := device/zte/atlas40/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
-COMMON_GLOBAL_CFLAGS += -DANCIENT_GL
 
 # Video
 COMMON_GLOBAL_CFLAGS += -DQCOM_NO_SECURE_PLAYBACK -DQCOM_ICS_DECODERS
@@ -64,7 +63,6 @@ WIFI_DRIVER_MODULE_PATH := "/system/wifi/ath6kl_sdio.ko"
 WIFI_DRIVER_MODULE_NAME := "ath6kl_sdio"
 WIFI_EXT_MODULE_PATH := "/system/wifi/cfg80211.ko"
 WIFI_EXT_MODULE_NAME := "cfg80211"
-
 WIFI_TEST_INTERFACE := "sta"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
@@ -72,7 +70,6 @@ WIFI_DRIVER_FW_PATH_P2P := "p2p"
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
 
 # Camera
 USE_CAMERA_STUB := true

@@ -1,8 +1,6 @@
 # Bluetooth
 bin/abtfilt
-bin/brcm_patchram_plus
 bin/hci_qcomm_init
-etc/BCM4330B1_002.001.032.0518.0520.hcd
 
 # Sensors
 bin/akmd8962_new
@@ -50,9 +48,9 @@ etc/firmware/yamato_pfp.fw
 etc/firmware/yamato_pm4.fw
 lib/egl/eglsubAndroid.so
 lib/egl/libEGL_adreno200.so
-lib/egl/libGLES_android.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libGLESv2_adreno200.so
+lib/egl/libGLESv2S3D_adreno200.so
 lib/egl/libq3dtools_adreno200.so
 lib/libC2D2.so
 lib/libgsl.so

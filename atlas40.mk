@@ -103,7 +103,7 @@ PRODUCT_COPY_FILES += \
     device/zte/atlas40/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/Fts-touchscreen.kl:system/usr/keylayout/Fts-touchscreen.kl \
     device/zte/atlas40/prebuilt/system/usr/keylayout/syna-touchscreen.kl:system/usr/keylayout/syna-touchscreen.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/zte/atlas40/prebuilt/system/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full.mk)
