@@ -57,15 +57,6 @@ lib/libgsl.so
 lib/libOpenVG.so
 lib/libsc-a2xx.so
 
-# GPS
-lib/libgps.so
-lib/libgps.utils.so
-lib/libloc_adapter.so
-lib/libloc_api-rpc-qc.so
-lib/libloc_eng.so
-lib/libloc_ext.so
-lib/libcommondefs.so
-
 # Camera
 lib/libcamera_client.so
 lib/libchromatix_mt9e013_ar.so
