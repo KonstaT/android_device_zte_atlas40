@@ -2,45 +2,6 @@
 # system.prop for atlas40
 #
 
-# USB
-persist.sys.usb.config=mtp,adb
-persist.service.adb.enable=1
-
-# Display
-debug.sf.hw=1
-ro.max.fling_velocity=4000
-ro.opengles.version=131072
-ro.sf.lcd_density=240
-persist.sys.use_dithering=2
-debug.gr.numframebuffers=3
-
-# Qualcomm
-com.qc.hardware=true
-ro.vendor.extension_library=/system/lib/libqc-opt.so
-
-# Telephony
-ro.telephony.ril_class=QualcommSharedRIL
-rild.libpath=/system/lib/libril-qc-1.so
-rild.libargs=-d /dev/smd0
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
-ril.subscription.types=NV,RUIM
-DEVICE_PROVISIONED=1
-ro.telephony.call_ring.multiple=false
-ro.telephony.call_ring.delay=3000
-
-# Wifi
-wifi.interface=wlan0
-wifi.supplicant_scan_interval=60
-wifi.chip.type=AR_6005
-
 # Bluetooth
 bt.chip.type=WCN_2243
 
@@ -50,7 +11,36 @@ dalvik.vm.dexopt-data-only=1
 dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
 dalvik.vm.execution-mode=int:jit
 
+# Display
+debug.sf.hw=1
+ro.max.fling_velocity=4000
+ro.opengles.version=131072
+ro.sf.lcd_density=240
+persist.sys.use_dithering=2
+debug.gr.numframebuffers=3
+
 # Memory
 ro.zram.default=0
 persist.sys.purgeable_assets=1
+sys.mem.max_hidden_apps=3
 
+# Qualcomm
+com.qc.hardware=true
+ro.vendor.extension_library=/system/lib/libqc-opt.so
+
+# Telephony
+ro.telephony.ril_class=QualcommSharedRIL
+rild.libpath=/system/lib/libril-qc-1.so
+rild.libargs=-d /dev/smd0
+ril.subscription.types=NV,RUIM
+ro.telephony.call_ring.multiple=false
+ro.telephony.call_ring.delay=3000
+
+# USB
+persist.sys.usb.config=mtp,adb
+persist.service.adb.enable=1
+
+# Wifi
+wifi.interface=wlan0
+wifi.supplicant_scan_interval=60
+wifi.chip.type=AR_6005

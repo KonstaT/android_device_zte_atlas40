@@ -26,10 +26,6 @@ on init
 # ZTE_PM_ZHENGCHAO_001:end
 
 on boot
-#xiongyiming begin
-    chown root system /proc/touchscreen/ts_information
-#xiongyiming end
-
 #ZTE_ALSPRX_001  start
     mkdir /data/misc/prox 0777 radio radio
     chmod 0777  /dev/taos
@@ -75,7 +71,6 @@ on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    #chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /proc/bcm/sleep/proto
     chown system system /sys/module/sco/parameters/disable_esco
@@ -83,7 +78,6 @@ on boot
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/class/rfkill/rfkill0/state
-    #chmod 0660 /sys/class/rfkill/rfkill1/state
     chmod 0660 /proc/bluetooth/sleep/proto
     chmod 0660 /proc/bcm/sleep/proto
     chown bluetooth bluetooth /dev/ttyHS0
@@ -139,7 +133,7 @@ on boot
     write /sys/kernel/mm/ksm/run 1
 
 on emmc-fs
-# mount mmc partitions
+    # mount mmc partitions
     mount_all /fstab.atlas40
 
 on post-fs-data
@@ -258,12 +252,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     group qcom_oncrpc bluetooth net_bt_admin
     disabled
     oneshot
-
-service bridgemgrd /system/bin/bridgemgrd
-    class late_start
-    user radio
-    group radio
-    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
