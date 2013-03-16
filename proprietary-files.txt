@@ -17,7 +17,6 @@ bin/abtfilt
 bin/hci_qcomm_init
 
 # Camera
-lib/libgemini.so
 lib/libchromatix_mt9e013_preview.so
 lib/libchromatix_mt9p012_preview.so
 lib/libchromatix_mt9t013_preview.so
@@ -26,6 +25,7 @@ lib/libchromatix_ov8810_preview.so
 lib/libchromatix_ov9726_preview.so
 lib/libchromatix_s5k3e2fx_preview.so
 lib/libchromatix_s5k4e1_preview.so
+lib/libgemini.so
 lib/liboemcamera.so
 lib/libmmipl.so
 lib/libmmjpeg.so
