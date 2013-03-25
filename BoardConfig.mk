@@ -37,7 +37,6 @@ TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27a
 TARGET_KERNEL_CONFIG := cyanogen_atlas40_defconfig
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 TARGET_BOOTLOADER_BOARD_NAME := atlas40
 BOARD_KERNEL_CMDLINE := androidboot.hardware=atlas40
 BOARD_KERNEL_BASE := 0x00200000
