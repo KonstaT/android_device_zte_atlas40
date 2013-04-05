@@ -25,7 +25,7 @@ debug.gr.numframebuffers=3
 # Memory
 ro.zram.default=0
 persist.sys.purgeable_assets=1
-sys.mem.max_hidden_apps=3
+sys.mem.max_hidden_apps=10
 
 # Qualcomm
 com.qc.hardware=true
