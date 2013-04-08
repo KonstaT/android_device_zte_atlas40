@@ -58,11 +58,20 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.enable_key_repeat=true
 
+# Ramdisk
 PRODUCT_COPY_FILES += \
     device/zte/atlas40/ramdisk/fstab.atlas40:root/fstab.atlas40 \
     device/zte/atlas40/ramdisk/init.atlas40.rc:root/init.atlas40.rc \
     device/zte/atlas40/ramdisk/init.atlas40.usb.rc:root/init.atlas40.usb.rc \
     device/zte/atlas40/ramdisk/ueventd.atlas40.rc:root/ueventd.atlas40.rc
+
+# Prebuilt
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/zte/atlas40/prebuilt/system,system)
+
+# Bletooth
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -79,30 +88,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
-
-PRODUCT_COPY_FILES += \
-    device/zte/atlas40/prebuilt/system/etc/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    device/zte/atlas40/prebuilt/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/zte/atlas40/prebuilt/system/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-
-PRODUCT_COPY_FILES += \
-    device/zte/atlas40/prebuilt/system/etc/AudioFilter.csv:system/etc/AudioFilter.csv \
-    device/zte/atlas40/prebuilt/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/zte/atlas40/prebuilt/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    device/zte/atlas40/prebuilt/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    device/zte/atlas40/prebuilt/system/etc/vold.fstab:system/etc/vold.fstab
-
-PRODUCT_COPY_FILES += \
-    device/zte/atlas40/prebuilt/system/usr/idc/atmel-touchscreen.idc:system/usr/idc/atmel-touchscreen.idc \
-    device/zte/atlas40/prebuilt/system/usr/idc/Fts-touchscreen.idc:system/usr/idc/Fts-touchscreen.idc \
-    device/zte/atlas40/prebuilt/system/usr/idc/syna-touchscreen.idc:system/usr/idc/syna-touchscreen.idc \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/7x27a_kp.kl:system/usr/keylayout/7x27a_kp.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/atlas40_keypad.kl:system/usr/keylayout/atlas40_keypad.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/atmel-touchscreen.kl:system/usr/keylayout/atmel-touchscreen.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/Fts-touchscreen.kl:system/usr/keylayout/Fts-touchscreen.kl \
-    device/zte/atlas40/prebuilt/system/usr/keylayout/syna-touchscreen.kl:system/usr/keylayout/syna-touchscreen.kl
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full.mk)
