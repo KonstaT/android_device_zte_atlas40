@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-        <string name="app_name">ZTE Atlas40 beállítások</string>
-        <string name="usb_charging_title_head">USB töltés</string>
-        <string name="usb_charging_summary_head">USB töltés engedélyezése/tiltása</string>
+    <string name="app_name">ZTE Atlas40 beállítások</string>
+    <string name="usb_charging_title_head">USB töltés</string>
 </resources>
