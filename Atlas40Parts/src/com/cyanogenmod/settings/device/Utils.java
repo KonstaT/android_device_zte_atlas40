@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.SyncFailedException;
+import java.lang.SecurityException;
 
 public class Utils
 {
@@ -41,4 +42,23 @@ public class Utils
             }
         }
     }
+
+    public static void setWritable(String parameter) {
+        File file = new File(parameter);
+        try {
+            file.setWritable(true);
+        } catch (SecurityException ex) {
+            Log.w(TAG, "unable to set permission for file " + parameter + ": " + ex);
+        }
+    }
+
+    public static void setNonWritable(String parameter) {
+        File file = new File(parameter);
+        try {
+            file.setWritable(false);
+        } catch (SecurityException ex) {
+            Log.w(TAG, "unable to set permission for file " + parameter + ": " + ex);
+        }
+    }
+
 }
