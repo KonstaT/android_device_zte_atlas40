@@ -18,7 +18,7 @@ public class DeviceSettings extends PreferenceActivity {
     private static final String KEY_BUTTON_BACKLIGHT = "button_backlight";
 
     private static final String USB_CHARGING_FILE = "/sys/module/msm_battery/parameters/usb_chg_enable";
-    private static final String BUTTON_BACKLIGHT_FILE = "/sys/devices/platform/leds-gpio/leds/button-backlight/brightness";
+    private static final String BUTTON_BACKLIGHT_FILE = "/sys/class/leds/button-backlight/brightness";
 
     private CheckBoxPreference mUsbCharging;
     private CheckBoxPreference mButtonBacklight;
