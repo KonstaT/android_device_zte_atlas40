@@ -93,8 +93,8 @@
 /dev/smd4                 0660   system     system
 /dev/smd3                 0660   bluetooth      bluetooth
 /dev/smd2                 0660   bluetooth      bluetooth
-/dev/smd0                 0640   radio      radio
-/dev/smd7                 0640   radio      radio
+/dev/smd0                 0660   system     system
+/dev/smd7                 0660   bluetooth      bluetooth
 /dev/smdcntl0             0640   radio      radio
 /dev/smdcntl1             0640   radio      radio
 /dev/smdcntl2             0640   radio      radio
@@ -180,3 +180,8 @@
 /sys/devices/virtual/smdpkt/smdcntl*       open_timeout   0664 radio radio
 #permissions for sensors
 /dev/msm_dsps             0660  system       system
+# GPS
+/dev/oncrpc/00000000:0    0660  system       qcom_oncrpc
+/dev/oncrpc/3000008c:00050000 0660   system       qcom_oncrpc
+# wifi
+/dev/rfkill               0660   root        wifi
