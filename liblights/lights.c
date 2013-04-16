@@ -40,19 +40,11 @@ static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 static struct light_state_t g_notification;
 static struct light_state_t g_battery;
 
-static int g_backlight = 255;
-
 /* The leds we have */
 enum {
 	LED_RED,
 	LED_GREEN,
 	LED_BLANK
-};
-
-enum {
-	MANUAL = 0,
-	AUTOMATIC,
-	MANUAL_SENSOR
 };
 
 static int write_int (const char *path, int value) {
@@ -116,24 +108,23 @@ static int set_light_backlight (struct light_device_t *dev, struct light_state_t
 
 	ALOGV("%s brightness=%d color=0x%08x", __func__,brightness,state->color);
 	pthread_mutex_lock(&g_lock);
-	g_backlight = brightness;
 	err = write_int (LCD_BACKLIGHT_FILE, brightness);
 	pthread_mutex_unlock(&g_lock);
 	return err;
 }
 
 static int set_light_buttons (struct light_device_t *dev, struct light_state_t const* state) {
-	size_t i = 0;
 	int err = 0;
 	int on = is_lit(state);
 	pthread_mutex_lock(&g_lock);
 
-	for (i = 0; i < sizeof(BUTTON_BACKLIGHT_FILE)/sizeof(BUTTON_BACKLIGHT_FILE[0]); i++) {
-		err = write_int (BUTTON_BACKLIGHT_FILE[i],on?1:0);
+	if (on > 0) {
+		err = write_string (BUTTON_BACKLIGHT_FILE, KEY_ON);
+	} else {
+		err = write_string (BUTTON_BACKLIGHT_FILE, KEY_OFF);
 	}
 
 	pthread_mutex_unlock(&g_lock);
-
 	return 0;
 }
 
@@ -146,11 +137,11 @@ static void set_shared_light_locked (struct light_device_t *dev, struct light_st
 	b = (state->color) & 0xFF;
 
 	if (state->flashMode != LIGHT_FLASH_NONE) {
-		err = write_string (RED_LED_FILE_TRIGGER, "1");
-		err = write_string (GREEN_LED_FILE_TRIGGER, "1");
+		err = write_string (RED_LED_FILE_TRIGGER, KEY_ON);
+		err = write_string (GREEN_LED_FILE_TRIGGER, KEY_ON);
 	} else {
-		err = write_string (RED_LED_FILE_TRIGGER, "0");
-		err = write_string (GREEN_LED_FILE_TRIGGER, "0");
+		err = write_string (RED_LED_FILE_TRIGGER, KEY_OFF);
+		err = write_string (GREEN_LED_FILE_TRIGGER, KEY_OFF);
 	}
 
 	err = write_int (RED_LED_FILE, r);
@@ -239,7 +230,7 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
 	.version_major = 1,
 	.version_minor = 0,
 	.id = LIGHTS_HARDWARE_MODULE_ID,
-	.name = "blade lights module",
+	.name = "ZTE lights module",
 	.author = "Diogo Ferreira <defer@cyanogenmod.com>",
 	.methods = &lights_module_methods,
 };
