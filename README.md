@@ -21,6 +21,6 @@ Add the following to your cm10/.repo/local_manifests/local_manifest.xml and repo
 
 Compile:
 
-    . build/envsetup.sh && lunch cm_atlas40-userdebug
-    make bacon -j8
+    . build/envsetup.sh
+    brunch atlas40
 
