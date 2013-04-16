@@ -185,3 +185,5 @@
 /dev/oncrpc/3000008c:00050000 0660   system       qcom_oncrpc
 # wifi
 /dev/rfkill               0660   root        wifi
+# proximity
+/dev/taos                 0777   root        root

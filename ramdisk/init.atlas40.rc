@@ -3,6 +3,7 @@ import init.atlas40.usb.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
+on init
     mkdir /storage 0775 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     export EXTERNAL_STORAGE /storage/sdcard0
@@ -10,64 +11,52 @@ on early-init
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard0 /sdcard
 
-on init
-# ZTE_PM_ZHENGCHAO_001:zhengchao modify the permissions of PM interface
-    chmod 0660 /sys/bus/platform/drivers/msm-battery/usb_chg_enable
-    chmod 0660 /sys/bus/platform/drivers/msm-battery/enable_to_shutdown
-    chmod 0660 /sys/kernel/debug/gpio_debug/gpio_get
-    chmod 0660 /sys/kernel/debug/gpio_debug/gpio_out_l
-    chmod 0660 /sys/kernel/debug/gpio_debug/gpio_out_h
+on fs
+    # mount mmc partitions
+    mount_all /fstab.atlas40
 
-    chown root system /sys/bus/platform/drivers/msm-battery/usb_chg_enable
-    chown root system /sys/bus/platform/drivers/msm-battery/enable_to_shutdown
-    chown root system /sys/kernel/debug/gpio_debug/gpio_get
-    chown root system /sys/kernel/debug/gpio_debug/gpio_out_l
-    chown root system /sys/kernel/debug/gpio_debug/gpio_out_h
-# ZTE_PM_ZHENGCHAO_001:end
+on post-fs-data
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+
+    # Create the directories used by the Wireless subsystem
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    mkdir /data/misc/wifi/hostapd 0770 wifi wifi
+    chmod 0660 /data/misc/wifi/hostapd.conf
+
+    mkdir /data/radio 0770 radio radio
+    chmod 2770 /data/radio
+    mkdir /dev/radio 0770 radio radio
+    chown radio system /dev/pm_monitor
+
+    #Create directories for wiper services
+    mkdir /data/wpstiles/ 0755 shell
+    mkdir /data/wiper 0775 gps qcom_oncrpc
+
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+
+    # Chown polling nodes as needed from UI running on system server
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
+
+    chown system  system /sys/class/compass/akm8962/enable_acc
+    chown system  system /sys/class/compass/akm8962/enable_mag
+    chown system  system /sys/class/compass/akm8962/enable_ori
+    chown system  system /sys/class/compass/akm8962/delay_acc
+    chown system  system /sys/class/compass/akm8962/delay_mag
+    chown system  system /sys/class/compass/akm8962/delay_ori
+    chown system  system /sys/class/compass/akm8962/accel
 
 on boot
-#ZTE_ALSPRX_001  start
-    mkdir /data/misc/prox 0777 radio radio
-    chmod 0777  /dev/taos
-    chmod 0777  /dev/ISL
-#ZTE_ALSPRX_001  end
-
-    # Permissions for System Server and daemons.
-    chown radio system /sys/android_power/state
-    chown radio system /sys/android_power/request_state
-    chown radio system /sys/android_power/acquire_full_wake_lock
-    chown radio system /sys/android_power/acquire_partial_wake_lock
-    chown radio system /sys/android_power/release_wake_lock
-    chown radio system /sys/power/state
-    chown radio system /sys/power/wake_lock
-    chown radio system /sys/power/wake_unlock
-    chmod 0660 /sys/power/state
-    chmod 0660 /sys/power/wake_lock
-    chmod 0660 /sys/power/wake_unlock
-    chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/class/leds/keyboard-backlight/brightness
-    chown system system /sys/class/leds/lcd-backlight/brightness
-    chown system system /sys/class/leds/button-backlight/brightness
-    chown system system /sys/class/leds/jogball-backlight/brightness
-    chown system system /sys/class/leds/blue/brightness
-    chown system system /sys/class/leds/red/brightness
-    chown system system /sys/class/leds/red/grpfreq
-    chown system system /sys/class/leds/red/grppwm
-    chown system system /sys/class/leds/red/blink
-    chown system system /sys/class/leds/green/brightness
-    chown system system /sys/class/leds/green/grpfreq
-    chown system system /sys/class/leds/green/grppwm
-    chown system system /sys/class/leds/green/blink
-    chown system system /sys/class/timed_output/vibrator/enable
-    chown system system /sys/module/sco/parameters/disable_esco
-    chown system system /sys/kernel/ipv4/tcp_wmem_min
-    chown system system /sys/kernel/ipv4/tcp_wmem_def
-    chown system system /sys/kernel/ipv4/tcp_wmem_max
-    chown system system /sys/kernel/ipv4/tcp_rmem_min
-    chown system system /sys/kernel/ipv4/tcp_rmem_def
-    chown system system /sys/kernel/ipv4/tcp_rmem_max
-    chown root radio /proc/cmdline
-
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
@@ -93,18 +82,7 @@ on boot
     mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
     chmod 2770 /dev/socket/qmux_bluetooth
 
-    #Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
-    # Remove write permissions to video related nodes
-    chmod 0664 /sys/devices/virtual/graphics/fb1/hpd
-    chmod 0664 /sys/devices/virtual/graphics/fb1/video_mode
-    chmod 0664 /sys/devices/virtual/graphics/fb1/format_3d
-
-    # Change owner and group for media server and surface flinger
-    chown system system /sys/devices/virtual/graphics/fb1/format_3d
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
     chown radio radio /sys/class/android_usb/f_rmnet_smd_sdio/transport
@@ -132,75 +110,6 @@ on boot
     write /sys/kernel/mm/ksm/sleep_millisecs 3000
     write /sys/kernel/mm/ksm/run 1
 
-on fs
-    # mount mmc partitions
-    mount_all /fstab.atlas40
-
-on post-fs-data
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-#ZTE_JHT_20120423+++
-    mkdir /data/misc/wifi/hostapd 0770 wifi wifi
-#ZTE_JHT_20120423---
-    #Provide the access to hostapd.conf only to root and group
-    chmod 0660 /data/misc/wifi/hostapd.conf
-
-    mkdir /data/radio 0770 radio radio
-    chmod 2770 /data/radio
-    mkdir /dev/radio 0770 radio radio
-    chown radio system /dev/pm_monitor
-
-    #Create directories for gpsone_daemon services
-    mkdir /data/misc/gpsone_d 0770 system system
-
-    #Create directories for QuIPS
-    mkdir /data/misc/quipc 0770 gps system
-
-    #Create directories for Location services
-    mkdir /data/misc/location 0770 gps gps
-    mkdir /data/misc/location/mq 0770 gps gps
-
-    #Create directory from IMS services
-    mkdir /data/shared 0755
-    chown system system /data/shared
-
-    #Create directories for wiper services
-    mkdir /data/wpstiles/ 0755 shell
-    mkdir /data/wiper 0775 gps qcom_oncrpc
-
-    # Create directory used by audio subsystem
-    mkdir /data/misc/audio 0770 audio audio
-
-    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
-    # We chown/chmod /persist again so because mount is run as root + defaults
-    chown system system /persist
-    chmod 0771 /persist
-    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
-    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_sdcc.3/polling
-    chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    chown system  system /sys/class/compass/akm8962/enable_acc
-    chown system  system /sys/class/compass/akm8962/enable_mag
-    chown system  system /sys/class/compass/akm8962/enable_ori
-    chown system  system /sys/class/compass/akm8962/delay_acc
-    chown system  system /sys/class/compass/akm8962/delay_mag
-    chown system  system /sys/class/compass/akm8962/delay_ori	
-    chown system  system /sys/class/compass/akm8962/accel
-
     # power-management
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
@@ -225,8 +134,6 @@ on post-fs-data
 
     # USB charging
     chown system system /sys/module/msm_battery/parameters/usb_chg_enable
-
-    setprop vold.post_fs_data_done 1
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
