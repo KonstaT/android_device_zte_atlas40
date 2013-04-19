@@ -25,12 +25,13 @@ lib/libchromatix_ov9726_preview.so
 lib/libchromatix_s5k3e2fx_preview.so
 lib/libchromatix_s5k4e1_preview.so
 lib/libgemini.so
-lib/liboemcamera.so
 lib/libmmipl.so
 lib/libmmjpeg.so
+lib/liboemcamera.so
 lib/hw/camera.msm7x27a.so
 
 # OMX
+lib/libDivxDrm.so
 lib/libdivxdrmdecrypt.so
 lib/libmm-adspsvc.so
 lib/libOmxAacDec.so
