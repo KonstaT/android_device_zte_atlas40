@@ -6,14 +6,10 @@ on early-init
 on init
     mkdir /storage 0775 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
     # for backwards compatibility
-    symlink /storage/sdcard0 /mnt/sd-internal
-    symlink /storage/sdcard0 /sd-internal
-    symlink /storage/sdcard1 /mnt/sdcard
-    symlink /storage/sdcard1 /sdcard
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /sdcard
 
 on emmc-fs
     # mount mmc partitions
@@ -40,9 +36,6 @@ on post-fs-data
     #Create directories for wiper services
     mkdir /data/wpstiles/ 0755 shell
     mkdir /data/wiper 0775 gps qcom_oncrpc
-
-    mkdir /data/media 0775 media_rw media_rw
-    chown media_rw media_rw /data/media
 
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
@@ -240,7 +233,4 @@ service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
 service akmd /system/bin/akmd8962_new -m 5
     class main
     oneshot
-
-service sdcard /system/bin/sdcard /data/media 1023 1023
-    class late_start
 
