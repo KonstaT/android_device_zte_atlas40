@@ -30,6 +30,10 @@ lib/libmmjpeg.so
 lib/liboemcamera.so
 lib/hw/camera.msm7x27a.so
 
+# FM Radio
+bin/fmconfig
+bin/fm_qsoc_patches
+
 # OMX
 lib/libDivxDrm.so
 lib/libdivxdrmdecrypt.so

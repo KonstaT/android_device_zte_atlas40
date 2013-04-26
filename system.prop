@@ -19,6 +19,11 @@ ro.sf.lcd_density=240
 persist.sys.use_dithering=2
 debug.gr.numframebuffers=3
 
+# FM Radio
+ro.fm.analogpath.supported=true
+ro.fm.transmitter=false
+ro.fm.mulinst.recording.support=false
+
 # Memory
 ro.zram.default=0
 persist.sys.purgeable_assets=1
