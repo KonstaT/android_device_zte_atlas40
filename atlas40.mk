@@ -44,6 +44,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm7x27a
 
+# FM Radio
+PRODUCT_PACKAGES += \
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
