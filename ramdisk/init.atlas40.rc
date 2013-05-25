@@ -236,3 +236,14 @@ service akmd /system/bin/akmd8962_new -m 5
     class main
     oneshot
 
+service ril-daemon1 /system/bin/rild -c 1
+    class late_start
+    socket rild1 stream 660 root radio
+    socket rild-debug1 stream 660 radio system
+    user root
+    disabled
+    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
+
+on property:ro.multi.rild=true
+    start ril-daemon1
+
