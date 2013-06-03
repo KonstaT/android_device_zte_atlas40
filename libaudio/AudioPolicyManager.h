@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2009 The Android Open Source Project
- * Copyright (C) 2012, Code Aurora Forum. All rights reserved.
+ * Copyright (C) 2012, The Linux Foundation. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,8 +45,15 @@ public:
                                                           AudioSystem::device_connection_state state,
                                                           const char *device_address);
 
+        virtual audio_devices_t getDeviceForVolume(audio_devices_t device);
+
         virtual audio_devices_t getDeviceForStrategy(routing_strategy strategy, bool fromCache = true);
+        virtual uint32_t  checkDeviceMuteStrategies(AudioOutputDescriptor *outputDesc,
+                                            audio_devices_t prevDevice,
+                                            uint32_t delayMs);
         virtual void setForceUse(AudioSystem::force_use usage, AudioSystem::forced_config config);
+
+        virtual void handleNotificationRoutingForStream(AudioSystem::stream_type stream);
 protected:
         fm_modes fmMode;
 
