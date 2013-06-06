@@ -1,0 +1,4 @@
+#!/system/bin/sh
+
+insmod /system/wifi/cfg80211.ko
+insmod /system/wifi/ath6kl_sdio.ko
