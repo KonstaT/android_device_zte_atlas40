@@ -37,8 +37,7 @@ PRODUCT_PACKAGES += \
 
 # Atlas40 specific
 PRODUCT_PACKAGES += \
-    lights.atlas40 \
-    Atlas40Parts
+    lights.atlas40
 
 # Power HAL
 PRODUCT_PACKAGES += \
