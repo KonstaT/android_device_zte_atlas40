@@ -34,7 +34,7 @@ TARGET_USE_SPARROW_BIONIC_OPTIMIZATION := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/zte/zte-kernel-msm7x27a
+TARGET_KERNEL_SOURCE := kernel/zte/msm7x27a
 TARGET_KERNEL_CONFIG := cyanogen_atlas40_defconfig
 TARGET_BOOTLOADER_BOARD_NAME := atlas40
 BOARD_KERNEL_CMDLINE := androidboot.hardware=atlas40

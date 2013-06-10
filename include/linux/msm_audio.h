@@ -13,12 +13,6 @@
  *
  */
 
-/*===========================================================================
-when       who       what, where, why                        comment tag
---------   ----    -------------------------------------    ----------------------------------
-2009-11-8  chenjun  add audio loopbcak                        ZTE_Audio-LB_CJ_1
-===========================================================================*/
-
 #ifndef __LINUX_MSM_AUDIO_H
 #define __LINUX_MSM_AUDIO_H
 
@@ -253,14 +247,6 @@ struct msm_snd_endpoint {
 
 #define SND_AVC_CTL _IOW(SND_IOCTL_MAGIC, 6, unsigned *)
 #define SND_AGC_CTL _IOW(SND_IOCTL_MAGIC, 7, unsigned *)
-/* ZTE_Audio_CJ_100302, chenjun, 2010-3-2, start */
-/* ZTE_Audio-LB_CJ_1 chenjun 2009-10-28 start */
-#define SND_SET_AUDIO_LOOPBACK _IOW(SND_IOCTL_MAGIC, 8, unsigned *)
-/* ZTE_Audio-LB_CJ_1 chenjun 2009-10-28 end */
-/* ZTE_Audio_CJ_100302, chenjun, 2010-3-2, end */
-/*ZTE_AUDIO_20111019_SongYY add fm headset for N766 start*/
-#define SND_SET_FM_HEADSET _IOW(SND_IOCTL_MAGIC, 9, unsigned *) //songyy1
-/*ZTE_AUDIO_20111019_SongYY add fm headset for N766 end*/
 
 struct msm_audio_pcm_config {
 	uint32_t pcm_feedback;	/* 0 - disable > 0 - enable */
