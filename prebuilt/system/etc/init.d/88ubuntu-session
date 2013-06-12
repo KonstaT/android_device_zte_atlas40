@@ -1,0 +1,7 @@
+#!/system/bin/sh
+
+if [ ! -e /data/ubuntu/etc/ubuntu-session.d/atlas40.conf ] ; then
+    echo "GRID_UNIT_PX=11.3" > /data/ubuntu/etc/ubuntu-session.d/atlas40.conf
+    echo "QTWEBKIT_DPR=1.5" >> /data/ubuntu/etc/ubuntu-session.d/atlas40.conf
+    chmod 755 /data/ubuntu/etc/ubuntu-session.d/atlas40.conf
+fi
