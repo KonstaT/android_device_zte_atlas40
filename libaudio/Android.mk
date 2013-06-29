@@ -7,9 +7,16 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    AudioHardware.cpp \
     audio_hw_hal.cpp \
     HardwarePinSwitching.c
+
+ifeq ($(strip $(TARGET_HAS_QACT)),true)
+LOCAL_SRC_FILES += \
+    AudioHardware_cad.cpp
+else
+LOCAL_SRC_FILES += \
+    AudioHardware.cpp
+endif
 
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
   LOCAL_CFLAGS += -DWITH_A2DP
@@ -28,6 +35,9 @@ ifeq ($(strip $(BOARD_USES_SRS_TRUEMEDIA)),true)
 LOCAL_CFLAGS += -DSRS_PROCESSING
 endif
 
+LOCAL_CFLAGS += -DQCOM_VOIP_ENABLED
+LOCAL_CFLAGS += -DQCOM_TUNNEL_LPA_ENABLED
+
 LOCAL_SHARED_LIBRARIES := \
     libcutils       \
     libutils        \
@@ -35,6 +45,10 @@ LOCAL_SHARED_LIBRARIES := \
 
 ifneq ($(TARGET_SIMULATOR),true)
 LOCAL_SHARED_LIBRARIES += libdl
+endif
+
+ifeq ($(strip $(TARGET_HAS_QACT)),true)
+LOCAL_SHARED_LIBRARIES += libaudcal
 endif
 
 LOCAL_STATIC_LIBRARIES := \
