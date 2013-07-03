@@ -45,7 +45,9 @@ PRODUCT_PACKAGES += \
 
 # FM Radio
 PRODUCT_PACKAGES += \
-    FM
+    qcom.fmradio \
+    libqcomfm_jni \
+    FM2
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
