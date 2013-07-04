@@ -1,0 +1,26 @@
+From 7a9adcd7520f843749a1a5ed40a8566d44ce6817 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Wed, 27 Mar 2013 10:23:27 +0200
+Subject: [PATCH 14/17] allow pie controls without enabling expanded desktop
+
+Change-Id: I6b26592bda1958e6e7d0e9af81a9123d087cd309
+---
+ .../systemui/statusbar/policy/PieController.java   |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
+index 1c37140..7e9fcf7 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
+@@ -700,7 +700,7 @@ public class PieController implements BaseStatusBar.NavigationBarCallback, PieVi
+         int pie = Settings.System.getIntForUser(mContext.getContentResolver(),
+                 Settings.System.PIE_CONTROLS, 0, UserHandle.USER_CURRENT);
+ 
+-        return (pie == 1 && mExpandedDesktopState != 0) || pie == 2;
++        return pie == 1 || pie == 2;
+     }
+ 
+     public String getOperatorState() {
+-- 
+1.7.9.5
+

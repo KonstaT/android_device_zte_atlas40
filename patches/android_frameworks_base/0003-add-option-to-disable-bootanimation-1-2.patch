@@ -1,0 +1,26 @@
+From c9d8dc6671467112b81120b12eb0428a8658a645 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Tue, 1 Jan 2013 20:23:43 +0200
+Subject: [PATCH 04/17] add option to disable bootanimation (1/2)
+
+Change-Id: I81f7737f416cb6cddd47276ebcb29b46d109b327
+---
+ cmds/bootanimation/bootanimation_main.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmds/bootanimation/bootanimation_main.cpp b/cmds/bootanimation/bootanimation_main.cpp
+index 417e138..5e4d00e 100644
+--- a/cmds/bootanimation/bootanimation_main.cpp
++++ b/cmds/bootanimation/bootanimation_main.cpp
+@@ -43,7 +43,7 @@ int main(int argc, char** argv)
+ #endif
+ 
+     char value[PROPERTY_VALUE_MAX];
+-    property_get("debug.sf.nobootanimation", value, "0");
++    property_get("persist.sys.nobootanimation", value, "0");
+     int noBootAnimation = atoi(value);
+     ALOGI_IF(noBootAnimation,  "boot animation disabled");
+     if (!noBootAnimation) {
+-- 
+1.7.9.5
+

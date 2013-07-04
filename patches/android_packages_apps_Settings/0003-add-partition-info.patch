@@ -1,0 +1,257 @@
+From bafc902c0b2b6506b828f38137e55424d914a140 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Tue, 18 Dec 2012 15:27:40 +0200
+Subject: [PATCH 3/9] add partition info
+
+Change-Id: I5a01f913f5d0eca04cbe54175e8fa72cb6418f77
+---
+ AndroidManifest.xml                         |    9 ++
+ res/values/cm_strings.xml                   |    8 ++
+ res/xml/partition_info.xml                  |   39 ++++++++
+ res/xml/settings_headers.xml                |   10 +++
+ src/com/android/settings/PartitionInfo.java |  127 +++++++++++++++++++++++++++
+ 5 files changed, 193 insertions(+)
+ create mode 100644 res/xml/partition_info.xml
+ create mode 100644 src/com/android/settings/PartitionInfo.java
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 4b0819c..85a3735 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -856,6 +856,15 @@
+                 android:resource="@id/application_settings" />
+         </activity>
+ 
++        <activity android:name="PartitionInfo"
++                android:label="@string/partition_info_title">
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++                <category android:name="android.intent.category.DEFAULT" />
++                <category android:name="android.intent.category.VOICE_LAUNCH" />
++            </intent-filter>
++        </activity>
++
+         <activity android:name="Settings$LocationSettingsActivity"
+                 android:label="@string/location_settings_title"
+                 android:uiOptions="none"
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index 6594bef..14767c4 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -21,6 +21,14 @@
+     <string name="konsta_navbar_dialog_negative">Reboot later</string>
+     <string name="konsta_navbar_dialog_positive">Reboot now</string>
+ 
++    <!-- Partition info -->
++    <string name="partition_info_title">Partition info</string>
++    <string name="partition_info_system">/system</string>
++    <string name="partition_info_data">/data</string>
++    <string name="partition_info_cache">/cache</string>
++    <string name="partition_info_sdcard">/sdcard (FAT)</string>
++    <string name="partition_info_sdext">EXT partition</string>
++
+     <!-- Activity label of BluetoothMasPermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
+     <string name="bluetooth_mas_request">"Message Access request"</string>
+     <!-- Bluetooth MAS permission Alert Activity text [CHAR LIMIT=none] -->
+diff --git a/res/xml/partition_info.xml b/res/xml/partition_info.xml
+new file mode 100644
+index 0000000..9a79c33
+--- /dev/null
++++ b/res/xml/partition_info.xml
+@@ -0,0 +1,39 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!-- Copyright (C) 2008 The Android Open Source Project
++
++     Licensed under the Apache License, Version 2.0 (the "License");
++     you may not use this file except in compliance with the License.
++     You may obtain a copy of the License at
++  
++          http://www.apache.org/licenses/LICENSE-2.0
++  
++     Unless required by applicable law or agreed to in writing, software
++     distributed under the License is distributed on an "AS IS" BASIS,
++     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++     See the License for the specific language governing permissions and
++     limitations under the License.
++-->
++
++<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
++        android:title="@string/partition_info_title">
++    <!-- /system info -->
++    <Preference android:key="system_part_info"
++        android:title="@string/partition_info_system"
++        android:summary="@string/status_unavailable" />
++    <!-- /data info -->
++    <Preference android:key="data_part_info"
++        android:title="@string/partition_info_data"
++        android:summary="@string/status_unavailable" />
++    <!-- /cache info -->
++    <Preference android:key="cache_part_info"
++        android:title="@string/partition_info_cache"
++        android:summary="@string/status_unavailable" />
++    <!-- /sdcard info (fat) -->
++    <Preference android:key="sdcard_part_info_fat"
++        android:title="@string/partition_info_sdcard"
++        android:summary="@string/status_unavailable" />
++    <!-- /sd-ext info (ext) -->
++    <Preference android:key="sdcard_part_info_ext"
++        android:title="@string/partition_info_sdext"
++        android:summary="@string/status_unavailable" />
++</PreferenceScreen>
+diff --git a/res/xml/settings_headers.xml b/res/xml/settings_headers.xml
+index bdc394a..52aae1f 100644
+--- a/res/xml/settings_headers.xml
++++ b/res/xml/settings_headers.xml
+@@ -118,6 +118,16 @@
+         android:icon="@drawable/ic_settings_storage"
+         android:title="@string/storage_settings" />
+ 
++    <!-- Partition info -->
++    <header
++        android:icon="@drawable/ic_settings_data_usage"
++        android:title="@string/partition_info_title">
++        <intent
++            android:action="com.android.action.MAIN"
++            android:targetPackage="com.android.settings"
++            android:targetClass="com.android.settings.PartitionInfo" />
++    </header>
++
+     <!-- Battery -->
+     <header
+         android:id="@+id/battery_settings"
+diff --git a/src/com/android/settings/PartitionInfo.java b/src/com/android/settings/PartitionInfo.java
+new file mode 100644
+index 0000000..6020be2
+--- /dev/null
++++ b/src/com/android/settings/PartitionInfo.java
+@@ -0,0 +1,127 @@
++/*
++ * Copyright (C) 2008 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package com.android.settings;
++
++import android.content.ComponentName;
++import android.content.Intent;
++import android.content.pm.PackageManager;
++import android.content.pm.ResolveInfo;
++import android.os.Build;
++import android.os.Bundle;
++import android.os.StatFs;
++import android.os.SystemClock;
++import android.os.SystemProperties;
++import android.preference.Preference;
++import android.preference.PreferenceActivity;
++import android.preference.PreferenceGroup;
++import android.preference.PreferenceScreen;
++import android.provider.Settings;
++import android.text.format.Formatter;
++import android.util.Log;
++import android.view.MotionEvent;
++
++import java.io.BufferedReader;
++import java.io.File;
++import java.io.FileReader;
++import java.io.IOException;
++import java.util.List;
++import java.util.regex.Matcher;
++import java.util.regex.Pattern;
++
++public class PartitionInfo extends PreferenceActivity {
++    private static final String TAG = "PartitionInfo";
++    private static final String SYSTEM_PART_SIZE = "system_part_info";
++    private static final String DATA_PART_SIZE = "data_part_info";
++    private static final String CACHE_PART_SIZE = "cache_part_info";
++    private static final String SDCARDFAT_PART_SIZE = "sdcard_part_info_fat";
++    private static final String SDCARDEXT_PART_SIZE = "sdcard_part_info_ext";
++
++    private Preference mSystemPartSize;
++    private Preference mDataPartSize;
++    private Preference mCachePartSize;
++    private Preference mSDCardPartFATSize;
++    private Preference mSDCardPartEXTSize;
++    
++    private boolean extfsIsMounted = false;
++    
++    @Override
++    protected void onCreate(Bundle icicle) {
++        super.onCreate(icicle);
++
++        addPreferencesFromResource(R.xml.partition_info);
++
++        PreferenceScreen prefSet = getPreferenceScreen();
++
++        mSystemPartSize        = (Preference) prefSet.findPreference(SYSTEM_PART_SIZE);
++        mDataPartSize          = (Preference) prefSet.findPreference(DATA_PART_SIZE);
++        mCachePartSize         = (Preference) prefSet.findPreference(CACHE_PART_SIZE);
++        mSDCardPartFATSize     = (Preference) prefSet.findPreference(SDCARDFAT_PART_SIZE);
++        mSDCardPartEXTSize     = (Preference) prefSet.findPreference(SDCARDEXT_PART_SIZE);
++      
++        if (fileExists("/dev/block/mmcblk0p2") == true) {
++            Log.i(TAG, "sd-ext: partition mounted");
++            extfsIsMounted = true;
++        } else {
++            Log.i(TAG, "sd-ext: partition not mounted");
++        }
++    	
++        try {
++            mSystemPartSize.setSummary(ObtainFSPartSize    ("/system"));
++            mDataPartSize.setSummary(ObtainFSPartSize      ("/data"));
++            mCachePartSize.setSummary(ObtainFSPartSize     ("/cache"));
++            mSDCardPartFATSize.setSummary(ObtainFSPartSize ("/sdcard"));
++
++            if (extfsIsMounted == true) {
++                if (fileExists("/sd-ext") == true) {
++                    Log.i(TAG, "sd-ext: S2E detected");
++                    mSDCardPartEXTSize.setTitle("/sd-ext (EXT)");
++                    mSDCardPartEXTSize.setSummary(ObtainFSPartSize ("/sd-ext"));
++                } else if (fileExists("/system/sd") == true) {
++                    Log.i(TAG, "sd-ext: Darktremor detected");
++                    mSDCardPartEXTSize.setTitle("/system/sd (EXT)");
++                    mSDCardPartEXTSize.setSummary(ObtainFSPartSize ("/system/sd"));
++                } else if (fileExists("/data/sdext2") == true) {
++                    Log.i(TAG, "sd-ext: Link2SD detected");
++                    mSDCardPartEXTSize.setTitle("/data/sdext2 (EXT)");
++                    mSDCardPartEXTSize.setSummary(ObtainFSPartSize ("/data/sdext2"));
++                }
++            } else {
++                mSDCardPartEXTSize.setEnabled(false);
++            }
++
++        } catch (IllegalArgumentException e) {
++            e.printStackTrace();
++        }
++    }
++
++    private String ObtainFSPartSize(String PartitionPath) {
++        String retstr;
++        File extraPath = new File(PartitionPath);
++        StatFs extraStat = new StatFs(extraPath.getPath());
++        long eBlockSize = extraStat.getBlockSize();
++        long eTotalBlocks = extraStat.getBlockCount();
++        retstr = Formatter.formatFileSize(this, (eTotalBlocks * eBlockSize) - (extraStat.getAvailableBlocks() * eBlockSize));
++        retstr += " / ";
++        retstr += Formatter.formatFileSize(this, eTotalBlocks * eBlockSize);
++        return retstr;
++    }
++
++    public boolean fileExists(String filename) {
++        File f = new File(filename);
++        return f.exists();
++    }
++}
+-- 
+1.7.9.5
+

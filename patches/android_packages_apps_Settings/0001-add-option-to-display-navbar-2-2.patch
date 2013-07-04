@@ -1,0 +1,137 @@
+From de07d951b28d1fa96445e07486804d30cff2a030 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Tue, 18 Dec 2012 14:58:36 +0200
+Subject: [PATCH 1/9] add option to display navbar (2/2)
+
+Change-Id: Idaf20f1a13db8045b5090fa9cf499ef33c5f790d
+---
+ AndroidManifest.xml                                |    1 +
+ res/values/cm_strings.xml                          |    7 ++++
+ res/xml/system_settings.xml                        |    5 +++
+ .../settings/cyanogenmod/SystemSettings.java       |   34 ++++++++++++++++++++
+ 4 files changed, 47 insertions(+)
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index eeee2a5..4b0819c 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -64,6 +64,7 @@
+     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+     <uses-permission android:name="android.permission.SET_TIME" />
+     <uses-permission android:name="android.permission.CHANGE_PRIVACY_GUARD_STATE" />
++    <uses-permission android:name="android.permission.REBOOT"/>
+ 
+     <permission
+         android:name="android.permission.REQUEST_SUPERUSER"
+diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
+index 7a5ffb9..8a90566 100644
+--- a/res/values/cm_strings.xml
++++ b/res/values/cm_strings.xml
+@@ -14,6 +14,13 @@
+      limitations under the License.
+ -->
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
++    <!-- Navbar -->
++    <string name="konsta_navbar">Navigation bar</string>
++    <string name="konsta_navbar_dialog_title">Reboot required</string>
++    <string name="konsta_navbar_dialog_msg">Please reboot to enable/disable the navigation bar</string>
++    <string name="konsta_navbar_dialog_negative">Reboot later</string>
++    <string name="konsta_navbar_dialog_positive">Reboot now</string>
++
+     <!-- Activity label of BluetoothMasPermissionActivity, also used as Strings in the permission dialog [CHAR LIMIT=none] -->
+     <string name="bluetooth_mas_request">"Message Access request"</string>
+     <!-- Bluetooth MAS permission Alert Activity text [CHAR LIMIT=none] -->
+diff --git a/res/xml/system_settings.xml b/res/xml/system_settings.xml
+index c5ffb5d..9c812b0 100644
+--- a/res/xml/system_settings.xml
++++ b/res/xml/system_settings.xml
+@@ -97,4 +97,9 @@
+ 
+     </PreferenceCategory>
+ 
++    <CheckBoxPreference
++        android:key="konsta_navbar"
++        android:title="@string/konsta_navbar"
++        android:defaultValue="false" />
++
+ </PreferenceScreen>
+diff --git a/src/com/android/settings/cyanogenmod/SystemSettings.java b/src/com/android/settings/cyanogenmod/SystemSettings.java
+index 7be4e03..cd72fb8 100644
+--- a/src/com/android/settings/cyanogenmod/SystemSettings.java
++++ b/src/com/android/settings/cyanogenmod/SystemSettings.java
+@@ -16,10 +16,13 @@
+ 
+ package com.android.settings.cyanogenmod;
+ 
++import android.app.AlertDialog;
+ import android.content.ContentResolver;
+ import android.content.Context;
++import android.content.DialogInterface;
+ import android.content.res.Resources;
+ import android.os.Bundle;
++import android.os.PowerManager;
+ import android.os.RemoteException;
+ import android.os.ServiceManager;
+ import android.os.UserHandle;
+@@ -54,6 +57,7 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
+     private static final String KEY_PIE_CONTROL = "pie_control";
+     private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
+     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
++    private static final String KONSTA_NAVBAR = "konsta_navbar";
+ 
+     private PreferenceScreen mNotificationPulse;
+     private PreferenceScreen mBatteryPulse;
+@@ -62,6 +66,7 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
+     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+ 
+     private boolean mIsPrimary;
++    private CheckBoxPreference mKonstaNavbar;
+ 
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
+@@ -125,6 +130,10 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
+             }
+         }
+ 
++        mKonstaNavbar = (CheckBoxPreference) findPreference(KONSTA_NAVBAR);
++        mKonstaNavbar.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
++                Settings.System.KONSTA_NAVBAR, 0) == 1);
++
+         // Pie controls
+         mPieControl = (PreferenceScreen) findPreference(KEY_PIE_CONTROL);
+         if (mPieControl != null && removeNavbar) {
+@@ -215,6 +224,31 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
+         }
+      }
+ 
++    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
++
++        if (preference == mKonstaNavbar) {
++            Settings.System.putInt(getContentResolver(), Settings.System.KONSTA_NAVBAR,
++                    mKonstaNavbar.isChecked() ? 1 : 0);
++
++            new AlertDialog.Builder(getActivity())
++                    .setTitle(getResources().getString(R.string.konsta_navbar_dialog_title))
++                    .setMessage(getResources().getString(R.string.konsta_navbar_dialog_msg))
++                    .setNegativeButton(getResources().getString(R.string.konsta_navbar_dialog_negative), null)
++                    .setCancelable(false)
++                    .setPositiveButton(getResources().getString(R.string.konsta_navbar_dialog_positive), new DialogInterface.OnClickListener() {
++                        public void onClick(DialogInterface dialog, int which) {
++                            PowerManager powerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
++                            powerManager.reboot(null);
++                        }
++                    })
++                    .create()
++                    .show();
++        } else {
++            return super.onPreferenceTreeClick(preferenceScreen, preference);
++        }
++        return true;
++    }
++
+     private void updatePieControlDescription() {
+         if (Settings.System.getInt(getActivity().getContentResolver(),
+                 Settings.System.PIE_CONTROLS, 0) == 1) {
+-- 
+1.7.9.5
+
