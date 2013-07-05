@@ -14,9 +14,14 @@ Add the following to your cm10/.repo/local_manifests/local_manifest.xml and repo
 
     <?xml version="1.0" encoding="UTF-8"?>
     <manifest>
-        <project name="KonstaT/android_device_zte_atlas40" path="device/zte/atlas40" revision="jellybean" />
-        <project name="KonstaT/proprietary_vendor_zte" path="vendor/zte" revision="jellybean" />
-        <project name="KonstaT/zte-kernel-msm7x27a" path="kernel/zte/zte-kernel-msm7x27a" revision="jellybean" />
+        <!-- ZTE Blade III -->
+        <project path="device/zte/atlas40" name="KonstaT/android_device_zte_atlas40" revision="jellybean" />
+        <project path="kernel/zte/msm7x27a" name="KonstaT/android_kernel_zte_msm7x27a" revision="rb1" />
+        <project path="vendor/zte" name="KonstaT/proprietary_vendor_zte" revision="jellybean" />
+
+        <!-- FM Radio -->
+        <project path="hardware/qcom/fm" name="legaCyMod/android_hardware_qcom_fm" revision="jellybean" />
+        <project path="packages/apps/FM2" name="legaCyMod/android_packages_apps_FM2" revision="jellybean" />
     </manifest>
 
 Compile:
