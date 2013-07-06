@@ -56,6 +56,9 @@
     <!-- Boolean indicating whether Softap requires reloading AP firmware -->
     <bool name="config_wifiApFirmwareReload">false</bool>
 
+    <!-- Boolean indicating if current platform supports quick switch-on/off of Bluetooth Module -->
+    <bool name="config_bluetooth_adapter_quick_switch">false</bool>
+
     <!-- If this is true, the screen will fade off. -->
     <bool name="config_animateScreenLights">false</bool>
 
