@@ -51,12 +51,6 @@ failed ()
   exit $2
 }
 
-program_bdaddr ()
-{
-  /system/bin/btnvtool -O
-  logi "Bluetooth Address programmed successfully"
-}
-
 config_bt ()
 {
   setprop ro.qualcomm.bluetooth.opp true
@@ -119,22 +113,12 @@ shift $(($OPTIND-1))
 
 #Selectively Disable sleep
 BOARD=`getprop ro.board.platform`
-STACK=`getprop ro.qc.bluetooth.stack`
 
 POWER_CLASS=`getprop qcom.bt.dev_power_class`
 
 #find the transport type
 TRANSPORT=`getprop ro.qualcomm.bt.hci_transport`
 logi "Transport : $TRANSPORT"
-case $STACK in
-    "bluez")
-       logi "** Bluez stack **"
-    ;;
-    *)
-       logi "** Bluedroid stack **"
-       setprop bluetooth.status off
-    ;;
-esac
 
 case $POWER_CLASS in
   1) PWR_CLASS="-p 0" ;
@@ -152,18 +136,7 @@ eval $(/system/bin/hci_qcomm_init -e $PWR_CLASS && echo "exit_code_hci_qcomm_ini
 
 case $exit_code_hci_qcomm_init in
   0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;
-  *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;
-     case $STACK in
-         "bluez")
-            logi "** Bluez stack **"
-         ;;
-         *)
-            logi "** Bluedroid stack **"
-            setprop bluetooth.status off
-        ;;
-     esac
-
-     exit $exit_code_hci_qcomm_init;;
+  *) failed "Bluetooth QSoC firmware download failed" $exit_code_hci_qcomm_init;;
 esac
 
 # init does SIGTERM on ctl.stop for service
@@ -171,29 +144,11 @@ trap "kill_hciattach" TERM INT
 
 case $TRANSPORT in
     "smd")
-       case $STACK in
-           "bluez")
-              logi "** Bluez stack **"
-              echo 1 > /sys/module/hci_smd/parameters/hcismd_set
-           ;;
-           *)
-              logi "** Bluedroid stack **"
-              setprop bluetooth.status on
-           ;;
-       esac
+        echo 1 > /sys/module/hci_smd/parameters/hcismd_set
      ;;
      *)
         logi "start hciattach"
         start_hciattach
-        case $STACK in
-            "bluez")
-               logi "Bluetooth is turning On with Bluez stack "
-            ;;
-            *)
-               logi "** Bluedroid stack **"
-               setprop bluetooth.status on
-            ;;
-        esac
 
         wait $hciattach_pid
         logi "Bluetooth stopped"

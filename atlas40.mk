@@ -33,6 +33,7 @@ PRODUCT_PACKAGES += \
 
 # Bluez
 PRODUCT_PACKAGES += \
+    Bluetooth2 \
     bluetoothd \
     libbluetoothd \
     hcitool \
