@@ -1,7 +1,7 @@
-From b7dd8bdc0033da93f3521db3fc53c41cbba0692f Mon Sep 17 00:00:00 2001
+From 86842f3acdf1b0560b1a3a5efdcb54c2abe01618 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:00:55 +0200
-Subject: [PATCH 2/9] add battery bar (2/2)
+Subject: [PATCH 02/10] add battery bar (2/2)
 
 Change-Id: I912449bf44386a19f1f174eb732c7d077805b4de
 ---
@@ -30,7 +30,7 @@ index bc0ec04..f36c827 100644
      </string-array>
  
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 8a90566..6594bef 100644
+index 8ae310f..439ade7 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -674,6 +674,7 @@

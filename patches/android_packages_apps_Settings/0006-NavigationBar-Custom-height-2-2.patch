@@ -1,7 +1,7 @@
-From 0ea90d10806048b0241baedb2dc84a79b7437ec9 Mon Sep 17 00:00:00 2001
+From 593ac8c4f15c8a9d1a0dbfe7a3ffd384cc96488c Mon Sep 17 00:00:00 2001
 From: Rick C <rickfitsnugly@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
-Subject: [PATCH 7/9] NavigationBar: Custom height (2/2)
+Subject: [PATCH 07/10] NavigationBar: Custom height (2/2)
 
 Ported from http://review.cyanogenmod.org/#/c/23610/
 
@@ -46,7 +46,7 @@ index f36c827..d84f35c 100644
      <string-array name="wifi_countrycode_entries">
          <item>United States</item>
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 48e0710..85a6670 100644
+index a349a33..0d867cb 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -21,6 +21,16 @@
