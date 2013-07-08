@@ -5,9 +5,6 @@
 # Bluetooth
 bt.chip.type=WCN_2243
 
-# Camcorder
-debug.camcorder.disablemeta=1
-
 # Dalvik
 dalvik.vm.checkjni=0
 dalvik.vm.dexopt-data-only=1

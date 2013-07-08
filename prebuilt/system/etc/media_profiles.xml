@@ -93,7 +93,7 @@
     <CamcorderProfiles cameraId="0">
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
-        <Video codec="h263"
+        <Video codec="h264"
             bitRate="2000000"
             width="640"
             height="480"
