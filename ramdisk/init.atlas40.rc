@@ -229,7 +229,7 @@ service map /system/bin/sdptool add --channel=16 MAS
 service qmuxd /system/bin/qmuxd
     class core
     user radio
-    group system radio inet
+    group radio audio bluetooth gps qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class late_start
