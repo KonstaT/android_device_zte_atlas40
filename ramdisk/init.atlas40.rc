@@ -166,7 +166,7 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
 service qmuxd /system/bin/qmuxd
     class core
     user radio
-    group system radio inet
+    group radio audio bluetooth gps qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class late_start
