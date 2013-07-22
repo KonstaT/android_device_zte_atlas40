@@ -1,4 +1,4 @@
-From df7cfe99c216239f9c66c0f91c2db19bf731fdf7 Mon Sep 17 00:00:00 2001
+From a5c4d4b4a49bff1cc311434c9fc8564bef8a10db Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 3 Jul 2013 11:30:39 +0300
 Subject: [PATCH 1/2] qcom-fm: add support for mr1 based fm solution

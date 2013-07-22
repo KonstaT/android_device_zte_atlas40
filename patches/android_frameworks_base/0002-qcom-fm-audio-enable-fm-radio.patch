@@ -1,4 +1,4 @@
-From 489ca2234061c76d0240364513b56d4165769077 Mon Sep 17 00:00:00 2001
+From f5256baabcd9cd01ecb7abebf3b2a9816d32f37a Mon Sep 17 00:00:00 2001
 From: Shashi Kumar <sulege@codeaurora.org>
 Date: Fri, 20 Jul 2012 18:01:54 +0530
 Subject: [PATCH 2/2] qcom-fm: audio: enable fm radio
@@ -122,16 +122,16 @@ Change-Id: Ida8b880f73ce81c644b92e69d62fe6ad490a4f80
 CRs-Fixed: 408010
 ---
  core/java/android/content/Intent.java              |   25 +++++++++
- core/java/android/provider/Settings.java           |   18 +++++-
- core/java/android/view/VolumePanel.java            |   12 ++++
- media/java/android/media/AudioManager.java         |   19 ++++++-
- media/java/android/media/AudioService.java         |   59 ++++++++++++++++++--
+ core/java/android/provider/Settings.java           |   18 ++++++-
+ core/java/android/view/VolumePanel.java            |   12 +++++
+ media/java/android/media/AudioManager.java         |   19 +++++--
+ media/java/android/media/AudioService.java         |   56 ++++++++++++++++++--
  media/java/android/media/AudioSystem.java          |   35 ++++++++----
- media/java/android/media/MediaRecorder.java        |    6 +-
- .../android/providers/settings/DatabaseHelper.java |    3 +
- .../internal/policy/impl/KeyguardViewBase.java     |    9 ++-
- .../internal/policy/impl/PhoneWindowManager.java   |   18 +++++-
- 10 files changed, 182 insertions(+), 22 deletions(-)
+ media/java/android/media/MediaRecorder.java        |    6 ++-
+ .../android/providers/settings/DatabaseHelper.java |    3 ++
+ .../internal/policy/impl/KeyguardViewBase.java     |    9 +++-
+ .../internal/policy/impl/PhoneWindowManager.java   |   18 ++++++-
+ 10 files changed, 180 insertions(+), 21 deletions(-)
 
 diff --git a/core/java/android/content/Intent.java b/core/java/android/content/Intent.java
 index e68ee0b..c0f67c3 100644
@@ -319,7 +319,7 @@ index cadef4e..36b8c95 100644
          IAudioService service = getService();
          try {
 diff --git a/media/java/android/media/AudioService.java b/media/java/android/media/AudioService.java
-index 5dcec1a..133aca4 100644
+index 5dcec1a..40d0726 100644
 --- a/media/java/android/media/AudioService.java
 +++ b/media/java/android/media/AudioService.java
 @@ -227,7 +227,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
@@ -391,12 +391,10 @@ index 5dcec1a..133aca4 100644
              } else {
                  if (DEBUG_VOL) Log.v(TAG, "getActiveStreamType: Returning suggested type "
                          + suggestedStreamType);
-@@ -2403,10 +2419,15 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
-             // retain the device on the A2DP output as the other must not correspond to an active
+@@ -2404,6 +2420,10 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
              // selection if not the speaker.
              if ((device & AudioSystem.DEVICE_OUT_SPEAKER) != 0) {
--                device ^= AudioSystem.DEVICE_OUT_SPEAKER;
-+                device = AudioSystem.DEVICE_OUT_SPEAKER;
+                 device ^= AudioSystem.DEVICE_OUT_SPEAKER;
 +            } else if ((device & AudioSystem.DEVICE_OUT_WIRED_HEADSET) != 0) {
 +                device = AudioSystem.DEVICE_OUT_WIRED_HEADSET;
 +            } else if ((device & AudioSystem.DEVICE_OUT_WIRED_HEADPHONE) != 0) {
@@ -404,11 +402,7 @@ index 5dcec1a..133aca4 100644
              } else {
                  device &= AudioSystem.DEVICE_OUT_ALL_A2DP;
              }
-+
-         }
-         return device;
-     }
-@@ -2733,7 +2754,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
+@@ -2733,7 +2753,8 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                                  Iterator i = set.iterator();
                                  while (i.hasNext()) {
                                      Map.Entry entry = (Map.Entry)i.next();
@@ -418,7 +412,7 @@ index 5dcec1a..133aca4 100644
                                      setIndex(0, device, false /* lastAudible */);
                                  }
                                  sendMsg(mAudioHandler,
-@@ -3676,6 +3698,35 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
+@@ -3676,6 +3697,35 @@ public class AudioService extends IAudioService.Stub implements OnFinished {
                          removeMediaButtonReceiverForPackage(packageName);
                      }
                  }
