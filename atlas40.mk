@@ -10,11 +10,25 @@ DEVICE_PACKAGE_OVERLAYS += device/zte/atlas40/overlay
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-# Video
+# Audio
 PRODUCT_PACKAGES += \
-    libstagefrighthw \
-    libmm-omxcore \
-    libOmxCore
+    audio.a2dp.default \
+    audio.primary.msm7x27a \
+    audio_policy.msm7x27a
+
+# Atlas40
+PRODUCT_PACKAGES += \
+    Atlas40Parts
+
+# FM Radio
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
+
+# GPS
+PRODUCT_PACKAGES += \
+    gps.atlas40
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -22,66 +36,35 @@ PRODUCT_PACKAGES += \
     gralloc.msm7x27a \
     hwcomposer.msm7x27a
 
-# Audio
+# Lights
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio_policy.msm7x27a \
-    audio.primary.msm7x27a \
-    audio_policy.conf \
-    libaudioutils
-
-# GPS
-PRODUCT_PACKAGES += \
-    gps.atlas40
-
-# Atlas40 specific
-PRODUCT_PACKAGES += \
-    lights.atlas40 \
-    Atlas40Parts
-
-# Power HAL
-PRODUCT_PACKAGES += \
-    power.msm7x27a
-
-# FM Radio
-PRODUCT_PACKAGES += \
-    qcom.fmradio \
-    libqcomfm_jni \
-    FM2
+    lights.atlas40
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni
 
-# Other Packages
+# Power HAL
 PRODUCT_PACKAGES += \
-    dexpreopt \
-    make_ext4fs \
-    setup_fs
+    power.msm7x27a
 
-# Enable repeatable keys in CWM
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.cwm.enable_key_repeat=true
+# Video
+PRODUCT_PACKAGES += \
+    libmm-omxcore \
+    libOmxCore \
+    libstagefrighthw
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    device/zte/atlas40/ramdisk/fstab.atlas40:root/fstab.atlas40 \
-    device/zte/atlas40/ramdisk/init.atlas40.rc:root/init.atlas40.rc \
-    device/zte/atlas40/ramdisk/init.atlas40.usb.rc:root/init.atlas40.usb.rc \
-    device/zte/atlas40/ramdisk/ueventd.atlas40.rc:root/ueventd.atlas40.rc
+    $(call find-copy-subdir-files,*,device/zte/atlas40/ramdisk,root)
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/atlas40/prebuilt/system,system)
 
-# Bletooth
+# Hardware features available on this device
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
-
-# Install the features available on this device.
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
@@ -94,7 +77,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+
+# Enable repeatable keys in CWM
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.cwm.enable_key_repeat=true
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full.mk)
