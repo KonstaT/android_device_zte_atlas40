@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+-include vendor/zte/atlas40/BoardConfigVendor.mk
 
 # Platform
 TARGET_NO_BOOTLOADER := true
@@ -82,7 +83,6 @@ TARGET_PROVIDES_LIBAUDIO := true
 BOARD_HAVE_BLUETOOTH_BLUEZ := true
 
 # Camera
-USE_CAMERA_STUB := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 COMMON_GLOBAL_CFLAGS += -DICS_CAMERA_BLOB -DZTE_CAMERA_HARDWARE
 
