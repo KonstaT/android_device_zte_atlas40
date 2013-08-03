@@ -43,6 +43,15 @@ public:
 
         virtual ~AudioPolicyManager() {}
 
+        virtual audio_io_handle_t getOutput(AudioSystem::stream_type stream,
+                                            uint32_t samplingRate = 0,
+                                            uint32_t format = AudioSystem::FORMAT_DEFAULT,
+                                            uint32_t channels = 0,
+                                            AudioSystem::output_flags flags =
+                                                    AudioSystem::OUTPUT_FLAG_INDIRECT);
+
+        virtual void releaseOutput(audio_io_handle_t output);
+
         virtual status_t setDeviceConnectionState(audio_devices_t device,
                                                           AudioSystem::device_connection_state state,
                                                           const char *device_address);
@@ -66,6 +75,16 @@ protected:
         // true is current platform supports suplication of notifications and ringtones over A2DP output
         //virtual bool a2dpUsedForSonification() const { return true; }
 #endif
+
+        // when a device is connected, checks if an open output can be routed
+        // to this device. If none is open, tries to open one of the available outputs.
+        // Returns an output suitable to this device or 0.
+        // when a device is disconnected, checks if an output is not used any more and
+        // returns its handle if any.
+        // transfers the audio tracks and effects from one output thread to another accordingly.
+        status_t checkOutputsForDevice(audio_devices_t device,
+                                       AudioSystem::device_connection_state state,
+                                       SortedVector<audio_io_handle_t>& outputs);
 
         virtual AudioPolicyManagerBase::IOProfile* getProfileForDirectOutput(
                                                      audio_devices_t device,
