@@ -18,6 +18,7 @@ ro.opengles.version=131072
 ro.sf.lcd_density=240
 persist.sys.use_dithering=2
 debug.gr.numframebuffers=3
+ro.bq.gpu_to_cpu_unsupported=1
 
 # FM Radio
 ro.fm.analogpath.supported=true
