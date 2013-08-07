@@ -1,7 +1,7 @@
-From 3179b66b28a545e7fe4b15d9e179063676432d8f Mon Sep 17 00:00:00 2001
+From 93ef608437c0b2b0befe4c0dd579725b8a2c1877 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 1 Jan 2013 19:11:19 +0200
-Subject: [PATCH 05/10] add option to disable bootanimation (2/2)
+Subject: [PATCH 5/8] add option to disable bootanimation (2/2)
 
 Change-Id: Ia1c29e89318ced977c5b1881bfd5b62253128f6b
 ---
@@ -11,12 +11,12 @@ Change-Id: Ia1c29e89318ced977c5b1881bfd5b62253128f6b
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 0a2d252..c9b172b 100644
+index 8518112..ce36dd5 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -34,6 +34,10 @@
      <string name="konsta_web_summary">Visit MoDaCo thread</string>
-     <string name="konsta_web_url">http://www.modaco.com/topic/359832-devrom-cyanogenmod-10.1-android-421/</string>
+     <string name="konsta_web_url">http://www.modaco.com/topic/364042-devrom58-cyanogenmod-102-android-43/</string>
  
 +    <!-- Performance : Disable bootanimation -->
 +    <string name="pref_disable_bootanimation_title">Disable boot animation</string>

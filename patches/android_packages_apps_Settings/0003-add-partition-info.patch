@@ -1,7 +1,7 @@
-From c97e399c7f9b324632db362c2a01b24b703db606 Mon Sep 17 00:00:00 2001
+From f7517c0f693178195c918a15dcb2c272e662a276 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:27:40 +0200
-Subject: [PATCH 03/10] add partition info
+Subject: [PATCH 3/8] add partition info
 
 Change-Id: I5a01f913f5d0eca04cbe54175e8fa72cb6418f77
 ---
@@ -15,13 +15,13 @@ Change-Id: I5a01f913f5d0eca04cbe54175e8fa72cb6418f77
  create mode 100644 src/com/android/settings/PartitionInfo.java
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index 4b0819c..85a3735 100644
+index 2572db3..7b31bab 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -856,6 +856,15 @@
-                 android:resource="@id/application_settings" />
+@@ -905,6 +905,15 @@
+                 android:resource="@id/application_settings" /> -->
          </activity>
- 
+         
 +        <activity android:name="PartitionInfo"
 +                android:label="@string/partition_info_title">
 +            <intent-filter>
@@ -33,9 +33,9 @@ index 4b0819c..85a3735 100644
 +
          <activity android:name="Settings$LocationSettingsActivity"
                  android:label="@string/location_settings_title"
-                 android:uiOptions="none"
+                 android:configChanges="orientation|keyboardHidden|screenSize"
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 439ade7..00ede92 100644
+index e1c821e..1185a3c 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -21,6 +21,14 @@
@@ -55,7 +55,7 @@ index 439ade7..00ede92 100644
      <!-- Bluetooth MAS permission Alert Activity text [CHAR LIMIT=none] -->
 diff --git a/res/xml/partition_info.xml b/res/xml/partition_info.xml
 new file mode 100644
-index 0000000..9a79c33
+index 0000000..c761529
 --- /dev/null
 +++ b/res/xml/partition_info.xml
 @@ -0,0 +1,39 @@
@@ -65,9 +65,9 @@ index 0000000..9a79c33
 +     Licensed under the Apache License, Version 2.0 (the "License");
 +     you may not use this file except in compliance with the License.
 +     You may obtain a copy of the License at
-+  
++
 +          http://www.apache.org/licenses/LICENSE-2.0
-+  
++
 +     Unless required by applicable law or agreed to in writing, software
 +     distributed under the License is distributed on an "AS IS" BASIS,
 +     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -121,7 +121,7 @@ index bdc394a..52aae1f 100644
          android:id="@+id/battery_settings"
 diff --git a/src/com/android/settings/PartitionInfo.java b/src/com/android/settings/PartitionInfo.java
 new file mode 100644
-index 0000000..6020be2
+index 0000000..8d7167a
 --- /dev/null
 +++ b/src/com/android/settings/PartitionInfo.java
 @@ -0,0 +1,127 @@
@@ -182,9 +182,9 @@ index 0000000..6020be2
 +    private Preference mCachePartSize;
 +    private Preference mSDCardPartFATSize;
 +    private Preference mSDCardPartEXTSize;
-+    
++
 +    private boolean extfsIsMounted = false;
-+    
++
 +    @Override
 +    protected void onCreate(Bundle icicle) {
 +        super.onCreate(icicle);
@@ -198,14 +198,14 @@ index 0000000..6020be2
 +        mCachePartSize         = (Preference) prefSet.findPreference(CACHE_PART_SIZE);
 +        mSDCardPartFATSize     = (Preference) prefSet.findPreference(SDCARDFAT_PART_SIZE);
 +        mSDCardPartEXTSize     = (Preference) prefSet.findPreference(SDCARDEXT_PART_SIZE);
-+      
++
 +        if (fileExists("/dev/block/mmcblk0p2") == true) {
 +            Log.i(TAG, "sd-ext: partition mounted");
 +            extfsIsMounted = true;
 +        } else {
 +            Log.i(TAG, "sd-ext: partition not mounted");
 +        }
-+    	
++
 +        try {
 +            mSystemPartSize.setSummary(ObtainFSPartSize    ("/system"));
 +            mDataPartSize.setSummary(ObtainFSPartSize      ("/data"));

@@ -1,7 +1,7 @@
-From 9eca35a36470621fbc0eca7c415c2410ad3dd3df Mon Sep 17 00:00:00 2001
+From 41c79200f6a63932d1835af29c3221d05db34087 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:58:36 +0200
-Subject: [PATCH 01/10] add option to display navbar (2/2)
+Subject: [PATCH 1/8] add option to display navbar (2/2)
 
 Change-Id: Idaf20f1a13db8045b5090fa9cf499ef33c5f790d
 ---
@@ -12,19 +12,19 @@ Change-Id: Idaf20f1a13db8045b5090fa9cf499ef33c5f790d
  4 files changed, 47 insertions(+)
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index eeee2a5..4b0819c 100644
+index fb8e0b6..2572db3 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -64,6 +64,7 @@
-     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+@@ -66,6 +66,7 @@
      <uses-permission android:name="android.permission.SET_TIME" />
+     <uses-permission android:name="android.permission.ACCESS_NOTIFICATIONS" />
      <uses-permission android:name="android.permission.CHANGE_PRIVACY_GUARD_STATE" />
 +    <uses-permission android:name="android.permission.REBOOT"/>
  
      <permission
          android:name="android.permission.REQUEST_SUPERUSER"
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 182849a..8ae310f 100644
+index 6a1f69c..c85a6ef 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -14,6 +14,13 @@
@@ -42,7 +42,7 @@ index 182849a..8ae310f 100644
      <string name="bluetooth_mas_request">"Message Access request"</string>
      <!-- Bluetooth MAS permission Alert Activity text [CHAR LIMIT=none] -->
 diff --git a/res/xml/system_settings.xml b/res/xml/system_settings.xml
-index c5ffb5d..9c812b0 100644
+index 995cff2..206dad5 100644
 --- a/res/xml/system_settings.xml
 +++ b/res/xml/system_settings.xml
 @@ -97,4 +97,9 @@

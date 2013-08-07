@@ -1,9 +1,7 @@
-From 493e293f51dcdb0ce74eb76f5fc80c231cee12eb Mon Sep 17 00:00:00 2001
-From: Nicholas Semendyaev <agent00791@gmail.com>
+From 358f7208b0b660652c42a90462fffd13760d4772 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Sep 2012 20:08:36 -0400
-Subject: [PATCH 05/18] NavigationBar: Custom height (1/2)
-
-Ported from http://review.cyanogenmod.org/#/c/23609/
+Subject: [PATCH 4/8] NavigationBar: Custom height (1/2)
 
 Change-Id: I61aef192ac658f54f86b87d18cce9d7b073004e2
 ---
@@ -12,10 +10,10 @@ Change-Id: I61aef192ac658f54f86b87d18cce9d7b073004e2
  2 files changed, 30 insertions(+)
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index d4527fe..78543dd 100644
+index 8087aa0..66fb89b 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -2674,6 +2674,12 @@ public final class Settings {
+@@ -2778,6 +2778,12 @@ public final class Settings {
          public static final String NAV_BUTTONS = "nav_buttons";
  
          /**
@@ -29,10 +27,10 @@ index d4527fe..78543dd 100644
          * @hide
          */
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index 38642a9..04ed585 100644
+index e6701f3..0f59998 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-@@ -688,6 +688,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -670,6 +670,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
              resolver.registerContentObserver(Settings.System.getUriFor(
                      Settings.System.HARDWARE_KEY_REBINDING), false, this,
                      UserHandle.USER_ALL);
@@ -42,7 +40,7 @@ index 38642a9..04ed585 100644
  
              updateSettings();
          }
-@@ -1491,6 +1494,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -1526,6 +1529,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                  mHasSoftInput = hasSoftInput;
                  updateRotation = true;
              }

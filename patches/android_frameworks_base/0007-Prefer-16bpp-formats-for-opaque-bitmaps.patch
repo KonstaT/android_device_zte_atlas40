@@ -1,7 +1,7 @@
-From 026b93b99026e82a411eafce455358f47f40792a Mon Sep 17 00:00:00 2001
+From 13d4a75a3d357cab6086aef407f110903d72f522 Mon Sep 17 00:00:00 2001
 From: Grigori Goronzy <greg@blackbox>
 Date: Mon, 28 Jan 2013 06:44:58 +0100
-Subject: [PATCH 09/18] Prefer 16bpp formats for opaque bitmaps
+Subject: [PATCH 7/8] Prefer 16bpp formats for opaque bitmaps
 
 Configure BitmapFactory to prefer RGB565, which will make it
 use that format for all opaque assets loaded by it with standard
@@ -19,10 +19,10 @@ Change-Id: Id1b7e0529461d23213e31c25b74d4da5d08f0855
  3 files changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/core/java/android/view/ViewRootImpl.java b/core/java/android/view/ViewRootImpl.java
-index b6016e9..dd53bab 100644
+index 6b2ed91..6903d62 100644
 --- a/core/java/android/view/ViewRootImpl.java
 +++ b/core/java/android/view/ViewRootImpl.java
-@@ -1178,7 +1178,7 @@ public final class ViewRootImpl implements ViewParent,
+@@ -1193,7 +1193,7 @@ public final class ViewRootImpl implements ViewParent,
              // We used to use the following condition to choose 32 bits drawing caches:
              // PixelFormat.hasAlpha(lp.format) || lp.format == PixelFormat.RGBX_8888
              // However, windows are now always 32 bits by default, so choose 32 bits
@@ -32,10 +32,10 @@ index b6016e9..dd53bab 100644
              attachInfo.mWindowVisibility = viewVisibility;
              attachInfo.mRecomputeGlobalAttributes = false;
 diff --git a/graphics/java/android/graphics/Bitmap.java b/graphics/java/android/graphics/Bitmap.java
-index 688fd7a..bb34bec 100644
+index 89abdef..06bc3eb 100644
 --- a/graphics/java/android/graphics/Bitmap.java
 +++ b/graphics/java/android/graphics/Bitmap.java
-@@ -603,6 +603,7 @@ public final class Bitmap implements Parcelable {
+@@ -611,6 +611,7 @@ public final class Bitmap implements Parcelable {
              canvas.concat(m);
  
              paint = new Paint();
@@ -44,7 +44,7 @@ index 688fd7a..bb34bec 100644
              if (transformed) {
                  paint.setAntiAlias(true);
 diff --git a/graphics/java/android/graphics/BitmapFactory.java b/graphics/java/android/graphics/BitmapFactory.java
-index 381e65b..b09406b 100644
+index f155cd2..9c5e932 100644
 --- a/graphics/java/android/graphics/BitmapFactory.java
 +++ b/graphics/java/android/graphics/BitmapFactory.java
 @@ -41,7 +41,7 @@ public class BitmapFactory {
@@ -56,7 +56,7 @@ index 381e65b..b09406b 100644
              inScaled = true;
          }
  
-@@ -104,7 +104,7 @@ public class BitmapFactory {
+@@ -105,7 +105,7 @@ public class BitmapFactory {
           * Image are loaded with the {@link Bitmap.Config#ARGB_8888} config by
           * default.
           */

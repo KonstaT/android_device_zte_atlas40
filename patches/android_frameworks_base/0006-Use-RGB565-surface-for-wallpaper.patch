@@ -1,7 +1,7 @@
-From 890d5b1f06a099e99cb5ba96809e548557d53e7b Mon Sep 17 00:00:00 2001
+From c349de9fbdadb3ed310ce317c7b2491629e37639 Mon Sep 17 00:00:00 2001
 From: Grigori Goronzy <greg@blackbox>
 Date: Mon, 28 Jan 2013 06:43:09 +0100
-Subject: [PATCH 08/18] Use RGB565 surface for wallpaper
+Subject: [PATCH 6/8] Use RGB565 surface for wallpaper
 
 The framebuffer only uses 16bpp on most legacy devices anyway, so this
 does not result in worse quality. It saves a lot of GPU fillrate and
@@ -15,7 +15,7 @@ Change-Id: If19902500d615291c4362f03d26d9cee2d4e684e
  3 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/core/java/android/app/WallpaperManager.java b/core/java/android/app/WallpaperManager.java
-index 9c0064e..2b4213f 100644
+index 3342068..17ad722 100644
 --- a/core/java/android/app/WallpaperManager.java
 +++ b/core/java/android/app/WallpaperManager.java
 @@ -366,7 +366,7 @@ public class WallpaperManager {
@@ -37,7 +37,7 @@ index 9c0064e..2b4213f 100644
          }
          return null;
 diff --git a/core/java/android/service/wallpaper/WallpaperService.java b/core/java/android/service/wallpaper/WallpaperService.java
-index 6d5705d..0c6c663 100644
+index 5db8168..529d782 100644
 --- a/core/java/android/service/wallpaper/WallpaperService.java
 +++ b/core/java/android/service/wallpaper/WallpaperService.java
 @@ -186,7 +186,7 @@ public abstract class WallpaperService extends Service {
@@ -50,7 +50,7 @@ index 6d5705d..0c6c663 100644
  
              @Override
 diff --git a/packages/SystemUI/src/com/android/systemui/ImageWallpaper.java b/packages/SystemUI/src/com/android/systemui/ImageWallpaper.java
-index 8d0fe75..ff9895e 100644
+index 7be6e6d..f511efe 100644
 --- a/packages/SystemUI/src/com/android/systemui/ImageWallpaper.java
 +++ b/packages/SystemUI/src/com/android/systemui/ImageWallpaper.java
 @@ -24,6 +24,7 @@ import android.content.Context;
@@ -61,7 +61,7 @@ index 8d0fe75..ff9895e 100644
  import android.graphics.Rect;
  import android.graphics.Region.Op;
  import android.opengl.GLUtils;
-@@ -442,7 +443,9 @@ public class ImageWallpaper extends WallpaperService {
+@@ -428,7 +429,9 @@ public class ImageWallpaper extends WallpaperService {
                          c.restore();
                      }
                      if (mBackground != null) {

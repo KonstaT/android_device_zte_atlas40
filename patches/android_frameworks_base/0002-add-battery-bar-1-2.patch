@@ -1,7 +1,7 @@
-From 51618c248f9d427105012512b8cbd7b58b29f549 Mon Sep 17 00:00:00 2001
+From ffc9b70633c40319549411271232833f3cbf13cc Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:48:22 +0200
-Subject: [PATCH 02/18] add battery bar (1/2)
+Subject: [PATCH 2/8] add battery bar (1/2)
 
 Change-Id: I6a3f3028946829e4117a519c827bdd6d88912e1d
 ---
@@ -15,10 +15,10 @@ Change-Id: I6a3f3028946829e4117a519c827bdd6d88912e1d
  create mode 100644 packages/SystemUI/src/com/android/systemui/statusbar/phone/BatteryBar.java
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index 71badae..d4527fe 100644
+index 7dc82ed..8087aa0 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -2726,6 +2726,7 @@ public final class Settings {
+@@ -2830,6 +2830,7 @@ public final class Settings {
           * 2: Display cm circle battery implementation without percentage
           * 3: Display cm circle battery implementation with percentage
           * 4: Hide the battery information
@@ -62,7 +62,7 @@ index 0000000..a1243df
 +
 +</layer-list>
 diff --git a/packages/SystemUI/res/layout/status_bar.xml b/packages/SystemUI/res/layout/status_bar.xml
-index deada5d..f600b38 100644
+index 171ee6d..524dd77 100644
 --- a/packages/SystemUI/res/layout/status_bar.xml
 +++ b/packages/SystemUI/res/layout/status_bar.xml
 @@ -208,4 +208,9 @@
@@ -76,10 +76,10 @@ index deada5d..f600b38 100644
 +        android:layout_height="1dip" />
  </com.android.systemui.statusbar.phone.PhoneStatusBarView>
 diff --git a/packages/SystemUI/res/values/styles.xml b/packages/SystemUI/res/values/styles.xml
-index cd108b1..9276c2d 100644
+index 3c75653..8561c92 100644
 --- a/packages/SystemUI/res/values/styles.xml
 +++ b/packages/SystemUI/res/values/styles.xml
-@@ -198,4 +198,10 @@
+@@ -208,4 +208,10 @@
          <item name="android:lineSpacingMultiplier">1.1</item>
      </style>
  
