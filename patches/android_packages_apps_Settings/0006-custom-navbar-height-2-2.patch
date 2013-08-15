@@ -1,14 +1,14 @@
-From ff13fbd5b208ccd6dc0b42f02653644d3e069908 Mon Sep 17 00:00:00 2001
+From 6e32d102e7915564d01b8cf5eb1522090b0cd924 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
-Subject: [PATCH 6/8] NavigationBar: Custom height (2/2)
+Subject: [PATCH 7/9] custom navbar height (2/2)
 
 Change-Id: I751ae54de1adf96367948735558363ce0dbb9f89
 ---
  res/values/cm_arrays.xml                           |   21 ++++++++++++++++++++
  res/values/cm_strings.xml                          |   10 ++++++++++
- res/xml/system_settings.xml                        |   10 +++++++++-
- .../settings/cyanogenmod/SystemSettings.java       |   20 +++++++++++++++++++
+ res/xml/system_ui_settings.xml                     |   10 +++++++++-
+ .../settings/cyanogenmod/SystemUiSettings.java     |   20 +++++++++++++++++++
  4 files changed, 60 insertions(+), 1 deletion(-)
 
 diff --git a/res/values/cm_arrays.xml b/res/values/cm_arrays.xml
@@ -44,13 +44,13 @@ index 1db0a20..6eec542 100644
      <string-array name="wifi_countrycode_entries">
          <item>United States</item>
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index ce36dd5..566b23c 100644
+index eaec1c7..d061c03 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
-@@ -21,6 +21,16 @@
-     <string name="konsta_navbar_dialog_negative">Reboot later</string>
-     <string name="konsta_navbar_dialog_positive">Reboot now</string>
- 
+@@ -14,6 +14,16 @@
+      limitations under the License.
+ -->
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 +    <!-- Navigation Bar Height -->
 +    <string name="navigation_bar_height">Button height</string>
 +    <string name="navigation_bar_height_48">48dp (default)</string>
@@ -64,11 +64,11 @@ index ce36dd5..566b23c 100644
      <!-- Partition info -->
      <string name="partition_info_title">Partition info</string>
      <string name="partition_info_system">/system</string>
-diff --git a/res/xml/system_settings.xml b/res/xml/system_settings.xml
-index 206dad5..3ce482e 100644
---- a/res/xml/system_settings.xml
-+++ b/res/xml/system_settings.xml
-@@ -90,11 +90,19 @@
+diff --git a/res/xml/system_ui_settings.xml b/res/xml/system_ui_settings.xml
+index 8b6730f..ac52c6b 100644
+--- a/res/xml/system_ui_settings.xml
++++ b/res/xml/system_ui_settings.xml
+@@ -60,11 +60,19 @@
              android:fragment="com.android.settings.cyanogenmod.NavRing"
              android:title="@string/navigation_ring_title" />
  
@@ -88,30 +88,28 @@ index 206dad5..3ce482e 100644
 -
      </PreferenceCategory>
  
-     <CheckBoxPreference
-diff --git a/src/com/android/settings/cyanogenmod/SystemSettings.java b/src/com/android/settings/cyanogenmod/SystemSettings.java
-index cd72fb8..aad1ca9 100644
---- a/src/com/android/settings/cyanogenmod/SystemSettings.java
-+++ b/src/com/android/settings/cyanogenmod/SystemSettings.java
-@@ -49,6 +49,7 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
-     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
-     private static final String KEY_NAVIGATION_RING = "navigation_ring";
-     private static final String KEY_NAVIGATION_BAR_CATEGORY = "navigation_bar_category";
+ </PreferenceScreen>
+diff --git a/src/com/android/settings/cyanogenmod/SystemUiSettings.java b/src/com/android/settings/cyanogenmod/SystemUiSettings.java
+index 2323d38..4577a2a 100644
+--- a/src/com/android/settings/cyanogenmod/SystemUiSettings.java
++++ b/src/com/android/settings/cyanogenmod/SystemUiSettings.java
+@@ -38,11 +38,13 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
+     private static final String KEY_EXPANDED_DESKTOP = "expanded_desktop";
+     private static final String KEY_EXPANDED_DESKTOP_NO_NAVBAR = "expanded_desktop_no_navbar";
+     private static final String CATEGORY_NAVBAR = "navigation_bar";
 +    private static final String KEY_NAVIGATION_HEIGHT = "nav_buttons_height";
-     private static final String KEY_LOCK_CLOCK = "lock_clock";
-     private static final String KEY_STATUS_BAR = "status_bar";
-     private static final String KEY_QUICK_SETTINGS = "quick_settings_panel";
-@@ -66,6 +67,7 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
-     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
+     private static final String KEY_PIE_CONTROL = "pie_control";
  
-     private boolean mIsPrimary;
+     private PreferenceScreen mPieControl;
+     private ListPreference mExpandedDesktopPref;
+     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 +    private ListPreference mNavButtonsHeight;
-     private CheckBoxPreference mKonstaNavbar;
  
      @Override
-@@ -134,6 +136,17 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
-         mKonstaNavbar.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                 Settings.System.KONSTA_NAVBAR, 0) == 1);
+     public void onCreate(Bundle savedInstanceState) {
+@@ -61,6 +63,17 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
+         int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
+                 Settings.System.EXPANDED_DESKTOP_STYLE, 0);
  
 +        // Navbar height
 +        mNavButtonsHeight = (ListPreference) findPreference(KEY_NAVIGATION_HEIGHT);
@@ -124,10 +122,10 @@ index cd72fb8..aad1ca9 100644
 +            mNavButtonsHeight.setSummary(mNavButtonsHeight.getEntry());
 +        }
 +
-         // Pie controls
-         mPieControl = (PreferenceScreen) findPreference(KEY_PIE_CONTROL);
-         if (mPieControl != null && removeNavbar) {
-@@ -201,6 +214,13 @@ public class SystemSettings extends SettingsPreferenceFragment  implements
+         try {
+             // Only show the navigation bar category on devices that has a navigation bar
+             // unless we are forcing it via development settings
+@@ -106,6 +119,13 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
              boolean value = (Boolean) objValue;
              updateExpandedDesktop(value ? 2 : 0);
              return true;

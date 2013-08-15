@@ -1,7 +1,7 @@
-From ea060bf01234bd34b96006d625a512d6fad20c9e Mon Sep 17 00:00:00 2001
+From 3ab68816a3caf1d8b43a609006c06345dc3aa66d Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:00:55 +0200
-Subject: [PATCH 2/8] add battery bar (2/2)
+Subject: [PATCH 1/9] add battery bar (2/2)
 
 Change-Id: I912449bf44386a19f1f174eb732c7d077805b4de
 ---
@@ -30,10 +30,10 @@ index c968f6a..1db0a20 100644
      </string-array>
  
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index c85a6ef..e1c821e 100644
+index 35c98e8..3bd2a9b 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
-@@ -681,6 +681,7 @@
+@@ -639,6 +639,7 @@
      <string name="status_bar_battery_status_percentage">Percentage</string>
      <string name="status_bar_battery_status_circle">Circle</string>
      <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>

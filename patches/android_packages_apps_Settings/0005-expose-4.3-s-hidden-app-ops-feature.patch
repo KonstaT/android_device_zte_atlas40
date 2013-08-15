@@ -1,0 +1,90 @@
+From 93cfb7cdbe1c722a96df7f1038da30ecba8a0bfa Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Thu, 8 Aug 2013 22:19:50 +0300
+Subject: [PATCH 5/9] expose 4.3's hidden app ops feature
+
+Use checkboxes instead of switches because of layout issues.
+
+Change-Id: I3cc8bae91b50e27c4ba193ea9edf9201741128b4
+---
+ AndroidManifest.xml                                |    5 ++---
+ res/layout/app_ops_details_item.xml                |    2 +-
+ res/xml/security_settings_app_cyanogenmod.xml      |    4 ++++
+ .../settings/applications/AppOpsDetails.java       |    3 ++-
+ 4 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index aa965c4..18ed6fe 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -888,16 +888,15 @@
+ 
+         <activity android:name="Settings$AppOpsSummaryActivity"
+                 android:label="@string/app_ops_settings"
+-                android:taskAffinity=""
++                android:taskAffinity="com.android.settings"
++                android:parentActivityName="Settings$SecuritySettingsActivity"
+                 android:excludeFromRecents="true">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <action android:name="android.settings.APP_OPS_SETTINGS" />
+                 <category android:name="android.intent.category.DEFAULT" />
+-                <!-- Not yet ready to expose.
+                 <category android:name="android.intent.category.VOICE_LAUNCH" />
+                 <category android:name="com.android.settings.SHORTCUT" />
+-                -->
+             </intent-filter>
+             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                 android:value="com.android.settings.applications.AppOpsSummary" />
+diff --git a/res/layout/app_ops_details_item.xml b/res/layout/app_ops_details_item.xml
+index c630ad6..e95b7aa 100644
+--- a/res/layout/app_ops_details_item.xml
++++ b/res/layout/app_ops_details_item.xml
+@@ -57,7 +57,7 @@
+         android:textAppearance="?android:attr/textAppearanceSmall"
+         android:textAlignment="viewStart" />
+ 
+-    <Switch android:id="@+id/switchWidget"
++    <CheckBox android:id="@+id/switchWidget"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_vertical"
+diff --git a/res/xml/security_settings_app_cyanogenmod.xml b/res/xml/security_settings_app_cyanogenmod.xml
+index 357990d..031c84f 100644
+--- a/res/xml/security_settings_app_cyanogenmod.xml
++++ b/res/xml/security_settings_app_cyanogenmod.xml
+@@ -22,6 +22,10 @@
+         android:title="@string/app_security_title">
+ 
+         <Preference
++            android:title="@string/app_ops_settings"
++            android:fragment="com.android.settings.applications.AppOpsSummary" />
++
++        <Preference
+             android:fragment="com.android.settings.cyanogenmod.privacyguard.PrivacyGuardManager"
+             android:key="privacy_guard_manager"
+             android:summary="@string/privacy_guard_manager_summary"
+diff --git a/src/com/android/settings/applications/AppOpsDetails.java b/src/com/android/settings/applications/AppOpsDetails.java
+index 1e2ac7d..2c93c69 100644
+--- a/src/com/android/settings/applications/AppOpsDetails.java
++++ b/src/com/android/settings/applications/AppOpsDetails.java
+@@ -33,6 +33,7 @@ import android.util.Log;
+ import android.view.LayoutInflater;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.CheckBox;
+ import android.widget.CompoundButton;
+ import android.widget.ImageView;
+ import android.widget.LinearLayout;
+@@ -140,7 +141,7 @@ public class AppOpsDetails extends Fragment {
+                         entry.getSwitchText(mState));
+                 ((TextView)view.findViewById(R.id.op_time)).setText(
+                         entry.getTimeText(res, true));
+-                Switch sw = (Switch)view.findViewById(R.id.switchWidget);
++                CheckBox sw = (CheckBox)view.findViewById(R.id.switchWidget);
+                 final int switchOp = AppOpsManager.opToSwitch(firstOp.getOp());
+                 sw.setChecked(mAppOps.checkOp(switchOp, entry.getPackageOps().getUid(),
+                         entry.getPackageOps().getPackageName()) == AppOpsManager.MODE_ALLOWED);
+-- 
+1.7.9.5
+

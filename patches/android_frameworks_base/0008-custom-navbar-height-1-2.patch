@@ -1,25 +1,25 @@
-From 358f7208b0b660652c42a90462fffd13760d4772 Mon Sep 17 00:00:00 2001
+From 86dc013057ec48a4c25c60896be29fb40eeb6eb7 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
-Date: Tue, 18 Sep 2012 20:08:36 -0400
-Subject: [PATCH 4/8] NavigationBar: Custom height (1/2)
+Date: Wed, 14 Aug 2013 10:48:20 +0300
+Subject: [PATCH 8/8] custom navbar height (1/2)
 
-Change-Id: I61aef192ac658f54f86b87d18cce9d7b073004e2
+Change-Id: Iebe56d7eb03a59a39e6c654fe1b146264e341616
 ---
  core/java/android/provider/Settings.java           |    6 +++++
  .../internal/policy/impl/PhoneWindowManager.java   |   24 ++++++++++++++++++++
  2 files changed, 30 insertions(+)
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index 8087aa0..66fb89b 100644
+index 31bdf4d..96de04b 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -2778,6 +2778,12 @@ public final class Settings {
-         public static final String NAV_BUTTONS = "nav_buttons";
+@@ -2796,6 +2796,12 @@ public final class Settings {
+         public static final String DEV_BACK_BUTTON_ENABLED = "back_button_enabled";
  
          /**
-+         * Height of navigation bar buttons
-+         * @hide
-+         */
++        * Height of navigation bar buttons
++        * @hide
++        */
 +        public static final String NAV_BUTTONS_HEIGHT = "nav_buttons_height";
 +
 +        /**
@@ -27,12 +27,12 @@ index 8087aa0..66fb89b 100644
          * @hide
          */
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index e6701f3..0f59998 100644
+index b22a43d..76abcc0 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-@@ -670,6 +670,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -679,6 +679,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
              resolver.registerContentObserver(Settings.System.getUriFor(
-                     Settings.System.HARDWARE_KEY_REBINDING), false, this,
+                     Settings.System.UI_FORCE_OVERFLOW_BUTTON), false, this,
                      UserHandle.USER_ALL);
 +            resolver.registerContentObserver(Settings.System.getUriFor(
 +                    Settings.System.NAV_BUTTONS_HEIGHT), false, this,
@@ -40,7 +40,7 @@ index e6701f3..0f59998 100644
  
              updateSettings();
          }
-@@ -1526,6 +1529,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -1541,6 +1544,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                  mHasSoftInput = hasSoftInput;
                  updateRotation = true;
              }

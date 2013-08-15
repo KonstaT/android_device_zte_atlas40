@@ -1,7 +1,7 @@
-From 8e5eb02aac84ab3244d4f44cd3ac3f5ed7919ae6 Mon Sep 17 00:00:00 2001
+From d7f156721701e967c9825305d6816a5a9c09261b Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 8 Jan 2013 16:18:29 +0200
-Subject: [PATCH 5/8] swipe to switch notification changes
+Subject: [PATCH 3/8] swipe to switch notification changes
 
 -increase swipe gesture lenght
 -don't limit swipe detection to bottom bar
