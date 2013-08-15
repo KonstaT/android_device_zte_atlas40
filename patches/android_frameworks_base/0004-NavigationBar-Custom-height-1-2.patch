@@ -1,7 +1,7 @@
-From 493e293f51dcdb0ce74eb76f5fc80c231cee12eb Mon Sep 17 00:00:00 2001
+From 48a3f50cccbfc32b0fc134f092a73d55c75701fc Mon Sep 17 00:00:00 2001
 From: Nicholas Semendyaev <agent00791@gmail.com>
 Date: Tue, 18 Sep 2012 20:08:36 -0400
-Subject: [PATCH 05/18] NavigationBar: Custom height (1/2)
+Subject: [PATCH 05/21] NavigationBar: Custom height (1/2)
 
 Ported from http://review.cyanogenmod.org/#/c/23609/
 
@@ -12,10 +12,10 @@ Change-Id: I61aef192ac658f54f86b87d18cce9d7b073004e2
  2 files changed, 30 insertions(+)
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index d4527fe..78543dd 100644
+index 667a22e..fb1ce1c 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -2674,6 +2674,12 @@ public final class Settings {
+@@ -2687,6 +2687,12 @@ public final class Settings {
          public static final String NAV_BUTTONS = "nav_buttons";
  
          /**
@@ -29,7 +29,7 @@ index d4527fe..78543dd 100644
          * @hide
          */
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index 38642a9..04ed585 100644
+index f23adae..9a97eae 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 @@ -688,6 +688,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {

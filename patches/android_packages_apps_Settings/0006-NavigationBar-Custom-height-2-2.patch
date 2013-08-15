@@ -1,4 +1,4 @@
-From 593ac8c4f15c8a9d1a0dbfe7a3ffd384cc96488c Mon Sep 17 00:00:00 2001
+From 9658d022de522cc891f30779fe53fd344ab3e4fb Mon Sep 17 00:00:00 2001
 From: Rick C <rickfitsnugly@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
 Subject: [PATCH 07/10] NavigationBar: Custom height (2/2)
@@ -14,7 +14,7 @@ Change-Id: I751ae54de1adf96367948735558363ce0dbb9f89
  4 files changed, 60 insertions(+), 1 deletion(-)
 
 diff --git a/res/values/cm_arrays.xml b/res/values/cm_arrays.xml
-index f36c827..d84f35c 100644
+index ca4781c..eb8662e 100644
 --- a/res/values/cm_arrays.xml
 +++ b/res/values/cm_arrays.xml
 @@ -14,6 +14,27 @@
@@ -46,7 +46,7 @@ index f36c827..d84f35c 100644
      <string-array name="wifi_countrycode_entries">
          <item>United States</item>
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index a349a33..0d867cb 100644
+index 1cc4dc1..ccbf389 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -21,6 +21,16 @@
@@ -67,7 +67,7 @@ index a349a33..0d867cb 100644
      <string name="partition_info_title">Partition info</string>
      <string name="partition_info_system">/system</string>
 diff --git a/res/xml/system_settings.xml b/res/xml/system_settings.xml
-index 9c812b0..2f7f5ed 100644
+index 206dad5..3ce482e 100644
 --- a/res/xml/system_settings.xml
 +++ b/res/xml/system_settings.xml
 @@ -90,11 +90,19 @@

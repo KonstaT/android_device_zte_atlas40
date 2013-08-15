@@ -1,7 +1,7 @@
-From 640f363a868634cfc5ed4619032647bfb6160919 Mon Sep 17 00:00:00 2001
+From 0978fcdb892fb1f53abc7dd25b3e36d4e5616183 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:43:15 +0200
-Subject: [PATCH 01/18] add option to display navbar (1/2)
+Subject: [PATCH 01/21] add option to display navbar (1/2)
 
 Change-Id: Id0b09d22bfec899cd706e65d73feb7d907c0c101
 ---
@@ -10,10 +10,10 @@ Change-Id: Id0b09d22bfec899cd706e65d73feb7d907c0c101
  2 files changed, 13 insertions(+), 2 deletions(-)
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index 896ff4c..71badae 100644
+index 7925d31..9d09355 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -3120,6 +3120,12 @@ public final class Settings {
+@@ -3146,6 +3146,12 @@ public final class Settings {
          public static final String UI_FORCE_OVERFLOW_BUTTON = "ui_force_overflow_button";
  
           /**
@@ -27,7 +27,7 @@ index 896ff4c..71badae 100644
            * 0 - Disabled
            * 1 - Volume up/down moves cursor left/right
 diff --git a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index f620c6d..38642a9 100644
+index 7415a1f..f23adae 100644
 --- a/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 @@ -1284,8 +1284,13 @@ public class PhoneWindowManager implements WindowManagerPolicy {

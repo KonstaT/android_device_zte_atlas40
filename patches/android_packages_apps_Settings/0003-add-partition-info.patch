@@ -1,4 +1,4 @@
-From c97e399c7f9b324632db362c2a01b24b703db606 Mon Sep 17 00:00:00 2001
+From d057752a80f7d0a9c7b865fc2666127d29f734f4 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:27:40 +0200
 Subject: [PATCH 03/10] add partition info
@@ -15,7 +15,7 @@ Change-Id: I5a01f913f5d0eca04cbe54175e8fa72cb6418f77
  create mode 100644 src/com/android/settings/PartitionInfo.java
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index 4b0819c..85a3735 100644
+index a760b25..3fad0fe 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
 @@ -856,6 +856,15 @@
@@ -35,7 +35,7 @@ index 4b0819c..85a3735 100644
                  android:label="@string/location_settings_title"
                  android:uiOptions="none"
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 439ade7..00ede92 100644
+index 49126d9..1f7cd17 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -21,6 +21,14 @@

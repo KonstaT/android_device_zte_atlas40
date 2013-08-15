@@ -1,4 +1,4 @@
-From 2d96550f607a09a6e351155ec64dd59d21a28494 Mon Sep 17 00:00:00 2001
+From f5fdb669c439b084b0c77c1a99fc7d3a74bd203c Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:32:15 +0200
 Subject: [PATCH 04/10] add forum link to device info
@@ -11,7 +11,7 @@ Change-Id: I0f20b34b8f98673d9fc15dd2687b02c0dd296409
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 00ede92..0a2d252 100644
+index 1f7cd17..2262e1d 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -29,6 +29,11 @@
@@ -41,7 +41,7 @@ index 955c153..42ba466 100644
 +
  </PreferenceScreen>
 diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/settings/DeviceInfoSettings.java
-index 3f8aca3..ac89699 100644
+index 23fa672..081067b 100644
 --- a/src/com/android/settings/DeviceInfoSettings.java
 +++ b/src/com/android/settings/DeviceInfoSettings.java
 @@ -19,6 +19,7 @@ package com.android.settings;
@@ -60,7 +60,7 @@ index 3f8aca3..ac89699 100644
  import android.util.Log;
  import android.widget.Toast;
  
-@@ -178,6 +180,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
+@@ -179,6 +181,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
          // Remove regulatory information if not enabled.
          removePreferenceIfBoolFalse(KEY_REGULATORY_INFO,
                  R.bool.config_show_regulatory_info);

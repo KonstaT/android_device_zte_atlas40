@@ -1,4 +1,4 @@
-From 81f2f7e48addea17027f01cf35b9457b4896d17a Mon Sep 17 00:00:00 2001
+From f546e60daa6f2033ae088923ff627c9d69d127a8 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 27 Mar 2013 10:01:20 +0200
 Subject: [PATCH 09/10] don't hide pie control settings
@@ -11,10 +11,10 @@ Change-Id: Ib0a9b2029174a12fa96a86a9e05b8a867bdf3111
  3 files changed, 6 insertions(+), 11 deletions(-)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 0d867cb..c05c21a 100644
+index ccbf389..121f960 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
-@@ -946,7 +946,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
+@@ -953,7 +953,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
  
      <!-- Pie controls -->
      <string name="pie_control_title">Pie controls</string>
@@ -24,7 +24,7 @@ index 0d867cb..c05c21a 100644
      <string name="pie_control_sensitivity_title">Responsiveness</string>
      <string name="pie_control_sensitivity_low">Low</string>
 diff --git a/res/xml/system_settings.xml b/res/xml/system_settings.xml
-index 2f7f5ed..9786abe 100644
+index 3ce482e..ca376d3 100644
 --- a/res/xml/system_settings.xml
 +++ b/res/xml/system_settings.xml
 @@ -76,6 +76,11 @@
