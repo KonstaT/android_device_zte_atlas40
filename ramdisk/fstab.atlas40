@@ -5,7 +5,7 @@
 #<src>                                   <mnt_point>        <type>  <mnt_flags and options>                 <fs_mgr_flags>
 /dev/block/mmcblk0p19                    /system            ext4    ro,barrier=1                            wait
 /dev/block/mmcblk0p21                    /cache             ext4    nosuid,nodev,barrier=1                  wait,check
-/dev/block/mmcblk0p22                    /data              ext4    nosuid,nodev,noauto_da_alloc,barrier=1  wait,check,encryptable=footer
+/dev/block/mmcblk0p22                    /data              ext4    nosuid,nodev,noauto_da_alloc,barrier=1  wait,check,encryptable=footer,length=-16384
 /dev/block/mmcblk0p16                    /boot              emmc    defaults                                defaults
 /dev/block/mmcblk0p17                    /recovery          emmc    defaults                                defaults
 /devices/platform/msm_sdcc.1/mmc_host    /storage/sdcard0   auto    defaults                                voldmanaged=sdcard:auto
