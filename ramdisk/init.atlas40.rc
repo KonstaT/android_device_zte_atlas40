@@ -144,6 +144,9 @@ on boot
     # USB charging
     chown system system /sys/module/msm_battery/parameters/usb_chg_enable
 
+    # Button backlight
+    chown system system /sys/class/leds/button-backlight/max_brightness
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
