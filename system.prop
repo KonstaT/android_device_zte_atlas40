@@ -27,7 +27,7 @@ ro.fm.mulinst.recording.support=false
 # Memory
 ro.zram.default=0
 persist.sys.purgeable_assets=1
-ro.sys.fw.bg_apps_limit=10
+sys.mem.max_hidden_apps=10
 
 # Qualcomm
 com.qc.hardware=true
