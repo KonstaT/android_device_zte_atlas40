@@ -16,10 +16,6 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a
 
-# Atlas40
-PRODUCT_PACKAGES += \
-    Atlas40Parts
-
 # Bluez
 #PRODUCT_PACKAGES += \
 #    Bluetooth2 \
