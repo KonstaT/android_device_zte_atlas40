@@ -144,6 +144,9 @@ on boot
     # USB charging
     chown system system /sys/module/msm_battery/parameters/usb_chg_enable
 
+    # Vibrator intensity
+    chown system system /sys/vibrator/pwmvalue
+
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 

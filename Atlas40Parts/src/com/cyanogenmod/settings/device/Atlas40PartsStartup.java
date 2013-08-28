@@ -8,6 +8,7 @@ public class Atlas40PartsStartup extends BroadcastReceiver
 {
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
-        DeviceSettings.onStartup(context);
+        DeviceSettings.restore(context);
+        VibratorTuningPreference.restore(context);
     }
 }
