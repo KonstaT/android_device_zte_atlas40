@@ -13,4 +13,10 @@
         android:title="@string/button_backlight_title_head"
         android:defaultValue="true" />
 
+    <!-- Vibrator tuning -->
+    <com.cyanogenmod.settings.device.VibratorTuningPreference
+        android:key="vibrator_tuning"
+        android:title="@string/vibrator_tuning_title"
+        android:dialogTitle="@string/vibrator_tuning_title" />
+
 </PreferenceScreen>

@@ -37,17 +37,17 @@ public class DeviceSettings extends PreferenceActivity {
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 
-        int value;
+        String value;
         String key = preference.getKey();
 
         if (key.equals(KEY_USB_CHARGING)) {
             final CheckBoxPreference chkPref = (CheckBoxPreference) preference;
-            value = chkPref.isChecked() ? 1 : 0;
+            value = chkPref.isChecked() ? "1" : "0";
             Utils.writeValue(USB_CHARGING_FILE, value);
         } else if (key.equals(KEY_BUTTON_BACKLIGHT)) {
             final CheckBoxPreference chkPref = (CheckBoxPreference) preference;
-            value = chkPref.isChecked() ? 1 : 0;
-            if (value == 1) {
+            value = chkPref.isChecked() ? "1" : "0";
+            if (chkPref.isChecked()) {
                 Utils.setWritable(BUTTON_BACKLIGHT_FILE);
                 Utils.writeValue(BUTTON_BACKLIGHT_FILE, value);
             } else {
@@ -60,21 +60,21 @@ public class DeviceSettings extends PreferenceActivity {
         return true;
     }
 
-    public static void onStartup(Context context) {
+    public static void restore(Context context) {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 
         if (prefs.getBoolean(KEY_USB_CHARGING, true)) {
-            Utils.writeValue(USB_CHARGING_FILE, 1);
+            Utils.writeValue(USB_CHARGING_FILE, "1");
         } else {
-            Utils.writeValue(USB_CHARGING_FILE, 0);
+            Utils.writeValue(USB_CHARGING_FILE, "0");
         }
 
         if (prefs.getBoolean(KEY_BUTTON_BACKLIGHT, true)) {
             Utils.setWritable(BUTTON_BACKLIGHT_FILE);
-            Utils.writeValue(BUTTON_BACKLIGHT_FILE, 1);
+            Utils.writeValue(BUTTON_BACKLIGHT_FILE, "1");
         } else {
-            Utils.writeValue(BUTTON_BACKLIGHT_FILE, 0);
+            Utils.writeValue(BUTTON_BACKLIGHT_FILE, "0");
             Utils.setNonWritable(BUTTON_BACKLIGHT_FILE);
         }
     }
