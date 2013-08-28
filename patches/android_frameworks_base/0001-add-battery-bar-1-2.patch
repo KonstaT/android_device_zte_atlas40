@@ -1,4 +1,4 @@
-From 389e0bfde87f1e190ee22ce849cb17b1ea49bd49 Mon Sep 17 00:00:00 2001
+From adb5c5fe2dc5bc59af84d1b88ee562c364cc7886 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:48:22 +0200
 Subject: [PATCH 1/8] add battery bar (1/2)
@@ -15,10 +15,10 @@ Change-Id: I6a3f3028946829e4117a519c827bdd6d88912e1d
  create mode 100644 packages/SystemUI/src/com/android/systemui/statusbar/phone/BatteryBar.java
 
 diff --git a/core/java/android/provider/Settings.java b/core/java/android/provider/Settings.java
-index 86fcbde..dd80263 100644
+index 838bfe0..d3367fa 100644
 --- a/core/java/android/provider/Settings.java
 +++ b/core/java/android/provider/Settings.java
-@@ -2830,6 +2830,7 @@ public final class Settings {
+@@ -2818,6 +2818,7 @@ public final class Settings {
           * 2: Display cm circle battery implementation without percentage
           * 3: Display cm circle battery implementation with percentage
           * 4: Hide the battery information

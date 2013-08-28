@@ -1,4 +1,4 @@
-From a003c8dc4baeaab869eb43903c497ee2d815be4b Mon Sep 17 00:00:00 2001
+From 1bfc3146de7bc93c1741f4a36f36bfc0ad2c861d Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 27 Mar 2013 10:23:27 +0200
 Subject: [PATCH 6/8] allow pie controls without enabling expanded desktop

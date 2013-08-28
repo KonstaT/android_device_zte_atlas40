@@ -1,4 +1,4 @@
-From 3df80a4b2ecb86973198d71fc9952e0a079a2df3 Mon Sep 17 00:00:00 2001
+From dcab59da096e139b685bb884efc46014db5e4bdc Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 1 Jan 2013 19:11:19 +0200
 Subject: [PATCH 4/9] add option to disable bootanimation (2/2)
@@ -11,7 +11,7 @@ Change-Id: Ia1c29e89318ced977c5b1881bfd5b62253128f6b
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 309867b..5b3b50f 100644
+index e55760d..3854fd3 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -27,6 +27,10 @@
@@ -26,12 +26,12 @@ index 309867b..5b3b50f 100644
      <string name="bluetooth_mas_request">"Message Access request"</string>
      <!-- Bluetooth MAS permission Alert Activity text [CHAR LIMIT=none] -->
 diff --git a/res/xml/performance_settings.xml b/res/xml/performance_settings.xml
-index 8644a70..547e41a 100644
+index 932a03c..ca4beaf 100644
 --- a/res/xml/performance_settings.xml
 +++ b/res/xml/performance_settings.xml
-@@ -50,4 +50,9 @@
-         android:entries="@array/dithering_entries"
-         android:entryValues="@array/dithering_values"/>
+@@ -42,4 +42,9 @@
+         android:title="@string/pref_use_16bpp_alpha_title"
+         android:summary="@string/pref_use_16bpp_alpha_summary" />
  
 +    <CheckBoxPreference
 +        android:key="pref_disable_bootanimation"
@@ -40,10 +40,10 @@ index 8644a70..547e41a 100644
 +
  </PreferenceScreen>
 diff --git a/src/com/android/settings/cyanogenmod/PerformanceSettings.java b/src/com/android/settings/cyanogenmod/PerformanceSettings.java
-index 566036c..f32a43a 100644
+index 16e0601..6048d22 100644
 --- a/src/com/android/settings/cyanogenmod/PerformanceSettings.java
 +++ b/src/com/android/settings/cyanogenmod/PerformanceSettings.java
-@@ -45,10 +45,16 @@ public class PerformanceSettings extends SettingsPreferenceFragment
+@@ -37,8 +37,14 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
  
      private static final String USE_16BPP_ALPHA_PROP = "persist.sys.use_16bpp_alpha";
  
@@ -51,8 +51,6 @@ index 566036c..f32a43a 100644
 +
 +    private static final String DISABLE_BOOTANIMATION_PERSIST_PROP = "persist.sys.nobootanimation";
 +
-     private ListPreference mUseDitheringPref;
- 
      private CheckBoxPreference mUse16bppAlphaPref;
  
 +    private CheckBoxPreference mDisableBootanimPref;
@@ -60,18 +58,18 @@ index 566036c..f32a43a 100644
      private AlertDialog alertDialog;
  
      @Override
-@@ -71,6 +77,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment
-             String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
-             mUse16bppAlphaPref.setChecked("1".equals(use16bppAlpha));
+@@ -53,6 +59,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
+         String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
+         mUse16bppAlphaPref.setChecked("1".equals(use16bppAlpha));
  
-+            mDisableBootanimPref = (CheckBoxPreference) prefSet.findPreference(DISABLE_BOOTANIMATION_PREF);
-+            String disableBootanimation = SystemProperties.get(DISABLE_BOOTANIMATION_PERSIST_PROP, "0");
-+            mDisableBootanimPref.setChecked("1".equals(disableBootanimation));
++        mDisableBootanimPref = (CheckBoxPreference) prefSet.findPreference(DISABLE_BOOTANIMATION_PREF);
++        String disableBootanimation = SystemProperties.get(DISABLE_BOOTANIMATION_PERSIST_PROP, "0");
++        mDisableBootanimPref.setChecked("1".equals(disableBootanimation));
 +
-             /* Display the warning dialog */
-             alertDialog = new AlertDialog.Builder(getActivity()).create();
-             alertDialog.setTitle(R.string.performance_settings_warning_title);
-@@ -96,6 +106,9 @@ public class PerformanceSettings extends SettingsPreferenceFragment
+         /* Display the warning dialog */
+         alertDialog = new AlertDialog.Builder(getActivity()).create();
+         alertDialog.setTitle(R.string.performance_settings_warning_title);
+@@ -77,6 +87,9 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
          if (preference == mUse16bppAlphaPref) {
              SystemProperties.set(USE_16BPP_ALPHA_PROP,
                      mUse16bppAlphaPref.isChecked() ? "1" : "0");

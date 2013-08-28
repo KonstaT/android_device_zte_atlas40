@@ -1,0 +1,67 @@
+From 9f078b19da3d13857d567d23f0bc53e2142ee16c Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Mon, 19 Aug 2013 13:01:10 +0300
+Subject: [PATCH] cmhw: USB charging (1/2)
+
+Change-Id: I2426f9369cf4c53006d3eef0fb8fcd703ce83fb0
+---
+ src/org/cyanogenmod/hardware/UsbCharging.java |   47 +++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+ create mode 100644 src/org/cyanogenmod/hardware/UsbCharging.java
+
+diff --git a/src/org/cyanogenmod/hardware/UsbCharging.java b/src/org/cyanogenmod/hardware/UsbCharging.java
+new file mode 100644
+index 0000000..7eb7d66
+--- /dev/null
++++ b/src/org/cyanogenmod/hardware/UsbCharging.java
+@@ -0,0 +1,47 @@
++/*
++ * Copyright (C) 2013 The CyanogenMod Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++package org.cyanogenmod.hardware;
++
++/**
++ * USB charging support.
++ */
++public class UsbCharging {
++
++    /*
++     * All HAF classes should export this boolean.
++     * Real implementations must, of course, return true
++     */
++    public static boolean isSupported() { return false; }
++
++    /**
++     * This method return the current activation status of USB charging.
++     *
++     * @return boolean Must be false when USB charging is not supported or not activated, or
++     * the operation failed while reading the status; true in any other case.
++     */
++    public static boolean isEnabled() { return false; }
++
++    /**
++     * This method allows to setup USB charging status.
++     *
++     * @param status The new USB charging status
++     * @return boolean Must be false if USB charging is not supported or the operation
++     * failed; true in any other case.
++     */
++    public static boolean setEnabled(boolean status) { return false; }
++
++}
+-- 
+1.7.9.5
+

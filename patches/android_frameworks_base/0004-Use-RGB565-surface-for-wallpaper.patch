@@ -1,4 +1,4 @@
-From 19854bced96a2f6941928f34945f3e3f86040d1d Mon Sep 17 00:00:00 2001
+From 7eda6bdd27356780963be844980632911a4f4af0 Mon Sep 17 00:00:00 2001
 From: Grigori Goronzy <greg@blackbox>
 Date: Mon, 28 Jan 2013 06:43:09 +0100
 Subject: [PATCH 4/8] Use RGB565 surface for wallpaper

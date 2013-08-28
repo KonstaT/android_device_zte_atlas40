@@ -1,4 +1,4 @@
-From 79a155b28b6114e35ddfcf0c5f34556e22d4f168 Mon Sep 17 00:00:00 2001
+From b07bde9d334120f79b2d626bfa0398f03eca7e0d Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:32:15 +0200
 Subject: [PATCH 3/9] add forum link to device info
@@ -11,7 +11,7 @@ Change-Id: I0f20b34b8f98673d9fc15dd2687b02c0dd296409
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 3fc4107..309867b 100644
+index bcd5528..e55760d 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -22,6 +22,11 @@

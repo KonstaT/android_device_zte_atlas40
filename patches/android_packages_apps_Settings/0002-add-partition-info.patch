@@ -1,4 +1,4 @@
-From be5a8b2c23d2924a887cde78c69ff62eaf2fa6da Mon Sep 17 00:00:00 2001
+From 851a1792432f673543cadb81b8dd5b602335c9ee Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:27:40 +0200
 Subject: [PATCH 2/9] add partition info
@@ -15,10 +15,10 @@ Change-Id: I5a01f913f5d0eca04cbe54175e8fa72cb6418f77
  create mode 100644 src/com/android/settings/PartitionInfo.java
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index a60abb0..aa965c4 100644
+index 7c75360..7c338d3 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -906,6 +906,15 @@
+@@ -908,6 +908,15 @@
                  android:resource="@id/application_settings" /> -->
          </activity>
          
@@ -35,7 +35,7 @@ index a60abb0..aa965c4 100644
                  android:label="@string/location_settings_title"
                  android:configChanges="orientation|keyboardHidden|screenSize"
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 3bd2a9b..3fc4107 100644
+index bef4943..bcd5528 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -14,6 +14,14 @@

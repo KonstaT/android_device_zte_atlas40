@@ -1,4 +1,4 @@
-From 93cfb7cdbe1c722a96df7f1038da30ecba8a0bfa Mon Sep 17 00:00:00 2001
+From 679343996cdcc94add242b673bec4ab0c38ce11c Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Thu, 8 Aug 2013 22:19:50 +0300
 Subject: [PATCH 5/9] expose 4.3's hidden app ops feature
@@ -14,10 +14,10 @@ Change-Id: I3cc8bae91b50e27c4ba193ea9edf9201741128b4
  4 files changed, 9 insertions(+), 5 deletions(-)
 
 diff --git a/AndroidManifest.xml b/AndroidManifest.xml
-index aa965c4..18ed6fe 100644
+index 7c338d3..aec1aca 100644
 --- a/AndroidManifest.xml
 +++ b/AndroidManifest.xml
-@@ -888,16 +888,15 @@
+@@ -890,16 +890,15 @@
  
          <activity android:name="Settings$AppOpsSummaryActivity"
                  android:label="@string/app_ops_settings"

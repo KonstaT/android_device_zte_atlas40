@@ -1,4 +1,4 @@
-From 6e32d102e7915564d01b8cf5eb1522090b0cd924 Mon Sep 17 00:00:00 2001
+From 4ac2fe8dbee9629297fa5087b691c578baae1158 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
 Subject: [PATCH 7/9] custom navbar height (2/2)
@@ -12,7 +12,7 @@ Change-Id: I751ae54de1adf96367948735558363ce0dbb9f89
  4 files changed, 60 insertions(+), 1 deletion(-)
 
 diff --git a/res/values/cm_arrays.xml b/res/values/cm_arrays.xml
-index 1db0a20..6eec542 100644
+index 07ec154..7ec9797 100644
 --- a/res/values/cm_arrays.xml
 +++ b/res/values/cm_arrays.xml
 @@ -14,6 +14,27 @@
@@ -44,7 +44,7 @@ index 1db0a20..6eec542 100644
      <string-array name="wifi_countrycode_entries">
          <item>United States</item>
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index eaec1c7..d061c03 100644
+index df50a82..ae02f54 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -14,6 +14,16 @@
