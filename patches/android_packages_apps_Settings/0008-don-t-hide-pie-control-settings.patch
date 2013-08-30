@@ -1,4 +1,4 @@
-From f546e60daa6f2033ae088923ff627c9d69d127a8 Mon Sep 17 00:00:00 2001
+From 61346eefa8e187d9551cee846d76b3de2c13e832 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 27 Mar 2013 10:01:20 +0200
 Subject: [PATCH 09/10] don't hide pie control settings

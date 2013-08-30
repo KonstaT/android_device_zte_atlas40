@@ -1,4 +1,4 @@
-From 48a3f50cccbfc32b0fc134f092a73d55c75701fc Mon Sep 17 00:00:00 2001
+From 408f944c3cd7b956dc727d3f4c2310b17032f9da Mon Sep 17 00:00:00 2001
 From: Nicholas Semendyaev <agent00791@gmail.com>
 Date: Tue, 18 Sep 2012 20:08:36 -0400
 Subject: [PATCH 05/21] NavigationBar: Custom height (1/2)

@@ -1,4 +1,4 @@
-From 9658d022de522cc891f30779fe53fd344ab3e4fb Mon Sep 17 00:00:00 2001
+From b9e3fa204ae3ee7b07e592703222c895fa86c481 Mon Sep 17 00:00:00 2001
 From: Rick C <rickfitsnugly@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
 Subject: [PATCH 07/10] NavigationBar: Custom height (2/2)

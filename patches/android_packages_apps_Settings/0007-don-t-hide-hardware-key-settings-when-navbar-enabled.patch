@@ -1,4 +1,4 @@
-From 60f3643033c9fda20cfa7fa2017025bcee18830c Mon Sep 17 00:00:00 2001
+From d55877afffedb5f9e572fd0be631fb8f30d67c09 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 9 Feb 2013 21:46:16 +0200
 Subject: [PATCH 08/10] don't hide hardware key settings when navbar enabled

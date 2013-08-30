@@ -1,4 +1,4 @@
-From 5c806779befd94be1058549e19011697d4eb1dc2 Mon Sep 17 00:00:00 2001
+From 02101e9a623976d405db5d236bb28d61af7e5fc8 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:48:22 +0200
 Subject: [PATCH 02/21] add battery bar (1/2)

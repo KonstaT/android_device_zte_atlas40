@@ -1,4 +1,4 @@
-From b68d25c553ade6bb482a6cc26ec0b32de40f1447 Mon Sep 17 00:00:00 2001
+From 35fb4a9fae7eae0c6c32ae2e3d3cdce42275b71b Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 14:58:36 +0200
 Subject: [PATCH 01/10] add option to display navbar (2/2)
