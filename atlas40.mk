@@ -21,10 +21,10 @@ PRODUCT_PACKAGES += \
     btmac
 
 # FM Radio
-#PRODUCT_PACKAGES += \
-#    FM2 \
-#    libqcomfm_jni \
-#    qcom.fmradio
+PRODUCT_PACKAGES += \
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
 
 # GPS
 PRODUCT_PACKAGES += \
