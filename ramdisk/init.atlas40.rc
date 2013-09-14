@@ -146,13 +146,6 @@ on boot
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
-on property:bluetooth.isEnabled=true
-    start abtfilt
-    write /sys/class/bluetooth/hci0/idle_timeout 7000
-
-on property:bluetooth.isEnabled=false
-    stop abtfilt
-
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
@@ -160,13 +153,6 @@ service rmt_storage /system/bin/rmt_storage
 
 on property:ro.boot.emmc=true
     start rmt_storage
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin
-    disabled
-    oneshot
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
