@@ -1,5 +1,5 @@
 #!/system/bin/sh
-# Copyright (c) 2009-2013, The Linux Foundation. All rights reserved.
+# Copyright (c) 2009-2011, Code Aurora Forum. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -8,7 +8,7 @@
 #     * Redistributions in binary form must reproduce the above copyright
 #       notice, this list of conditions and the following disclaimer in the
 #       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
+#     * Neither the name of Code Aurora nor
 #       the names of its contributors may be used to endorse or promote
 #       products derived from this software without specific prior written
 #       permission.
@@ -25,9 +25,6 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-
-#Read the arguments passed to the script
-config="$1"
 
 BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
 LOG_TAG="qcom-bluetooth"
@@ -51,29 +48,6 @@ failed ()
   exit $2
 }
 
-config_bt ()
-{
-  setprop ro.qualcomm.bluetooth.opp true
-  setprop ro.qualcomm.bluetooth.hfp true
-  setprop ro.qualcomm.bluetooth.hsp true
-  setprop ro.qualcomm.bluetooth.pbap true
-  setprop ro.qualcomm.bluetooth.ftp true
-  setprop ro.qualcomm.bluetooth.map true
-  setprop ro.qualcomm.bluetooth.nap true
-  setprop ro.qualcomm.bluetooth.sap true
-  setprop ro.qualcomm.bluetooth.dun true
-
-  logi "Bluetooth stack is bluez"
-  setprop ro.qc.bluetooth.stack bluez
-
-  reason=`getprop vold.decrypt`
-  case "$reason" in
-      "trigger_restart_framework")
-          start dbus
-          ;;
-  esac
-}
-
 start_hciattach ()
 {
   /system/bin/hciattach -n $BTS_DEVICE $BTS_TYPE $BTS_BAUD &
@@ -90,16 +64,6 @@ kill_hciattach ()
   kill -TERM $hciattach_pid
   # this shell doesn't exit now -- wait returns for normal exit
 }
-
-logi "init.qcom.bt.sh config = $config"
-case "$config" in
-    "onboot")
-        config_bt
-        exit 0
-        ;;
-    *)
-        ;;
-esac
 
 # mimic hciattach options parsing -- maybe a waste of effort
 USAGE="hciattach [-n] [-p] [-b] [-t timeout] [-s initial_speed] <tty> <type | id> [speed] [flow|noflow] [bdaddr]"

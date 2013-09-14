@@ -20,16 +20,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Atlas40Parts
 
-# Bluez
-PRODUCT_PACKAGES += \
-    Bluetooth2 \
-    bluetoothd \
-    hciattach \
-    hciconfig \
-    hcitool \
-    javax.btobex \
-    libbluetoothd
-
 # FM Radio
 PRODUCT_PACKAGES += \
     FM2 \
@@ -89,16 +79,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-
-# Bluez
-PRODUCT_COPY_FILES += \
-    system/bluetooth/data/audio.conf:system/etc/bluetooth/audio.conf \
-    system/bluetooth/data/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-    system/bluetooth/data/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-    system/bluetooth/data/input.conf:system/etc/bluetooth/input.conf \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
-    system/bluetooth/data/network.conf:system/etc/bluetooth/network.conf \
-    system/bluetooth/data/stack.conf:system/etc/bluetooth/stack.conf
 
 # Enable repeatable keys in CWM
 PRODUCT_PROPERTY_OVERRIDES += \
