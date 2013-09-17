@@ -1,7 +1,7 @@
-From b9e3fa204ae3ee7b07e592703222c895fa86c481 Mon Sep 17 00:00:00 2001
+From bc265b06462501d73bfe8670f2080de5075bceb0 Mon Sep 17 00:00:00 2001
 From: Rick C <rickfitsnugly@gmail.com>
 Date: Tue, 18 Sep 2012 20:09:13 -0400
-Subject: [PATCH 07/10] NavigationBar: Custom height (2/2)
+Subject: [PATCH 7/9] NavigationBar: Custom height (2/2)
 
 Ported from http://review.cyanogenmod.org/#/c/23610/
 

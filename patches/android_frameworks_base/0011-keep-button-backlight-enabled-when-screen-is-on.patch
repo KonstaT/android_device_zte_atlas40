@@ -1,7 +1,7 @@
-From b87c88e4b6d1c0bd1015921b39cf2af1dfbebb47 Mon Sep 17 00:00:00 2001
+From 838067ea923f5ef209de0ff79c49b72cf6fbdab6 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Mon, 26 Aug 2013 23:57:19 +0300
-Subject: [PATCH 19/21] keep button backlight enabled when screen is on
+Subject: [PATCH 18/20] keep button backlight enabled when screen is on
 
 Change-Id: If2d92da19b55e69508782188bc8685685c5286ba
 ---

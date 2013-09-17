@@ -1,7 +1,7 @@
-From 18354cc5e60b793c5df337b06a290596416b2832 Mon Sep 17 00:00:00 2001
+From 1326b84fd8dbb6ee72d8520c90385922fa8a8374 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 1 Jan 2013 19:11:19 +0200
-Subject: [PATCH 05/10] add option to disable bootanimation (2/2)
+Subject: [PATCH 5/9] add option to disable bootanimation (2/2)
 
 Change-Id: Ia1c29e89318ced977c5b1881bfd5b62253128f6b
 ---

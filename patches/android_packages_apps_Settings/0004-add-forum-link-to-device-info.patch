@@ -1,7 +1,7 @@
-From 857fb98abec9fc01d2a6da20bcabe3648f888231 Mon Sep 17 00:00:00 2001
+From 3989b2f9a6a239f2daae64988de3c9c141d7b1b8 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:32:15 +0200
-Subject: [PATCH 04/10] add forum link to device info
+Subject: [PATCH 4/9] add forum link to device info
 
 Change-Id: I0f20b34b8f98673d9fc15dd2687b02c0dd296409
 ---

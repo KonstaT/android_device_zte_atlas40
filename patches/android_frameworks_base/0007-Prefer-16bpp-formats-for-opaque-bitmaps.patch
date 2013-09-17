@@ -1,7 +1,7 @@
-From 505f207a47841618ebb4bb596a916460966a519e Mon Sep 17 00:00:00 2001
+From e450d9ce255d546b523ed5e68b996e599aa3f72d Mon Sep 17 00:00:00 2001
 From: Grigori Goronzy <greg@blackbox>
 Date: Mon, 28 Jan 2013 06:44:58 +0100
-Subject: [PATCH 09/21] Prefer 16bpp formats for opaque bitmaps
+Subject: [PATCH 09/20] Prefer 16bpp formats for opaque bitmaps
 
 Configure BitmapFactory to prefer RGB565, which will make it
 use that format for all opaque assets loaded by it with standard

@@ -1,7 +1,7 @@
-From 408f944c3cd7b956dc727d3f4c2310b17032f9da Mon Sep 17 00:00:00 2001
+From 12fe991890263880dd526dfe470e56301c052e43 Mon Sep 17 00:00:00 2001
 From: Nicholas Semendyaev <agent00791@gmail.com>
 Date: Tue, 18 Sep 2012 20:08:36 -0400
-Subject: [PATCH 05/21] NavigationBar: Custom height (1/2)
+Subject: [PATCH 05/20] NavigationBar: Custom height (1/2)
 
 Ported from http://review.cyanogenmod.org/#/c/23609/
 
