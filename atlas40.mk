@@ -16,6 +16,10 @@ PRODUCT_PACKAGES += \
     audio_policy.msm7x27a \
     audio.primary.msm7x27a
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    btmac
+
 # FM Radio
 #PRODUCT_PACKAGES += \
 #    FM2 \

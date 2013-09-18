@@ -3,6 +3,7 @@
 #
 
 # Bluetooth
+ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr
 bt.chip.type=WCN_2243
 
 # Dalvik

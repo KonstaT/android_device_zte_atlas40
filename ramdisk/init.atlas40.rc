@@ -212,16 +212,13 @@ service iprelease_wlan0 /system/bin/dhcpcd -k
     disabled
     oneshot
 
-service abtfilt /system/bin/abtfilt -a -d -z -n -q -v -s -w wlan0
-    class late_start
-    user root
-    group bluetooth net_bt_admin inet net_admin net_raw
-    disabled
-    oneshot
-
 service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     class late_start 
     disabled
+    oneshot
+
+service btmac /system/bin/btmac
+    class main
     oneshot
 
 service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
