@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Atlas40Parts
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    btmac
+
 # FM Radio
 PRODUCT_PACKAGES += \
     FM2 \
