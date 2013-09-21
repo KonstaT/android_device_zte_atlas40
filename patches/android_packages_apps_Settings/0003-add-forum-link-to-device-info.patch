@@ -1,4 +1,4 @@
-From b07bde9d334120f79b2d626bfa0398f03eca7e0d Mon Sep 17 00:00:00 2001
+From cb442c2102eac3ad1e6743a5b95f2cd55b9e5174 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 18 Dec 2012 15:32:15 +0200
 Subject: [PATCH 3/9] add forum link to device info
@@ -11,7 +11,7 @@ Change-Id: I0f20b34b8f98673d9fc15dd2687b02c0dd296409
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index bcd5528..e55760d 100644
+index 2d4778f..4eaac7f 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -22,6 +22,11 @@
@@ -41,18 +41,18 @@ index 3c6cb71..c65afca 100644
 +
  </PreferenceScreen>
 diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/settings/DeviceInfoSettings.java
-index e07cbce..543765b 100644
+index 8a67d39..9fbe701 100644
 --- a/src/com/android/settings/DeviceInfoSettings.java
 +++ b/src/com/android/settings/DeviceInfoSettings.java
-@@ -19,6 +19,7 @@ package com.android.settings;
- import android.app.Activity;
+@@ -21,6 +21,7 @@ import android.app.AlertDialog;
  import android.content.Context;
+ import android.content.DialogInterface;
  import android.content.Intent;
 +import android.net.Uri;
  import android.os.Build;
  import android.os.Bundle;
  import android.os.SELinux;
-@@ -28,6 +29,7 @@ import android.os.UserHandle;
+@@ -30,6 +31,7 @@ import android.os.UserHandle;
  import android.preference.Preference;
  import android.preference.PreferenceGroup;
  import android.preference.PreferenceScreen;
@@ -60,7 +60,7 @@ index e07cbce..543765b 100644
  import android.util.Log;
  import android.widget.Toast;
  
-@@ -179,6 +181,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
+@@ -181,6 +183,16 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
          // Remove regulatory information if not enabled.
          removePreferenceIfBoolFalse(KEY_REGULATORY_INFO,
                  R.bool.config_show_regulatory_info);

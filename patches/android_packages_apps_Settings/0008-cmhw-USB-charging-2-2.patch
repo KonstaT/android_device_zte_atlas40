@@ -1,4 +1,4 @@
-From 8428ed491848f8121338b212748404c5121ed35a Mon Sep 17 00:00:00 2001
+From 3deeb593afd3771b2af400d9cc20f1dbf4e24974 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Mon, 19 Aug 2013 13:03:28 +0300
 Subject: [PATCH 9/9] cmhw: USB charging (2/2)
@@ -12,7 +12,7 @@ Change-Id: Ia627239addddd45adaf4fc617c6904495660de73
  4 files changed, 68 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index 66b909b..d107abf 100644
+index 00671db..bd2ba4e 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -1008,6 +1008,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte

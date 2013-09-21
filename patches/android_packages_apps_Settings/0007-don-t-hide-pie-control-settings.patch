@@ -1,4 +1,4 @@
-From 1a157059d33954311f919d56b9292a2a8c4744ba Mon Sep 17 00:00:00 2001
+From fc8b8fe16a99dfb254acd4c801abb6542d2d32a7 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 27 Mar 2013 10:01:20 +0200
 Subject: [PATCH 8/9] don't hide pie control settings
@@ -11,7 +11,7 @@ Change-Id: Ib0a9b2029174a12fa96a86a9e05b8a867bdf3111
  3 files changed, 6 insertions(+), 7 deletions(-)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index ae02f54..66b909b 100644
+index 0f58cf8..00671db 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -860,7 +860,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte

@@ -1,7 +1,7 @@
-From 1bfc3146de7bc93c1741f4a36f36bfc0ad2c861d Mon Sep 17 00:00:00 2001
+From 7e5595ef74114bd69a1dc15fb60643989e66ca31 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Wed, 27 Mar 2013 10:23:27 +0200
-Subject: [PATCH 6/8] allow pie controls without enabling expanded desktop
+Subject: [PATCH 06/10] allow pie controls without enabling expanded desktop
 
 Change-Id: I6b26592bda1958e6e7d0e9af81a9123d087cd309
 ---
@@ -9,10 +9,10 @@ Change-Id: I6b26592bda1958e6e7d0e9af81a9123d087cd309
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
-index 12748a7..ce666b2 100644
+index bf2e9f7..22a85b1 100644
 --- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
 +++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/PieController.java
-@@ -700,7 +700,7 @@ public class PieController implements BaseStatusBar.NavigationBarCallback, PieVi
+@@ -704,7 +704,7 @@ public class PieController implements BaseStatusBar.NavigationBarCallback, PieVi
          int pie = Settings.System.getIntForUser(mContext.getContentResolver(),
                  Settings.System.PIE_CONTROLS, 0, UserHandle.USER_CURRENT);
  

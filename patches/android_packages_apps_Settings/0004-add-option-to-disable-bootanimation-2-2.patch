@@ -1,4 +1,4 @@
-From dcab59da096e139b685bb884efc46014db5e4bdc Mon Sep 17 00:00:00 2001
+From 407806c203a07962f10d2df844fd8c4e07c1fda0 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Tue, 1 Jan 2013 19:11:19 +0200
 Subject: [PATCH 4/9] add option to disable bootanimation (2/2)
@@ -11,7 +11,7 @@ Change-Id: Ia1c29e89318ced977c5b1881bfd5b62253128f6b
  3 files changed, 22 insertions(+)
 
 diff --git a/res/values/cm_strings.xml b/res/values/cm_strings.xml
-index e55760d..3854fd3 100644
+index 4eaac7f..5ebdf0d 100644
 --- a/res/values/cm_strings.xml
 +++ b/res/values/cm_strings.xml
 @@ -27,6 +27,10 @@
