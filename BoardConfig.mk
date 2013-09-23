@@ -28,6 +28,8 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a5
 TARGET_ARCH_VARIANT := armv7-a-neon
 
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a5 -mfpu=neon -mfloat-abi=softfp
 
@@ -110,7 +112,6 @@ TARGET_PREBUILT_RECOVERY_KERNEL := device/zte/atlas40/recovery/kernel
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
-RECOVERY_FSTAB_VERSION := 2
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
