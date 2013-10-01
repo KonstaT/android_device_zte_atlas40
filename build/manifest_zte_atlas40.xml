@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="konsta"
+        fetch="git://github.com/KonstaT/" />
+
+    <!-- ZTE Blade III -->
+    <project path="device/zte/atlas40" name="android_device_zte_atlas40" remote="konsta" revision="b2g" />
+    <project path="vendor/zte" name="proprietary_vendor_zte" remote="konsta" revision="b2g" />
+</manifest>
