@@ -25,7 +25,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_atlas40
-PRODUCT_DEVICE := Blade III
+PRODUCT_DEVICE := atlas40
 PRODUCT_BRAND := ZTE
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_MODEL := atlas40
