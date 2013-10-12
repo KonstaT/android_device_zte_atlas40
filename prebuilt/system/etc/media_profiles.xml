@@ -147,6 +147,64 @@
 
     </CamcorderProfiles>
 
+    <!-- Front Camera -->
+    <CamcorderProfiles cameraId="1">
+
+    <EncoderProfile quality="high" fileFormat="mp4" duration="30">
+        <Video codec="h264"
+            bitRate="2000000"
+            width="640"
+            height="480"
+            frameRate="30" />
+        <Audio codec="aac"
+            bitRate="96000"
+            sampleRate="16000"
+            channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="low" fileFormat="mp4" duration="30">
+        <Video codec="h264"
+            bitRate="192000"
+            width="176"
+            height="144"
+            frameRate="30" />
+        <Audio codec="amrnb"
+            bitRate="12200"
+            sampleRate="8000"
+            channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
+      <Video codec="h264"
+             bitRate="2000000"
+             width="640"
+             height="480"
+             frameRate="30" />
+        <Audio codec="aac"
+            bitRate="96000"
+            sampleRate="16000"
+            channels="1" />
+    </EncoderProfile>
+
+    <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
+        <Video codec="h264"
+            bitRate="192000"
+            width="176"
+            height="144"
+            frameRate="30" />
+        <Audio codec="amrnb"
+            bitRate="12200"
+            sampleRate="8000"
+            channels="1" />
+    </EncoderProfile>
+
+    <ImageEncoding quality="90" />
+    <ImageEncoding quality="80" />
+    <ImageEncoding quality="70" />
+    <ImageDecoding memCap="20000000" />
+
+    </CamcorderProfiles>
+
     <EncoderOutputFileFormat name="mp4" />
 
     <!--
