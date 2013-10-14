@@ -123,20 +123,6 @@ on boot
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
     write /sys/devices/system/cpu/cpufreq/ondemand/down_differential 10
 
-    # boostpulse
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chown system system /sys/devices/system/cpu/cpufreq/ondemand/down_differential
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-    chmod 0666 /sys/devices/system/cpu/cpufreq/ondemand/down_differential
-
     # USB charging
     chown system system /sys/module/msm_battery/parameters/usb_chg_enable
 
