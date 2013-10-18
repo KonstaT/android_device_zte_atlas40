@@ -101,9 +101,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
-# Hardware tunables framework
-BOARD_HARDWARE_CLASS := device/zte/atlas40/cmhw/
-
 # Recovery
 TARGET_RECOVERY_INITRC := device/zte/atlas40/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/zte/atlas40/ramdisk/fstab.atlas40

@@ -1,18 +1,18 @@
-## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+# Get the long list of APNs
+PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+
+# Inherit from our custom product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/zte/atlas40/atlas40.mk)
 
-# Correct boot animation size for the screen.
-TARGET_BOOTANIMATION_NAME := vertical-480x800
-
-## Device identifier. This must come after all inclusions
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := atlas40
-PRODUCT_NAME := cm_atlas40
+PRODUCT_NAME := omni_atlas40
 PRODUCT_BRAND := ZTE
 PRODUCT_MODEL := Blade III
 PRODUCT_MANUFACTURER := ZTE

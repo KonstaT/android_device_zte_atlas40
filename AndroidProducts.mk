@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/atlas40.mk
+    $(LOCAL_DIR)/omni_atlas40.mk
