@@ -102,10 +102,11 @@ ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/zte/atlas40/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/zte/atlas40/ramdisk/fstab.atlas40
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
+DEVICE_RESOLUTION := 480x800
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Partition sizes

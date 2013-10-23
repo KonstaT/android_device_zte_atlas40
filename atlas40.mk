@@ -60,6 +60,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/atlas40/ramdisk,root)
 
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/zte/atlas40/prebuilt/recovery,recovery/root)
+
 # Prebuilt
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/atlas40/prebuilt/system,system)
