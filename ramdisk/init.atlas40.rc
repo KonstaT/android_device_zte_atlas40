@@ -163,7 +163,6 @@ service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant -Dnl802
     disabled
     oneshot
 
-#ZTE_JHT_20120423+++
 service hostapd /system/bin/hostapd -dddd /data/misc/wifi/hostapd.conf
     class late_start
     socket hostapd_wlan0 dgram 660 root wifi
@@ -171,7 +170,6 @@ service hostapd /system/bin/hostapd -dddd /data/misc/wifi/hostapd.conf
     group wifi
     oneshot
     disabled
-#ZTE_JHT_20120423---
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -BKLG
     class late_start
@@ -233,4 +231,3 @@ service ril-daemon1 /system/bin/rild -c 1
 
 on property:ro.multi.rild=true
     start ril-daemon1
-
