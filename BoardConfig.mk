@@ -105,7 +105,6 @@ TARGET_FORCE_CPU_UPLOAD := true
 BOARD_HARDWARE_CLASS := device/zte/atlas40/cmhw/
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/zte/atlas40/recovery/recovery.rc
 TARGET_RECOVERY_FSTAB := device/zte/atlas40/ramdisk/fstab.atlas40
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
