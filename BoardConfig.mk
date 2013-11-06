@@ -97,10 +97,6 @@ BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := atlas40
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
-# Webkit
-ENABLE_WEBGL := true
-TARGET_FORCE_CPU_UPLOAD := true
-
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := device/zte/atlas40/cmhw/
 
