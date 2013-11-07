@@ -35,28 +35,22 @@ on post-fs-data
     mkdir /dev/radio 0770 radio radio
     chown radio system /dev/pm_monitor
 
-    #Create directories for wiper services
-    mkdir /data/wpstiles/ 0755 shell
-    mkdir /data/wiper 0775 gps qcom_oncrpc
-
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    chown system  system /sys/class/compass/akm8962/enable_acc
-    chown system  system /sys/class/compass/akm8962/enable_mag
-    chown system  system /sys/class/compass/akm8962/enable_ori
-    chown system  system /sys/class/compass/akm8962/delay_acc
-    chown system  system /sys/class/compass/akm8962/delay_mag
-    chown system  system /sys/class/compass/akm8962/delay_ori
-    chown system  system /sys/class/compass/akm8962/accel
+    chown system system /sys/class/compass/akm8962/enable_acc
+    chown system system /sys/class/compass/akm8962/enable_mag
+    chown system system /sys/class/compass/akm8962/enable_ori
+    chown system system /sys/class/compass/akm8962/delay_acc
+    chown system system /sys/class/compass/akm8962/delay_mag
+    chown system system /sys/class/compass/akm8962/delay_ori
+    chown system system /sys/class/compass/akm8962/accel
 
     setprop vold.post_fs_data_done 1
 
@@ -139,7 +133,6 @@ service rmt_storage /system/bin/rmt_storage
 on property:ro.boot.emmc=true
     start rmt_storage
 
-# QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class core
     user radio
@@ -199,14 +192,3 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
 service akmd /system/bin/akmd8962_new -m 5
     class main
     oneshot
-
-service ril-daemon1 /system/bin/rild -c 1
-    class late_start
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_rw qcom_oncrpc diag
-
-on property:ro.multi.rild=true
-    start ril-daemon1
