@@ -149,6 +149,9 @@
          that can be set by the user. -->
     <integer name="config_screenBrightnessDim">20</integer>
 
+    <!-- Disable lockscreen translucent decor by default -->
+    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+
     <!-- Hardware 'face' keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
