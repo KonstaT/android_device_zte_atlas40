@@ -48,6 +48,7 @@ BOARD_EGL_CFG := device/zte/atlas40/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 BOARD_ADRENO_DECIDE_TEXTURE_TARGET := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Video
 TARGET_QCOM_LEGACY_OMX := true
