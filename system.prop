@@ -48,6 +48,9 @@ ro.telephony.call_ring.delay=3000
 persist.sys.usb.config=mtp,adb
 persist.service.adb.enable=1
 
+# Webkit
+persist.webview.provider=classic
+
 # Wifi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=60
