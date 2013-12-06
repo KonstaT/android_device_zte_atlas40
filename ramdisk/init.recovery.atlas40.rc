@@ -11,3 +11,9 @@ on boot
 
 service rmt_storage /sbin/rmt_storage_recovery
     user root
+
+on property:recovery.perf.mode=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+
+on property:recovery.perf.mode=0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
