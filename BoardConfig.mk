@@ -111,6 +111,8 @@ TARGET_RECOVERY_FSTAB := device/zte/atlas40/ramdisk/fstab.atlas40
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
+COMMON_GLOBAL_CFLAGS += -DRECOVERY_CANT_USE_CONFIG_EXT4_FS_XATTR
+SKIP_SET_METADATA := true
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
