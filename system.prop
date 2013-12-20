@@ -1,20 +1,11 @@
-#
-# system.prop for atlas40
-#
 
 # Bluetooth
 ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr
-bt.chip.type=WCN_2243
 
 # Dalvik
-dalvik.vm.checkjni=0
-dalvik.vm.dexopt-data-only=1
-dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=y
-dalvik.vm.execution-mode=int:jit
 dalvik.vm.jit.codecachesize=0
 
 # Display
-debug.sf.hw=1
 ro.max.fling_velocity=4000
 ro.opengles.version=131072
 ro.sf.lcd_density=240
@@ -28,8 +19,6 @@ ro.fm.mulinst.recording.support=false
 
 # Memory
 ro.zram.default=0
-persist.sys.purgeable_assets=1
-sys.mem.max_hidden_apps=10
 ro.config.low_ram=true
 
 # Qualcomm
@@ -54,4 +43,3 @@ persist.webview.provider=classic
 # Wifi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=60
-wifi.chip.type=AR_6005
