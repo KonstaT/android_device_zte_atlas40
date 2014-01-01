@@ -8,6 +8,7 @@ on init
     write /sys/class/android_usb/android0/iSerial CWM-ZTE
 
 on boot
+    setprop recovery.perf.mode 0
 
 service rmt_storage /sbin/rmt_storage_recovery
     user root
