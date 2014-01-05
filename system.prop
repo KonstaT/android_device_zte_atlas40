@@ -2,9 +2,6 @@
 # Bluetooth
 ro.bt.bdaddr_path=/data/misc/bluedroid/bdaddr
 
-# Dalvik
-dalvik.vm.jit.codecachesize=0
-
 # Display
 ro.max.fling_velocity=4000
 ro.opengles.version=131072
