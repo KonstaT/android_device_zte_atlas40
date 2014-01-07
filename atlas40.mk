@@ -41,11 +41,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.atlas40
 
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapersPicker \
-    librs_jni
-
 # Power HAL
 PRODUCT_PACKAGES += \
     power.msm7x27a
