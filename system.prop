@@ -15,6 +15,7 @@ ro.fm.transmitter=false
 ro.fm.mulinst.recording.support=false
 
 # Memory
+ro.ksm.default=1
 ro.config.low_ram=true
 
 # Qualcomm
