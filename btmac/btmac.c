@@ -78,7 +78,7 @@ static void handle_bt_mac(void)
 		get_bt_mac(btmac);
 
 		snprintf(bt_mac_address, MAC_STRING_SIZE,
-			"%.2X:%.2X:%.2X:%.2X:%.2X:%.2X",
+			"%02X:%02X:%02X:%02X:%02X:%02X",
 			btmac[0], btmac[1], btmac[2],
 			btmac[3], btmac[4], btmac[5]);
 
