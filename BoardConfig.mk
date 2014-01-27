@@ -43,6 +43,10 @@ BOARD_KERNEL_PAGESIZE := 4096
 
 TARGET_SPECIFIC_HEADER_PATH := device/zte/atlas40/include
 
+# Build
+TARGET_SYSTEMIMAGE_USE_SQUISHER := true
+SKIP_SET_METADATA := true
+
 # Graphics
 BOARD_EGL_CFG := device/zte/atlas40/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
@@ -115,7 +119,6 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_UMS_LUNFILE := "sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USERIMAGES_USE_EXT4 := true
 COMMON_GLOBAL_CFLAGS += -DRECOVERY_CANT_USE_CONFIG_EXT4_FS_XATTR
-SKIP_SET_METADATA := true
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
