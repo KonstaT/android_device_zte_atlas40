@@ -84,10 +84,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.cwm.enable_key_repeat=true
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, build/target/product/full_base_telephony.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := full_atlas40
-PRODUCT_DEVICE := atlas40
-PRODUCT_MANUFACTURER := ZTE
-PRODUCT_MODEL := Blade III
