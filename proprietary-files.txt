@@ -36,6 +36,8 @@ bin/fm_qsoc_patches
 lib/libDivxDrm.so
 lib/libdivxdrmdecrypt.so
 lib/libmm-adspsvc.so
+lib/libmmosal.so
+lib/libmmparser.so
 lib/libOmxAacDec.so
 lib/libOmxAacEnc.so
 lib/libOmxAdpcmDec.so
@@ -60,25 +62,16 @@ lib/libOmxVp8Dec.so
 lib/libOmxWmaDec.so
 lib/libOmxWmvDec.so
 
-# Qualcomm
-lib/libmm-abl-oem.so
-lib/libmm-abl.so
-lib/libmmosal.so
-lib/libmmparser.so
-lib/libqc-opt.so
-
 # RIL & misc
 bin/netmgrd
 bin/qmuxd
 bin/rild
 bin/rmt_storage
-lib/libaudioeq.so
 lib/libauth.so
 lib/libcm.so
 lib/libdiag.so
 lib/libdsi_netctrl.so
 lib/libdsm.so
-lib/libdsprofile.so
 lib/libdss.so
 lib/libdsutils.so
 lib/libgsdi_exp.so
@@ -87,16 +80,15 @@ lib/libidl.so
 lib/libmmgsdilib.so
 lib/libnv.so
 lib/libnetmgr.so
-lib/liboem_rapi.so
 lib/liboncrpc.so
 lib/libpbmlib.so
+lib/libqc-opt.so
 lib/libqdi.so
 lib/libqdp.so
 lib/libqmiservices.so
 lib/libqmi.so
 lib/libqueue.so
 lib/libril-qc-1.so
-lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
 lib/libril.so
 lib/libSimCardAuth.so
