@@ -1,0 +1,18 @@
+# SELinux
+bin/auditd
+
+# Random build cruft
+lib/crtbegin_so.o
+lib/crtend_so.o
+
+# Recovery
+etc/recovery-resource.dat
+
+# Video editor
+app/VideoEditor.apk
+lib/libvideoeditor_core.so
+lib/libvideoeditor_jni.so
+lib/libvideoeditor_osal.so
+lib/libvideoeditor_videofilters
+lib/libvideoeditor_videofilters.so
+lib/libvideoeditorplayer.so
