@@ -88,15 +88,13 @@ static int bt_vendor_qcom_op(bt_vendor_opcode_t opcode, void *param)
 	case BT_VND_OP_USERIAL_CLOSE:
 		bt_hardware_serial(false);
 		break;
-	case BT_VND_OP_GET_LPM_IDLE_TIMEOUT:
-		break;
 	case BT_VND_OP_LPM_SET_MODE:
 		bt_vendor_callbacks->lpm_cb(BT_VND_OP_RESULT_SUCCESS);
 		break;
-	case BT_VND_OP_LPM_WAKE_SET_STATE:
-		break;
 	case BT_VND_OP_EPILOG:
 		bt_vendor_callbacks->epilog_cb(BT_VND_OP_RESULT_SUCCESS);
+		break;
+	default:
 		break;
 	}
 
