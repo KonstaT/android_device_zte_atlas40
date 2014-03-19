@@ -35,6 +35,7 @@ bin/fm_qsoc_patches
 # OMX
 lib/libDivxDrm.so
 lib/libdivxdrmdecrypt.so
+lib/libExtendedExtractor.so
 lib/libmm-adspsvc.so
 lib/libmmosal.so
 lib/libmmparser.so
