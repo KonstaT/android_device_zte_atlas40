@@ -21,7 +21,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
   ro.moz.cam.0.sensor_offset=270 \
   ro.moz.ril.emergency_by_default=true \
   ro.moz.omx.hw.max_width=640 \
-  ro.moz.omx.hw.max_height=360
+  ro.moz.omx.hw.max_height=360 \
+  ro.moz.fm.noAnalog=true
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := full_atlas40
