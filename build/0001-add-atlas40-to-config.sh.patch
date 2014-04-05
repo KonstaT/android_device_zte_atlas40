@@ -1,28 +1,37 @@
-From aac153ed68db0b6391d201fcea70bde593cb5f63 Mon Sep 17 00:00:00 2001
+From 500192b2ed713e3c7f592c488e0b869cd3616ec6 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 28 Sep 2013 13:20:52 +0300
 Subject: [PATCH] add atlas40 to config.sh
 
 ---
- config.sh |    5 +++++
- 1 file changed, 5 insertions(+)
+ config.sh |    7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/config.sh b/config.sh
-index e60cf5c..d27c9bf 100755
+index bbb0c50..bf55a20 100755
 --- a/config.sh
 +++ b/config.sh
-@@ -101,6 +101,11 @@ case "$1" in
+@@ -115,6 +115,12 @@ case "$1" in
  	repo_sync $1
  	;;
  
 +"atlas40")
-+	echo DEVICE=$1 >> .tmp-config &&
++	echo DEVICE=atlas40 >> .tmp-config &&
++	echo LUNCH=full_atlas40-userdebug >> .tmp-config &&
 +	repo_sync inari
 +	;;
 +
- "otoro"|"unagi"|"keon"|"inari"|"leo"|"hamachi"|"peak"|"helix"|"wasabi")
+ "otoro"|"unagi"|"keon"|"inari"|"leo"|"hamachi"|"peak"|"helix"|"wasabi"|"flatfish")
  	echo DEVICE=$1 >> .tmp-config &&
  	repo_sync $1
+@@ -180,6 +186,7 @@ case "$1" in
+ 	echo - nexus-s
+ 	echo - nexus-s-4g
+ 	echo - flo "(Nexus 7 2013)"
++	echo - atlas40
+ 	echo - otoro
+ 	echo - unagi
+ 	echo - inari
 -- 
 1.7.9.5
 
