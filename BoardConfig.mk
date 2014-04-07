@@ -32,7 +32,7 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
 KERNEL_DEFCONFIG := atlas40_defconfig
 ARCH_ARM_HAVE_TLS_REGISTER := true
-BOARD_EGL_CFG := device/qcom/$(TARGET_PRODUCT)/egl.cfg
+BOARD_EGL_CFG := device/zte/atlas40/egl.cfg
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
