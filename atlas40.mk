@@ -4,6 +4,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
        dalvik.vm.heapsize=128m
 
 $(call inherit-product, device/qcom/common/common.mk)
+$(call inherit-product-if-exists, vendor/zte/atlas40/atlas40-vendor-blobs.mk)
 
 PRODUCT_NAME := atlas40
 PRODUCT_DEVICE := atlas40
