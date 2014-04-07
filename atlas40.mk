@@ -17,3 +17,5 @@ PRODUCT_MODEL := BLADE III
 #Bluetooth configuration files
 PRODUCT_COPY_FILES += \
    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+
+$(call inherit-product, device/zte/atlas40/prebuilt.mk)
