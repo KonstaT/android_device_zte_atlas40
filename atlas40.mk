@@ -6,6 +6,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product-if-exists, vendor/zte/atlas40/atlas40-vendor-blobs.mk)
 
+DEVICE_PACKAGE_OVERLAYS += device/zte/atlas40/overlay
+
 PRODUCT_NAME := atlas40
 PRODUCT_DEVICE := atlas40
 PRODUCT_BRAND := ZTE
