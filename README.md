@@ -11,9 +11,9 @@ How to build:
 
 Add support for Blade III:
 
-    curl -L -o 0001-add-atlas40-to-config.sh.patch -O -L https://raw.github.com/KonstaT/android_device_zte_atlas40/b2g/build/0001-add-atlas40-to-config.sh.patch
+    curl -L -o 0001-add-atlas40-to-config.sh.patch -O -L https://raw.github.com/KonstaT/android_device_zte_atlas40/b2g/patches/0001-add-atlas40-to-config.sh.patch
     git am -3 0001-add-atlas40-to-config.sh.patch
-    curl --create-dirs -L -o .repo/local_manifests/manifest_zte_atlas40.xml -O -L https://raw.github.com/KonstaT/android_device_zte_atlas40/b2g/build/manifest_zte_atlas40.xml
+    curl --create-dirs -L -o .repo/local_manifests/manifest_zte_atlas40.xml -O -L https://raw.github.com/KonstaT/android_device_zte_atlas40/b2g/patches/manifest_zte_atlas40.xml
     ./config.sh atlas40
 
 Build:

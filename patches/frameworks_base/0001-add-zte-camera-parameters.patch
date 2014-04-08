@@ -1,0 +1,42 @@
+From 3ed29fb75fda78e80243181687fa7f27bdc6d277 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Sun, 6 Apr 2014 17:17:42 +0300
+Subject: [PATCH] add zte camera parameters
+
+Change-Id: I8bf1e086864c705f6fea35db0ea4309656e6cf96
+---
+ include/camera/CameraParameters.h |    3 +++
+ libs/camera/CameraParameters.cpp  |    3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/include/camera/CameraParameters.h b/include/camera/CameraParameters.h
+index 6db02f4..0a04eb1 100755
+--- a/include/camera/CameraParameters.h
++++ b/include/camera/CameraParameters.h
+@@ -603,6 +603,9 @@ public:
+ 
+     static const char KEY_AE_BRACKET_HDR[];
+ 
++    static const char KEY_SHUTTER_SOUND_SELECT[];
++    static const char KEY_SHUTTER_SOUND[];
++
+     // Value for KEY_ZOOM_SUPPORTED or KEY_SMOOTH_ZOOM_SUPPORTED.
+     static const char TRUE[];
+     static const char FALSE[];
+diff --git a/libs/camera/CameraParameters.cpp b/libs/camera/CameraParameters.cpp
+index c60e7ac..f283cce 100755
+--- a/libs/camera/CameraParameters.cpp
++++ b/libs/camera/CameraParameters.cpp
+@@ -130,6 +130,9 @@ const char CameraParameters::KEY_POWER_MODE[] = "power-mode";
+ /*only effective when KEY_AE_BRACKET_HDR set to ae_bracketing*/
+ //const char CameraParameters::KEY_AE_BRACKET_SETTING_KEY[] = "ae-bracket-setting";
+ 
++const char CameraParameters::KEY_SHUTTER_SOUND_SELECT[] = "shutter-sound-select";
++const char CameraParameters::KEY_SHUTTER_SOUND[] = "shutter-sound";
++
+ const char CameraParameters::TRUE[] = "true";
+ const char CameraParameters::FALSE[] = "false";
+ const char CameraParameters::FOCUS_DISTANCE_INFINITY[] = "Infinity";
+-- 
+1.7.9.5
+

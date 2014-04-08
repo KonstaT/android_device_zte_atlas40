@@ -1,4 +1,4 @@
-From 500192b2ed713e3c7f592c488e0b869cd3616ec6 Mon Sep 17 00:00:00 2001
+From e7abe76f6cc46aabf4dbf99c4758b2f68127865d Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 28 Sep 2013 13:20:52 +0300
 Subject: [PATCH] add atlas40 to config.sh
@@ -8,7 +8,7 @@ Subject: [PATCH] add atlas40 to config.sh
  1 file changed, 7 insertions(+)
 
 diff --git a/config.sh b/config.sh
-index bbb0c50..bf55a20 100755
+index bbb0c50..88e5843 100755
 --- a/config.sh
 +++ b/config.sh
 @@ -115,6 +115,12 @@ case "$1" in
@@ -17,7 +17,7 @@ index bbb0c50..bf55a20 100755
  
 +"atlas40")
 +	echo DEVICE=atlas40 >> .tmp-config &&
-+	echo LUNCH=full_atlas40-userdebug >> .tmp-config &&
++	echo LUNCH=atlas40-userdebug >> .tmp-config &&
 +	repo_sync inari
 +	;;
 +
