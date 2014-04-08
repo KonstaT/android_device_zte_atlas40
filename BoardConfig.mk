@@ -4,16 +4,10 @@
 # Product-specific compile-time definitions.
 #
 
-USE_CAMERA_STUB := true
-
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_QCOM_FM := true
-
+# Platform
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
-# Try to use ASHMEM if possible (when non-MDP composition is used)
-TARGET_GRALLOC_USES_ASHMEM := true
 
 TARGET_CPU_ABI  := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -22,17 +16,28 @@ TARGET_BOARD_PLATFORM := msm7627a
 TARGET_BOOTLOADER_BOARD_NAME := atlas40
 QCOM_TARGET_PRODUCT := msm7627a
 
+ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_CORTEX_CACHE_LINE_32 := true
-
-BOARD_KERNEL_BASE    := 0x00200000
-BOARD_KERNEL_PAGESIZE := 4096
-
 TARGET_USERIMAGES_USE_EXT4 := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
+# Kernel
 KERNEL_DEFCONFIG := atlas40_defconfig
-ARCH_ARM_HAVE_TLS_REGISTER := true
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom
+BOARD_KERNEL_BASE := 0x00200000
+BOARD_KERNEL_PAGESIZE := 4096
+
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+
+# Camera
+USE_CAMERA_STUB := true
+
+# FM radio
+BOARD_HAVE_QCOM_FM := true
+
+# Graphics
 BOARD_EGL_CFG := device/zte/atlas40/prebuilt/system/lib/egl/egl.cfg
+TARGET_GRALLOC_USES_ASHMEM := true
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01000000
