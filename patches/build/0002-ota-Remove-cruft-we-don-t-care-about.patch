@@ -1,0 +1,83 @@
+From 988f678817025e9b00c17e35085f5cfbb95ec5a3 Mon Sep 17 00:00:00 2001
+From: Ricardo Cerqueira <github@cerqueira.org>
+Date: Wed, 16 Nov 2011 23:14:27 +0000
+Subject: [PATCH 2/5] ota: Remove cruft we don't care about
+
+Skip the date check (downgrade to your content), and don't include
+recovery in otapackages.
+
+Change-Id: Ibd9df24a1bca5c4d9b8e38c2f5c03e3cd3287289
+---
+ tools/releasetools/ota_from_target_files |   28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/tools/releasetools/ota_from_target_files b/tools/releasetools/ota_from_target_files
+index b989129..14718ef 100755
+--- a/tools/releasetools/ota_from_target_files
++++ b/tools/releasetools/ota_from_target_files
+@@ -387,9 +387,9 @@ def WriteFullOTAPackage(input_zip, output_zip, fota):
+       type=OPTIONS.device_type,
+       fota=OPTIONS.fota)
+ 
+-  if not OPTIONS.omit_prereq:
+-    ts = GetBuildProp("ro.build.date.utc", input_zip)
+-    script.AssertOlderBuild(ts)
++  #if not OPTIONS.omit_prereq:
++  #  ts = GetBuildProp("ro.build.date.utc", input_zip)
++  #  script.AssertOlderBuild(ts)
+ 
+   AppendAssertions(script, input_zip)
+   device_specific.FullOTA_Assertions()
+@@ -401,7 +401,7 @@ def WriteFullOTAPackage(input_zip, output_zip, fota):
+ 
+   script.FormatPartition("/system")
+   script.Mount("/system")
+-  script.UnpackPackageDir("recovery", "/system")
++  #script.UnpackPackageDir("recovery", "/system")
+   script.UnpackPackageDir("system", "/system")
+ 
+   (symlinks, retouch_files) = CopySystemFiles(input_zip, output_zip)
+@@ -413,9 +413,9 @@ def WriteFullOTAPackage(input_zip, output_zip, fota):
+ 
+   boot_img = common.GetBootableImage("boot.img", "boot.img",
+                                      OPTIONS.input_tmp, "BOOT")
+-  recovery_img = common.GetBootableImage("recovery.img", "recovery.img",
+-                                         OPTIONS.input_tmp, "RECOVERY")
+-  MakeRecoveryPatch(output_zip, recovery_img, boot_img)
++  #recovery_img = common.GetBootableImage("recovery.img", "recovery.img",
++  #                                       OPTIONS.input_tmp, "RECOVERY")
++  #MakeRecoveryPatch(output_zip, recovery_img, boot_img)
+ 
+   Item.GetMetadata(input_zip)
+   Item.Get("system").SetPermissions(script)
+@@ -553,10 +553,10 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip, fota):
+       "/tmp/boot.img", "boot.img", OPTIONS.target_tmp, "BOOT")
+   updating_boot = (source_boot.data != target_boot.data)
+ 
+-  source_recovery = common.GetBootableImage(
+-      "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY")
+-  target_recovery = common.GetBootableImage(
+-      "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
++  #source_recovery = common.GetBootableImage(
++  #    "/tmp/recovery.img", "recovery.img", OPTIONS.source_tmp, "RECOVERY")
++  #target_recovery = common.GetBootableImage(
++  #    "/tmp/recovery.img", "recovery.img", OPTIONS.target_tmp, "RECOVERY")
+   updating_recovery = (source_recovery.data != target_recovery.data)
+ 
+   # Here's how we divide up the progress bar:
+@@ -696,9 +696,9 @@ def WriteIncrementalOTAPackage(target_zip, source_zip, output_zip, fota):
+     script.Print("Unpacking new files...")
+     script.UnpackPackageDir("system", "/system")
+ 
+-  if updating_recovery:
+-    script.Print("Unpacking new recovery...")
+-    script.UnpackPackageDir("recovery", "/system")
++  #if updating_recovery:
++  #  script.Print("Unpacking new recovery...")
++  #  script.UnpackPackageDir("recovery", "/system")
+ 
+   script.Print("Symlinks and permissions...")
+ 
+-- 
+1.7.9.5
+

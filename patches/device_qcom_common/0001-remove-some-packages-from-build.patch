@@ -1,0 +1,92 @@
+From 215c1157a2987fae3afb0d375c8f63ca7368c8ca Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Mon, 7 Apr 2014 21:53:27 +0300
+Subject: [PATCH] remove some packages from build
+
+*no qcom softap
+*set permissions to match the device
+*no video samples
+*include all languages
+
+Change-Id: Iecabfdd4041243dff8bcbd69b5a5db974c2ff42a
+---
+ common.mk |   30 ++++++++++++++----------------
+ 1 file changed, 14 insertions(+), 16 deletions(-)
+
+diff --git a/common.mk b/common.mk
+index bab7c30..604c99e 100644
+--- a/common.mk
++++ b/common.mk
+@@ -69,7 +69,7 @@ AUDIO_POLICY += audio_policy.msm7630_fusion
+ AUDIO_POLICY += audio_policy.default
+ 
+ #APPS
+-APPS := QualcommSoftAP
++#APPS := QualcommSoftAP
+ APPS += TSCalibration
+ 
+ #BSON
+@@ -317,8 +317,8 @@ SENSORS_HARDWARE := sensors.msm7630_surf
+ SENSORS_HARDWARE += sensors.msm7630_fusion
+ 
+ #SOFTAP
+-SOFTAP := libQWiFiSoftApCfg
+-SOFTAP += libqsap_sdk
++#SOFTAP := libQWiFiSoftApCfg
++#SOFTAP += libqsap_sdk
+ 
+ #STK
+ STK := Stk
+@@ -440,22 +440,20 @@ PRODUCT_PACKAGES += \
+     setup_fs
+ 
+ PRODUCT_COPY_FILES := \
+-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+-    frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+-    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+-    frameworks/base/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
++    frameworks/base/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
++    frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
++    frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
++    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
++    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
++    frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
++    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
++    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+-    frameworks/base/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+     frameworks/base/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+-    frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+-    frameworks/base/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+-    frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+-    frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
++    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
+ 
+ # include additional build utilities
+ include build/core/utils.mk
+@@ -464,7 +462,7 @@ include build/core/utils.mk
+ include frameworks/base/data/sounds/OriginalAudio.mk
+ 
+ #Enabling video for live effects
+-include frameworks/base/data/videos/VideoPackage1.mk
++#include frameworks/base/data/videos/VideoPackage1.mk
+ 
+ # For PRODUCT_COPY_FILES, the first instance takes precedence.
+ # Since we want use QC specific files, we should inherit
+@@ -473,7 +471,7 @@ $(call inherit-product-if-exists, vendor/qcom/proprietary/common/config/device-v
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+ 
+ PRODUCT_BRAND := qcom
+-PRODUCT_LOCALES := en_US es_US de_DE zh_CN
++#PRODUCT_LOCALES := en_US es_US de_DE zh_CN
+ PRODUCT_LOCALES += hdpi mdpi
+ 
+ PRODUCT_PROPERTY_OVERRIDES += \
+-- 
+1.7.9.5
+

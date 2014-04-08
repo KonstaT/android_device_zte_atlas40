@@ -1,0 +1,99 @@
+From fcc8241293cfff10e4b53f439f0315d53d519a41 Mon Sep 17 00:00:00 2001
+From: Neti Ravi Kumar <ravineti@codeaurora.org>
+Date: Tue, 14 Feb 2012 18:46:03 +0530
+Subject: [PATCH] libqcomui: Select texture target based on pixel format
+
+Do not choose GL_EXTERNAL_TEXTURE_OES for all formats, instead,
+select between GL_EXTERNAL_TEXTURE_OES, and GL_TEXTURE_2D based
+on the pixel format.
+
+This change is done to reduce composition times.
+
+CRs-fixed: 328074
+(cherry picked from commit 4cfa30aa54ca589dfc3e9b0fbaac7eaeed2bbf2a)
+
+Change-Id: I23d38a1b1fc40bafb17eabbdf35ae5f8f4876a97
+---
+ libqcomui/qcom_ui.cpp |   31 +++++++++++++++++++++++++++++++
+ libqcomui/qcom_ui.h   |   16 ++++++++++++++++
+ 2 files changed, 47 insertions(+)
+
+diff --git a/libqcomui/qcom_ui.cpp b/libqcomui/qcom_ui.cpp
+index 1dbdbd0..c3c0be7 100644
+--- a/libqcomui/qcom_ui.cpp
++++ b/libqcomui/qcom_ui.cpp
+@@ -40,6 +40,10 @@
+ #include <SkImageEncoder.h>
+ #include <Transform.h>
+ 
++#include <EGL/egl.h>
++#include <GLES2/gl2.h>
++#include <GLES2/gl2ext.h>
++
+ using gralloc::IMemAlloc;
+ using gralloc::IonController;
+ using gralloc::alloc_data;
+@@ -150,6 +154,33 @@ bool isGPUSupportedFormat(int format) {
+     return true;
+ }
+ 
++/* decide the texture target dynamically, based on the pixel format*/
++
++int decideTextureTarget(int pixel_format)
++{
++
++  // Default the return value to GL_TEXTURE_EXTERAL_OES
++  int retVal = GL_TEXTURE_EXTERNAL_OES;
++
++  // Change texture target to TEXTURE_2D for RGB formats
++  switch (pixel_format) {
++
++     case HAL_PIXEL_FORMAT_RGBA_8888:
++     case HAL_PIXEL_FORMAT_RGBX_8888:
++     case HAL_PIXEL_FORMAT_RGB_888:
++     case HAL_PIXEL_FORMAT_RGB_565:
++     case HAL_PIXEL_FORMAT_BGRA_8888:
++     case HAL_PIXEL_FORMAT_RGBA_5551:
++     case HAL_PIXEL_FORMAT_RGBA_4444:
++          retVal = GL_TEXTURE_2D;
++          break;
++     default:
++          retVal = GL_TEXTURE_EXTERNAL_OES;
++          break;
++  }
++  return retVal;
++}
++
+ /*
+  * Function to check if the allocated buffer is of the correct size.
+  * Reallocate the buffer with the correct size, if the size doesn't
+diff --git a/libqcomui/qcom_ui.h b/libqcomui/qcom_ui.h
+index 7bcf5eb..f0ca11e 100644
+--- a/libqcomui/qcom_ui.h
++++ b/libqcomui/qcom_ui.h
+@@ -178,6 +178,22 @@ bool isGPUSupportedFormat(int format);
+ 
+ 
+ /*
++ * Adreno is not optimized for GL_TEXTURE_EXTERNAL_OES
++ * texure target. DO NOT choose TEXTURE_EXTERNAL_OES
++ * target for RGB formats.
++ *
++ * Based on the pixel format, decide the texture target.
++ *
++ * @param : pixel format to check
++ *
++ * @return : GL_TEXTURE_2D for RGB formats, and
++ *           GL_TEXTURE_EXTERNAL_OES for YUV formats.
++ *
++*/
++
++int decideTextureTarget (const int pixel_format);
++
++/*
+  * Gets the number of arguments required for this operation.
+  *
+  * @param: operation whose argument count is required.
+-- 
+1.7.9.5
+

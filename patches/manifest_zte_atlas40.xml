@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="github"
+        fetch="git://github.com/" />
+
+    <remove-project name="kernel/msm" />
+
+    <!-- ZTE Blade III -->
+    <project path="device/zte/atlas40" name="KonstaT/android_device_zte_atlas40" remote="github" revision="ics_chocolate_rb4.2" />
+    <project path="kernel" name="KonstaT/android_kernel_zte_msm7x27a" remote="github" revision="ics_chocolate_rb4.2" />
+    <project path="vendor/zte" name="KonstaT/proprietary_vendor_zte" remote="github" revision="ics_chocolate_rb4.2" />
+
+    <!-- BusyBox -->
+    <project path="external/busybox" name="CyanogenMod/android_external_busybox" remote="github" revision="ics" />
+</manifest>

@@ -1,0 +1,38 @@
+From dc3d4b2ede0598dad12259f06a9a49b32997b6c9 Mon Sep 17 00:00:00 2001
+From: Jim Huang <jserv@0xlab.org>
+Date: Wed, 7 Sep 2011 01:25:28 +0800
+Subject: [PATCH 1/5] HOST_linux-x86: Avoid doubly define macro
+ _FORTIFY_SOURCE
+
+While building Android with latest host gcc, it causes the following
+build error:
+
+Install: out/host/linux-x86/bin/mkbootimg
+host C++: obbtool <= frameworks/base/tools/obbtool/Main.cpp
+<command-line>:0:0: error: "_FORTIFY_SOURCE" redefined [-Werror]
+<built-in>:0:0: note: this is the location of the previous definition
+cc1plus: all warnings being treated as errors
+
+In order to make build system happy, this patch does unset macro
+_FORTIFY_SOURCE and then define it in host cflags.
+
+Change-Id: Ic37a90f05081a2c3650b3335bc87e9e895900fb2
+---
+ core/combo/HOST_linux-x86.mk |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/combo/HOST_linux-x86.mk b/core/combo/HOST_linux-x86.mk
+index 5ae4972..7df2893 100644
+--- a/core/combo/HOST_linux-x86.mk
++++ b/core/combo/HOST_linux-x86.mk
+@@ -53,6 +53,6 @@ HOST_GLOBAL_CFLAGS += \
+ 	-include $(call select-android-config-h,linux-x86)
+ 
+ # Disable new longjmp in glibc 2.11 and later. See bug 2967937.
+-HOST_GLOBAL_CFLAGS += -D_FORTIFY_SOURCE=0
++HOST_GLOBAL_CFLAGS += -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=0
+ 
+ HOST_NO_UNDEFINED_LDFLAGS := -Wl,--no-undefined
+-- 
+1.7.9.5
+

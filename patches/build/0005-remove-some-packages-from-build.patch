@@ -1,0 +1,42 @@
+From 86617718d87a183a7992cb9e3b83ee7f4167a597 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Mon, 7 Apr 2014 23:35:05 +0300
+Subject: [PATCH 5/5] remove some packages from build
+
+*no exotic IMEs
+*no tts data
+
+Change-Id: I36e921dd5d91fbe7c130c27cb49e799996bc37da
+---
+ target/product/full_base.mk |    8 --------
+ 1 file changed, 8 deletions(-)
+
+diff --git a/target/product/full_base.mk b/target/product/full_base.mk
+index d89af51..9bc2ce6 100644
+--- a/target/product/full_base.mk
++++ b/target/product/full_base.mk
+@@ -24,11 +24,6 @@ PRODUCT_PACKAGES := \
+     libdrmframework \
+     libdrmframework_jni \
+     libfwdlockengine \
+-    OpenWnn \
+-    PinyinIME \
+-    libWnnEngDic \
+-    libWnnJpnDic \
+-    libwnndict \
+     VideoEditor \
+     WAPPushManager
+ 
+@@ -44,9 +39,6 @@ PRODUCT_LOCALES := en_US
+ # Get some sounds
+ $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+ 
+-# Get the TTS language packs
+-$(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
+-
+ # Get a list of languages.
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/locales_full.mk)
+ 
+-- 
+1.7.9.5
+

@@ -1,0 +1,26 @@
+From 5ec19d827fb77bbb63d73ea27a0fe77ebc1a9d66 Mon Sep 17 00:00:00 2001
+From: dhacker29 <dhackerdvm@gmail.com>
+Date: Sat, 25 Jan 2014 20:17:13 -0600
+Subject: [PATCH 4/5] Add date to package name
+
+---
+ core/Makefile |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/core/Makefile b/core/Makefile
+index 93ab795..f56ac2e 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -1436,7 +1436,8 @@ name := $(TARGET_PRODUCT)
+ ifeq ($(TARGET_BUILD_TYPE),debug)
+   name := $(name)_debug
+ endif
+-name := $(name)-ota-$(FILE_NAME_TAG)
++date := $(shell date -u +%Y%m%d)
++name := $(name)-ota-$(FILE_NAME_TAG)-$(date)
+ 
+ ifeq ($(TARGET_HAS_FOTA),true)
+   fota := 1
+-- 
+1.7.9.5
+

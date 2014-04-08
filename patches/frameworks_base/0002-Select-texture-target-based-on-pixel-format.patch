@@ -1,0 +1,127 @@
+From 9e829ce4eecd0cd8efa930661244fbab0f4557ee Mon Sep 17 00:00:00 2001
+From: Neti Ravi Kumar <ravineti@codeaurora.org>
+Date: Tue, 14 Feb 2012 19:07:28 +0530
+Subject: [PATCH 2/2] Select texture target based on pixel format
+
+Adreno is not optimized for GL_TEXTURE_EXTERNAL_OES, making GPU
+utilization (and power), high with GL_TEXTURE_EXTERNAL_OES for
+RGB formats.
+
+Change texture target from GL_EXTERNAL_TEXTURE_OES to dynamically
+select between GL_EXTERNAL_TEXTURE_OES, and GL_TEXTURE_2D based
+on the pixel format.
+
+This change is done to reduce the composition time for 8x55
+
+Change-Id: I89ab1d60b23eef55442a9fd338b2a05b3304ce61
+CRs-fixed: 328074
+---
+ include/gui/SurfaceTexture.h      |    4 ++--
+ libs/gui/SurfaceTexture.cpp       |    9 ++++++++-
+ services/surfaceflinger/Layer.cpp |   21 ++++++++++++---------
+ 3 files changed, 22 insertions(+), 12 deletions(-)
+
+diff --git a/include/gui/SurfaceTexture.h b/include/gui/SurfaceTexture.h
+index 8b08247..3ce4d45 100644
+--- a/include/gui/SurfaceTexture.h
++++ b/include/gui/SurfaceTexture.h
+@@ -140,7 +140,7 @@ public:
+     // This call may only be made while the OpenGL ES context to which the
+     // target texture belongs is bound to the calling thread.
+     //
+-    status_t updateTexImage();
++    status_t updateTexImage(bool isComposition  = false);
+ 
+     // setBufferCountServer set the buffer count. If the client has requested
+     // a buffer count using setBufferCount, the server-buffer count will
+@@ -505,7 +505,7 @@ private:
+     // glCopyTexSubImage to read from the texture.  This is a hack to work
+     // around a GL driver limitation on the number of FBO attachments, which the
+     // browser's tile cache exceeds.
+-    const GLenum mTexTarget;
++    GLenum mTexTarget;
+ 
+     // mFrameCounter is the free running counter, incremented for every buffer queued
+     // with the surface Texture.
+diff --git a/libs/gui/SurfaceTexture.cpp b/libs/gui/SurfaceTexture.cpp
+index 2115f6e..56f454a 100644
+--- a/libs/gui/SurfaceTexture.cpp
++++ b/libs/gui/SurfaceTexture.cpp
+@@ -796,7 +796,7 @@ status_t SurfaceTexture::setScalingMode(int mode) {
+     return OK;
+ }
+ 
+-status_t SurfaceTexture::updateTexImage() {
++status_t SurfaceTexture::updateTexImage(bool isComposition) {
+     ST_LOGV("updateTexImage");
+     Mutex::Autolock lock(mMutex);
+ 
+@@ -824,6 +824,13 @@ status_t SurfaceTexture::updateTexImage() {
+                 mSlots[buf].mEglImage = image;
+                 mSlots[buf].mEglDisplay = dpy;
+ 
++                // GPU is not efficient in handling GL_TEXTURE_EXTERNAL_OES
++                // texture target. Depending on the image format, decide,
++                // the texture target to be used
++                if (isComposition) {
++                    mTexTarget = decideTextureTarget(mSlots[buf].mGraphicBuffer->format);
++                }
++
+                 if (image == EGL_NO_IMAGE_KHR) {
+                     // NOTE: if dpy was invalid, createImage() is guaranteed to
+                     // fail. so we'd end up here.
+diff --git a/services/surfaceflinger/Layer.cpp b/services/surfaceflinger/Layer.cpp
+index 6539f82..7a33dc8 100644
+--- a/services/surfaceflinger/Layer.cpp
++++ b/services/surfaceflinger/Layer.cpp
+@@ -291,27 +291,30 @@ void Layer::onDraw(const Region& clip) const
+         return;
+     }
+ 
++    GLuint currentTextureTarget = mSurfaceTexture->getCurrentTextureTarget();
+     if (!isProtected()) {
+-        glBindTexture(GL_TEXTURE_EXTERNAL_OES, mTextureName);
++        glBindTexture(currentTextureTarget, mTextureName);
+         GLenum filter = GL_NEAREST;
+         if (getFiltering() || needsFiltering() || isFixedSize() || isCropped()) {
+             // TODO: we could be more subtle with isFixedSize()
+             filter = GL_LINEAR;
+         }
+-        glTexParameterx(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MAG_FILTER, filter);
+-        glTexParameterx(GL_TEXTURE_EXTERNAL_OES, GL_TEXTURE_MIN_FILTER, filter);
++        glTexParameterx(currentTextureTarget, GL_TEXTURE_MAG_FILTER, filter);
++        glTexParameterx(currentTextureTarget, GL_TEXTURE_MIN_FILTER, filter);
+         glMatrixMode(GL_TEXTURE);
+         glLoadMatrixf(mTextureMatrix);
+         glMatrixMode(GL_MODELVIEW);
+-        glDisable(GL_TEXTURE_2D);
+-        glEnable(GL_TEXTURE_EXTERNAL_OES);
++        glDisable((currentTextureTarget == GL_TEXTURE_2D) ?
++                GL_TEXTURE_EXTERNAL_OES : GL_TEXTURE_2D);
++        glEnable(currentTextureTarget);
+     } else {
+-        glBindTexture(GL_TEXTURE_2D, mFlinger->getProtectedTexName());
++        glBindTexture(currentTextureTarget, mFlinger->getProtectedTexName());
+         glMatrixMode(GL_TEXTURE);
+         glLoadIdentity();
+         glMatrixMode(GL_MODELVIEW);
+-        glDisable(GL_TEXTURE_EXTERNAL_OES);
+-        glEnable(GL_TEXTURE_2D);
++        glDisable((currentTextureTarget == GL_TEXTURE_EXTERNAL_OES) ?
++                GL_TEXTURE_2D : GL_TEXTURE_EXTERNAL_OES);
++        glEnable(currentTextureTarget);
+     }
+ 
+     if(needsDithering()) {
+@@ -434,7 +437,7 @@ void Layer::lockPageFlip(bool& recomputeVisibleRegions)
+             mFlinger->signalEvent();
+         }
+ 
+-        if (mSurfaceTexture->updateTexImage() < NO_ERROR) {
++        if (mSurfaceTexture->updateTexImage(true) < NO_ERROR) {
+             // something happened!
+             recomputeVisibleRegions = true;
+             return;
+-- 
+1.7.9.5
+

@@ -1,0 +1,27 @@
+From db5be6bbc4aec64ff079c38aea576b09b18288a1 Mon Sep 17 00:00:00 2001
+From: Conley Owens <cco3@android.com>
+Date: Tue, 8 Nov 2011 15:29:44 -0800
+Subject: [PATCH] Remove unused variable
+
+This unused variable breaks the build in an Ubuntu 11.10 environment.
+
+Change-Id: Ieeb206d1a3689217070cfb8e8dee8a2c9c467b44
+---
+ slang_rs_export_foreach.cpp |    1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/slang_rs_export_foreach.cpp b/slang_rs_export_foreach.cpp
+index a4025ca..0dbf954 100644
+--- a/slang_rs_export_foreach.cpp
++++ b/slang_rs_export_foreach.cpp
+@@ -246,7 +246,6 @@ RSExportForEach *RSExportForEach::Create(RSContext *Context,
+                                     clang::SourceLocation(),
+                                     &Ctx.Idents.get(Id));
+ 
+-      llvm::StringRef ParamName = PVD->getName();
+       clang::FieldDecl *FD =
+           clang::FieldDecl::Create(Ctx,
+                                    RD,
+-- 
+1.7.9.5
+
