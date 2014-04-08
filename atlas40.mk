@@ -25,7 +25,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.moz.fm.noAnalog=true
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := full_atlas40
+PRODUCT_NAME := atlas40
 PRODUCT_DEVICE := atlas40
 PRODUCT_BRAND := ZTE
 PRODUCT_MANUFACTURER := ZTE

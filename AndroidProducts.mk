@@ -1,1 +1,1 @@
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/full_atlas40.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/atlas40.mk
