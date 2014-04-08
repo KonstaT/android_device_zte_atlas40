@@ -4,7 +4,7 @@ include device/qcom/msm7627a/BoardConfig.mk
 TARGET_NO_BOOTLOADER := true
 
 # Kernel
-TARGET_PREBUILT_KERNEL := device/zte/atlas40/kernel
+KERNEL_DEFCONFIG := atlas40_defconfig
 BOARD_KERNEL_CMDLINE := androidboot.hardware=atlas40
 BOARD_KERNEL_BASE := 0x00200000
 BOARD_KERNEL_PAGESIZE := 4096
