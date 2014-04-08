@@ -24,8 +24,7 @@ loglevel 3
     export EXTERNAL_STORAGE /mnt/sdcard
     export ASEC_MOUNTPOINT /mnt/asec
     export LOOP_MOUNTPOINT /mnt/obb
-    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/filterfw.jar:/system/framework/ZteDrmClient.jar:/system/framework/qcnvitems.jar:/system/framework/qcrilhook.jar
-    export SECONDARY_STORAGE /mnt/sdcard2
+    export BOOTCLASSPATH /system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/filterfw.jar
 
 # Backward compatibility
     symlink /system/etc /etc
@@ -49,7 +48,7 @@ loglevel 3
 
     mkdir /system
     mkdir /data 0771 system system
-    mkdir /cache 0771 system cache
+    mkdir /cache 0770 system cache
     mkdir /config 0500 root root
 
     # Directory for putting things only root should see.
@@ -90,7 +89,7 @@ loglevel 3
     chown root system /sys/bus/platform/drivers/msm-battery/enable_to_shutdown
     chown root system /sys/kernel/debug/gpio_debug/gpio_get
     chown root system /sys/kernel/debug/gpio_debug/gpio_out_l
-    chown root system /sys/kernel/debug/gpio_debug/gpio_out_h    
+    chown root system /sys/kernel/debug/gpio_debug/gpio_out_h
 # ZTE_PM_ZHENGCHAO_001:end
 
 # Create cgroup mount points for process groups
@@ -128,35 +127,25 @@ on fs
 
 on emmc-fs
 # mount mmc partitions
-    # wait /dev/block/mmcblk0p15
-    # mount ext4 /dev/block/mmcblk0p15 /system ro barrier=1
-    # wait /dev/block/mmcblk0p18
-    # exec /system/bin/e2fsck -p /dev/block/mmcblk0p18
-    # mount ext4 /dev/block/mmcblk0p18 /data nosuid nodev barrier=1 noauto_da_alloc
-    # mount ext4 /dev/block/mmcblk0p6 /persist nosuid nodev barrier=1
-    # mount ext4 /dev/block/mmcblk0p17 /cache nosuid nodev barrier=1
-    #------userdata----------     
+    #wait /dev/block/mmcblk0p12
+    #mount ext4 /dev/block/mmcblk0p12 /system rw barrier=1
+    #wait /dev/block/mmcblk0p13
+    #exec /system/bin/e2fsck -p /dev/block/mmcblk0p13
+    #mount ext4 /dev/block/mmcblk0p13 /data nosuid nodev barrier=1 noauto_da_alloc
+    #mount ext4 /dev/block/mmcblk0p14 /persist nosuid nodev barrier=1
+    #mount ext4 /dev/block/mmcblk0p15 /cache nosuid nodev barrier=1
+    #------userdata----------
     wait /dev/block/mmcblk0p19
     mount ext4 /dev/block/mmcblk0p19 /system ro barrier=1
-    chmod 0555 /system/bin/ext4check.sh
-    #------userdata---------- 
+    #------userdata----------
     wait /dev/block/mmcblk0p22
-    #exec /system/bin/sh -c "/system/bin/fixebr.sh mmcblk0"
-    #exec /system/bin/format_vfat
-    exec /system/bin/sh -c "/system/bin/ext4check.sh USERDATA /dev/block/mmcblk0p22"    
     mount ext4 /dev/block/mmcblk0p22 /data nosuid nodev barrier=1 noauto_da_alloc
-    #------persist---------- 
+    #------persist----------
     wait /dev/block/mmcblk0p10
-    exec /system/bin/sh -c "/system/bin/ext4check.sh PERSIST /dev/block/mmcblk0p10"
     mount ext4 /dev/block/mmcblk0p10 /persist nosuid nodev barrier=1
-    #------cache---------- 
+    #------cache----------
     wait /dev/block/mmcblk0p21
-    exec /system/bin/sh -c "/system/bin/ext4check.sh CACHE /dev/block/mmcblk0p21"    
     mount ext4 /dev/block/mmcblk0p21 /cache nosuid nodev barrier=1
-    #------fixup last partition----------
-    #wait /dev/block/mmcblk0p23
-    #exec /system/bin/sh -c "/system/bin/fixebr.sh mmcblk0"
-    #exec /system/bin/sh -c "/system/bin/vfat_valid.sh /dev/block/mmcblk0p23 INTERNAL_SD"
 
 on post-fs
     # once everything is setup, no need to modify /
@@ -164,7 +153,7 @@ on post-fs
 
     # We chown/chmod /cache again so because mount is run as root + defaults
     chown system cache /cache
-    chmod 0771 /cache
+    chmod 0770 /cache
 
     # This may have been created by the recovery system with odd permissions
     chown system cache /cache/recovery
@@ -215,12 +204,9 @@ on post-fs-data
     # give system access to wpa_supplicant.conf for backup and restore
     mkdir /data/misc/wifi 0770 wifi wifi
     chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-#ZTE_JHT_20120423+++	
+#ZTE_JHT_20120423+++
     mkdir /data/misc/wifi/hostapd 0770 wifi wifi
 #ZTE_JHT_20120423---
-#Hector 20120611 add for autoIP property+++
-	setprop persist.service.wlan.autoIP
-#Hector 20120611 add for autoIP property+++	
     mkdir /data/local 0751 root root
     mkdir /data/local/tmp 0771 shell shell
     mkdir /data/data 0771 system system
@@ -229,6 +215,7 @@ on post-fs-data
     mkdir /data/property 0700 root root
     mkdir /data/radio 0770 radio radio
     chmod 2770 /data/radio
+
     mkdir /dev/radio 0770 radio radio
     chown radio system /dev/pm_monitor
     # create dalvik-cache, so as to enforce our permissions
@@ -258,12 +245,6 @@ on post-fs-data
     chmod 0660 /sys/class/android_usb/android0/f_rndis/ethaddr
 
 on boot
-#ZTE_ALSPRX_001  start  
-    mkdir /data/misc/prox 0777 radio radio   
-    chmod 0777  /dev/taos    
-    chmod 0777  /dev/ISL    
-#ZTE_ALSPRX_001  end
-
 # basic network init
     ifup lo
     hostname localhost
@@ -391,16 +372,6 @@ on property:sys.usb.config=none
 #     write /sys/class/android_usb/android0/enable 1
 #     start adbd
 #     setprop sys.usb.state $sys.usb.config
-# on property:sys.usb.config=adb
-#     write /sys/class/android_usb/android0/enable 0
-#     write /sys/class/android_usb/android0/idVendor 0x19D2
-#     write /sys/class/android_usb/android0/idProduct 0x1350
-#     write /sys/class/android_usb/android0/f_diag/clients diag
-#     write /sys/class/android_usb/android0/f_serial/transports tty,tty
-#     write /sys/class/android_usb/android0/functions diag,serial,mass_storage,adb
-#     write /sys/class/android_usb/android0/enable 1
-#     start adbd
-#     setprop sys.usb.state $sys.usb.config
 
 # USB accessory configuration
 on property:sys.usb.config=accessory
@@ -507,7 +478,7 @@ service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-sys
 service drm /system/bin/drmserver
     class main
     user drm
-    group system inet drmrpc qcom_oncrpc
+    group system inet drmrpc
 
 service media /system/bin/mediaserver
     class main
@@ -572,53 +543,3 @@ service dumpstate /system/bin/dumpstate -s
     socket dumpstate stream 0660 shell log
     disabled
     oneshot
-
-#ZTE_WANGZY_PROXIMITY_101014
-service proximity_init /system/bin/proximity.init -r
-    class late_start 
-    disabled
-    oneshot
-    
-on property:sys.boot_completed=1
-    start proximity_init
-#ZTE_WANGZY_PROXIMITY_101014 
-
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
-    class late_start
-    disabled
-    oneshot
-
-service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n p2p
-    class late_start
-    disabled
-    oneshot
-	
-service iprelease_wlan0 /system/bin/dhcpcd -k
-    class late_start
-    disabled
-    oneshot
-    
-service p2p_supplicant /system/bin/p2p_supplicant -Dnl80211 -iwlan0
-	class late_start 
-	disabled
-	oneshot
-    
-#ZTE_JHT_20120423+++
-service hostapd /system/bin/hostapd -dddd /data/misc/wifi/hostapd.conf
-    class late_start
-#   socket hostapd_wlan0 dgram 660 root wifi
-    user root
-    group wifi
-    oneshot
-    disabled
-#ZTE_JHT_20120423---

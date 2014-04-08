@@ -146,12 +146,12 @@
 # sysfs properties
 /sys/devices/virtual/input/input*   enable      0660  root   input
 /sys/devices/virtual/input/input*   poll_delay  0660  root   input
-/sys/devices/virtual/input/input*	name	0660  root   input 
-/sys/devices/virtual/input/input*	max		0660  root   input 
-/sys/devices/virtual/input/input*	min		0660  root   input 
-/sys/devices/virtual/input/input*	poll	0660  root   input
-/sys/devices/i2c-0/0-000f			enable	0660  root   system
-/sys/devices/i2c-0/0-000f			poll	0660  root   system
+/sys/devices/virtual/input/input*   name        0660  root   input
+/sys/devices/virtual/input/input*   max         0660  root   input
+/sys/devices/virtual/input/input*   min         0660  root   input
+/sys/devices/virtual/input/input*   poll        0660  root   input
+/sys/devices/i2c-0/0-000f           enable      0660  root   system
+/sys/devices/i2c-0/0-000f           poll        0660  root   system
 
 #permissions for video
 /dev/msm_vidc_reg         0660  system       audio

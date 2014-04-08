@@ -35,7 +35,7 @@
 serialno=`getprop persist.usb.serialno`
 case "$serialno" in
     "")
-    serialnum=`getprop ro.product.name`
+    serialnum=`getprop ro.serialno`
     echo "$serialnum" > /sys/class/android_usb/android0/iSerial
     ;;
     * )
@@ -65,7 +65,6 @@ case "$usbchgdisabled" in
     esac
 esac
 
-			
 #
 # Allow USB enumeration with default PID/VID
 #
@@ -79,15 +78,15 @@ case "$usb_config" in
                 socid=`cat /sys/devices/system/soc/soc0/id`
                 case "$socid" in
                     "109")
-                         setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                         setprop persist.sys.usb.config diag,adb
                     ;;
                     *)
                         case "$baseband" in
                             "mdm")
-                                 setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                                 setprop persist.sys.usb.config diag,diag_mdm,serial_hsic,serial_tty,rmnet_hsic,mass_storage,adb
                             ;;
                             *)
-                                setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                                 setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
                             ;;
                         esac
                     ;;
@@ -95,18 +94,18 @@ case "$usb_config" in
             ;;
             "msm7627a")
                 #setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_smd,mass_storage,adb
-								setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
             ;;
             * )
                 case "$baseband" in
                     "svlte2a")
-                         setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_smd,rmnet_smd_sdio,mass_storage,adb
                     ;;
                     "csfb")
-                         setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                         setprop persist.sys.usb.config diag,diag_mdm,serial_sdio,serial_tty,rmnet_sdio,mass_storage,adb
                     ;;
                     *)
-                         setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
+                         setprop persist.sys.usb.config diag,serial_tty,serial_tty,rmnet_smd,mass_storage,adb
                     ;;
                 esac
             ;;
@@ -115,4 +114,3 @@ case "$usb_config" in
     * ) ;; #USB persist config exists, do nothing
 esac
 
-setprop persist.sys.usb.config diag,modem,nmea,mass_storage,adb
