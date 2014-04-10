@@ -47,6 +47,9 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
+    mkdir /data/misc/prox 0777 radio radio
+    chmod 0777 /dev/taos
+
     chown system system /sys/class/compass/akm8962/enable_acc
     chown system system /sys/class/compass/akm8962/enable_mag
     chown system system /sys/class/compass/akm8962/enable_ori
@@ -190,6 +193,14 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     group system qcom_oncrpc
     disabled
     oneshot
+
+service proximity_init /system/bin/proximity.init -r
+    class late_start
+    disabled
+    oneshot
+
+on property:dev.bootcomplete=1
+    start proximity_init
 
 service akmd /system/bin/akmd8962_new -m 5
     class main

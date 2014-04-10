@@ -99,6 +99,7 @@ lib/libwmsts.so
 
 # Sensors
 bin/akmd8962_new
+bin/proximity.init
 lib/hw/sensors.default.so
 
 # Wifi
