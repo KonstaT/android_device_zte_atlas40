@@ -109,6 +109,10 @@ on boot
     write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
     write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
 
+    # LEDs
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+
     # zRAM
     write /proc/sys/vm/page-cluster 0
 
