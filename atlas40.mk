@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libstagefrighthw
 
+# Webkit
+PRODUCT_PACKAGES += \
+    libwebcore
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,device/zte/atlas40/ramdisk,root)
