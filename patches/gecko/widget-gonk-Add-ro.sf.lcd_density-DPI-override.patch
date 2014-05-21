@@ -1,0 +1,28 @@
+From e5869a791131bc11fcd17376f1396bfe4a0e5b65 Mon Sep 17 00:00:00 2001
+From: Michael Vines <mvines@codeaurora.org>
+Date: Tue, 18 Feb 2014 20:30:41 -0800
+Subject: [PATCH] widget: gonk: Add ro.sf.lcd_density DPI override
+
+Change-Id: Ibe7fb32ada9e7d8bad73c1a97f3ff126eca810b8
+---
+ widget/gonk/nsWindow.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/widget/gonk/nsWindow.cpp b/widget/gonk/nsWindow.cpp
+index 4b87f8f..5fedb2a 100644
+--- a/widget/gonk/nsWindow.cpp
++++ b/widget/gonk/nsWindow.cpp
+@@ -514,6 +514,10 @@ nsWindow::MakeFullScreen(bool aFullScreen)
+ float
+ nsWindow::GetDPI()
+ {
++    char density[PROPERTY_VALUE_MAX];
++    if (property_get("ro.sf.lcd_density", density, nullptr) > 0) {
++      return atoi(density);
++    }
+     return GetGonkDisplay()->xdpi;
+ }
+ 
+-- 
+1.8.3.4 (Apple Git-47)
+
