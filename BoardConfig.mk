@@ -45,7 +45,6 @@ TARGET_SPECIFIC_HEADER_PATH := device/zte/atlas40/include
 
 # Build
 TARGET_SYSTEMIMAGE_USE_SQUISHER := true
-SKIP_SET_METADATA := true
 
 # Graphics
 BOARD_EGL_CFG := device/zte/atlas40/prebuilt/system/lib/egl/egl.cfg
