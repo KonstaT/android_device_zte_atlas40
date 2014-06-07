@@ -210,6 +210,11 @@ service akmd /system/bin/akmd8962_new -m 5
     class main
     oneshot
 
+service ztebasebandinit /system/bin/sh /system/etc/init.zte.baseband.sh
+    class late_start
+    user root
+    oneshot
+
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
