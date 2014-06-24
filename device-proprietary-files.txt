@@ -80,9 +80,9 @@ lib/libgsdi_exp.so
 lib/libgstk_exp.so
 lib/libidl.so
 lib/libmmgsdilib.so
-lib/libnv.so
+-lib/libnv.so
 lib/libnetmgr.so
-lib/liboncrpc.so
+-lib/liboncrpc.so
 lib/libpbmlib.so
 lib/libqc-opt.so
 lib/libqdi.so
