@@ -7,9 +7,6 @@ $(call inherit-product-if-exists, vendor/zte/atlas40/atlas40-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/zte/atlas40/overlay
 
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
@@ -89,5 +86,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, build/target/product/full_base_telephony.mk)
+
+PRODUCT_AAPT_CONFIG := normal hdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
