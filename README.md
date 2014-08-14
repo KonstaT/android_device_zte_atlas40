@@ -1,6 +1,4 @@
-CyanogenMod 11 device configuration for ZTE Blade III.
-
-http://www.modaco.com/topic/367241-cyanogenmod-11
+CyanogenMod 11 device configuration for [ZTE Blade III](http://www.modaco.com/topic/367241-cyanogenmod-11).
 
 How to build:
 -------------
